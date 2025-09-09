@@ -8,6 +8,7 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/angular",
     "options": {}
-  }
+  },
+  "staticDirs": ["../node_modules/bootstrap/dist/css", "../node_modules/bootstrap-icons/font"]
 };
 export default config;
