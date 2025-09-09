@@ -1,0 +1,14 @@
+.btn-outline-primary{
+    background-color: #F6F6F6;
+    color: black;
+    border-radius: 8px;
+    border-color: #A5A5A5;
+    margin: 0.5rem;
+}
+
+.btn-outline-primary:active{
+    background-color: #F6F6F6;
+    color: black;
+    border-radius: 8px;
+    border-color: #A5A5A5;
+}
