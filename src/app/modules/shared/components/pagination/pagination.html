@@ -1,0 +1,42 @@
+<nav aria-label="Paginação">
+  <ul class="pagination">
+    <!-- Botão anterior -->
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button
+        class="page-link"
+        (click)="goToPrevious()"
+        [disabled]="currentPage === 1"
+        aria-label="Página anterior"
+      >
+        ‹
+      </button>
+    </li>
+
+    <!-- Páginas -->
+    <li
+      class="page-item"
+      *ngFor="let page of visiblePages"
+      [class.active]="page === currentPage"
+    >
+      <button
+        class="page-link"
+        (click)="goToPage(page)"
+        [attr.aria-current]="page === currentPage ? 'page' : null"
+      >
+        {{ page }}
+      </button>
+    </li>
+
+    <!-- Botão próximo -->
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button
+        class="page-link"
+        (click)="goToNext()"
+        [disabled]="currentPage === totalPages"
+        aria-label="Próxima página"
+      >
+        ›
+      </button>
+    </li>
+  </ul>
+</nav>
