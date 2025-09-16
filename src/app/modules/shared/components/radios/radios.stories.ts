@@ -21,3 +21,12 @@ export const Default: Story = {
     name: 'nome',
   },
 };
+
+export const Custom: Story = {
+
+ args: {
+    label: 'Custom radio',
+    value: 'custom',
+    name: 'custom-form',
+  },
+};

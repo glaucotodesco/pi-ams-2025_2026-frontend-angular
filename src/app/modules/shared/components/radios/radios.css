@@ -1,4 +1,4 @@
-input.custom-radio.form-check-input{
+input.radio.form-check-input{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -15,7 +15,7 @@ input.custom-radio.form-check-input{
   accent-color: transparent;   
 }
 
-input.custom-radio.form-check-input::after{
+input.radio.form-check-input::after{
   content: "";
   position: absolute;
   top: 50%;
@@ -29,11 +29,11 @@ input.custom-radio.form-check-input::after{
   pointer-events: none;
 }
 
-input.custom-radio.form-check-input:checked::after{
+input.radio.form-check-input:checked::after{
   transform: translate(-50%, -50%) scale(1);
 }
 
-input.custom-radio.form-check-input:focus{
+input.radio.form-check-input:focus{
   box-shadow: none;
   outline: none;
 }
