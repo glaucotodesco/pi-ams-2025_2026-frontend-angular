@@ -1,3 +1,16 @@
-<div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
+<ng-template #content>
+  <div class="modal-custom">
+    <div class="modal-header">
+      <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn1" aria-label="Close" (click)="modalService.dismissAll()">{{ actionText2 }}</button>
+
+      <button type="button" class="btn btn2" (click)="onAction()">{{ actionText }}</button>
+
+    </div>
+  </div>
+</ng-template>
