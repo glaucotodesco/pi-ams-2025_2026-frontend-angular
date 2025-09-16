@@ -1,0 +1,49 @@
+/* estilo base do botão */
+.storybook-button {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;                 /* espaço entre ícone e texto */
+  transition: all 0.2s ease-in-out;
+}
+
+/* tamanhos do botão */
+.storybook-button--small {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.storybook-button--medium {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.storybook-button--large {
+  padding: 14px 28px;
+  font-size: 18px;
+}
+
+/* cor primária */
+.storybook-button--primary {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.storybook-button--primary:hover {
+  background-color: #0b5ed7;  /* hover primário */
+}
+
+/* cor secundária */
+.storybook-button--secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.storybook-button--secondary:hover {
+  background-color: #5c636a;  /* hover secundário */
+}
