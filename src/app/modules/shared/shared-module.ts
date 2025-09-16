@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Modal } from './components/modal/modal';
-
-
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './components/navbar/navbar';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    Modal
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [NavbarComponent],
+  imports: [CommonModule, RouterModule, NgbModule],
+  exports: [NavbarComponent]
 })
-export class SharedModule { }
+export class SharedModule {}
