@@ -1,14 +1,24 @@
 <div class="row">
-	<div class="col">
-		<div ngbDropdown class="d-inline-block">
-			<button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-				Toggle dropdown
-			</button>
-			<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-				<button ngbDropdownItem>{{ item1 }}</button>
-				<button ngbDropdownItem>{{ item2 }}</button>
-				<button ngbDropdownItem>{{ item3 }}</button>
-			</div>
-		</div>
-	</div>
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button
+        type="button"
+        class="btn btn-outline-primary text-start"
+        id="dropdownSelect"
+        ngbDropdownToggle
+      >
+        {{ selectedItem }}
+      </button>
+
+      <div ngbDropdownMenu aria-labelledby="dropdownSelect">
+        <button
+          class="dropdown-item"
+          *ngFor="let item of itens"
+          (click)="selectItem(item)"
+        >
+          {{ item }}
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
