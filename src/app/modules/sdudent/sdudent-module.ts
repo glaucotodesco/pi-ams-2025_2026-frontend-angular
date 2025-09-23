@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { StudentRoutingModule } from './student-routing-module';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule, StudentRoutingModule],
 })
-export class SdudentModule { }
+export class SdudentModule {}
