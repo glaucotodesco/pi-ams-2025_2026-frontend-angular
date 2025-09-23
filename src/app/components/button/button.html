@@ -1,9 +1,10 @@
-<!-- botão principal -->
 <button
   type="button"
-  (click)="onClick.emit($event)"          
-  [ngClass]="classes"                    
- 
+  [disabled]="disabled"
+  (click)="handleClick($event)"
+  [ngClass]="classes"
 >
-  {{ label }}                              <!-- texto do botão -->
+  <!-- ícone opcional -->
+  <span *ngIf="icon" class="material-icons">{{ icon }}</span>
+  {{ label }}
 </button>
