@@ -1,0 +1,26 @@
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: Arial, sans-serif;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none; /* impede redimensionamento manual */
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+textarea:focus {
+  border-color: #007bff; /* cor azul de foco */
+}

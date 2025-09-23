@@ -1,0 +1,12 @@
+<div class="textarea-container">
+  <!-- Label configurável -->
+  <label *ngIf="showLabel">{{ label }}</label>
+
+  <!-- Textarea -->
+  <textarea
+    [rows]="rows"
+    [cols]="cols"
+    [disabled]="disabled"
+    [placeholder]="placeholder">
+  </textarea>
+</div>
