@@ -1,0 +1,33 @@
+.app-button {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.app-button--primary {
+  background-color: #1ea7fd;
+  color: white;
+}
+
+.app-button--secondary {
+  background-color: #eee;
+  color: #333;
+}
+
+.app-button--small {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.app-button--medium {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.app-button--large {
+  font-size: 16px;
+  padding: 12px 24px;
+}
