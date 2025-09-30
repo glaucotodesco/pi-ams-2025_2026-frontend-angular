@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'storybook-checkbox',
+  selector: 'app-checkbox',
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -23,8 +23,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./checkbox.css'],
 })
 export class CheckboxComponent {
-  @Input() label: string = 'Opção';
   @Input() checked: boolean = false;
+
+  @Input() label: string = 'Opção';
 
   @Output() checkedChange = new EventEmitter<boolean>();
 
