@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-select',
@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class SelectComponent {
   @Input() itens: string[] = [''];
 
-  selectedItem: string = 'Select';
+  @Output() selectedItem: string = 'Select';
 
   selectItem(item: string) {
     this.selectedItem = item;
