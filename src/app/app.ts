@@ -11,4 +11,12 @@ export class App {
   salvar() {
   alert('Função de ação executada!');
 }
+onModalConfirmed() {
+  console.log("Modal confirmado");
+}
+
+onModalCancelled() {
+  console.log("Modal cancelado");
+}
+
 }

@@ -7,10 +7,12 @@
       <ng-content></ng-content>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn1" aria-label="Close" (click)="modalService.dismissAll()">{{ actionText2 }}</button>
-
-      <button type="button" class="btn btn2" (click)="onAction()">{{ actionText }}</button>
-
+      <button type="button" class="btn btn-outline-primary" (click)="onCancel()">
+        {{ actionText2 }}
+      </button>
+      <button type="button" class="btn btn-primary" (click)="onAction()">
+        {{ actionText }}
+      </button>
     </div>
   </div>
 </ng-template>
