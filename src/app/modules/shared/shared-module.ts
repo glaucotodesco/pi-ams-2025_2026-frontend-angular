@@ -6,13 +6,15 @@ import { Radios } from './components/radios/radios';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InputComponent } from './components/input/input';
 
 @NgModule({
   declarations: [
     Modal,
     Pagination,
     Radios,
-    NavbarComponent
+    NavbarComponent,
+    InputComponent
   ],
   imports: [
     CommonModule,
