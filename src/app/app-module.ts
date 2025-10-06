@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./modules/shared/shared-module";
+import { Button } from './shared/button/button';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Button
   ],
   imports: [
     BrowserModule,
