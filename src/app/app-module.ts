@@ -4,11 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-<<<<<<< HEAD
-import { ModalGenericComponent } from './modules/shared/components/modal/modal';
-=======
 import { SharedModule } from "./modules/shared/shared-module";
->>>>>>> dev
 
 @NgModule({
   declarations: [
@@ -18,13 +14,8 @@ import { SharedModule } from "./modules/shared/shared-module";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-<<<<<<< HEAD
-    ModalGenericComponent
-  ],
-=======
-    SharedModule // módulo para exibir os componentes compartilhados
+    SharedModule
 ],
->>>>>>> dev
   providers: [
     provideBrowserGlobalErrorListeners()
   ],
