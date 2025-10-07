@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
+import { InputComponent } from './components/input/input';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { ButtonComponent } from './components/button/button';
     Pagination,
     Radios,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    InputComponent
   ],
   imports: [
     CommonModule,
