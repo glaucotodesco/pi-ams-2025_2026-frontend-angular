@@ -7,12 +7,14 @@
       <ng-content></ng-content>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-primary" (click)="onCancel()">
+      <app-button variant="outline" size="md" (buttonClick)="onCancel()">
         {{ actionText2 }}
-      </button>
-      <button type="button" class="btn btn-primary" (click)="onAction()">
+      </app-button>
+      <app-button variant="primary" size="md" (buttonClick)="onAction()">
         {{ actionText }}
-      </button>
+      </app-button>
     </div>
   </div>
 </ng-template>
+
+ 

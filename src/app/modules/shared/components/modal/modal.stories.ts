@@ -1,19 +1,21 @@
 import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
-import { ModalGenericComponent } from './modal';
+import { ModalComponent } from './modal';
+import { ButtonComponent } from '../button/button'; 
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export default {
-  title: 'Components/ModalGeneric',
-  component: ModalGenericComponent,
+  title: 'Components/Modal',
+  component: ModalComponent,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, NgbModule, ModalGenericComponent],
+      imports: [CommonModule, NgbModule],
+      declarations: [ModalComponent, ButtonComponent], 
     }),
   ],
-} as Meta<ModalGenericComponent>;
+} as Meta<ModalComponent>;
 
-const Template: StoryFn<ModalGenericComponent> = (args) => ({
+const Template: StoryFn<ModalComponent> = (args) => ({
   props: args,
   template: `
     <app-modal-generic
@@ -23,7 +25,13 @@ const Template: StoryFn<ModalGenericComponent> = (args) => ({
       [actionText2]="actionText2"
       [actionFunction]="actionFunction">
     </app-modal-generic>
-    <button (click)="modal.open()">Abrir Modal</button>
+
+    <app-button
+      variant="primary"
+      size="md"
+      (buttonClick)="modal.open()">
+      Abrir Modal
+    </app-button>
   `
 });
 

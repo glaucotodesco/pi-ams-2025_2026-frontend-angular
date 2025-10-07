@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-modal-generic',
-  standalone: true,
-  imports: [CommonModule, NgbModule],
+  standalone: false,
   templateUrl: './modal.html',
 })
-export class ModalGenericComponent {
+
+export class ModalComponent {
   @Input() title: string = 'Título';
   @Input() actionText: string = 'Confirmar';
   @Input() actionText2: string = 'Cancelar';
