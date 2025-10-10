@@ -1,0 +1,68 @@
+<div class="container mt-4">
+  <h2 class="fw-bold mb-3">Usuários</h2>
+
+  <!-- Linha superior: botão de pesquisa -->
+  <div class="d-flex justify-content-end align-items-center mb-3">
+    <div class="input-group me-2" *ngIf="showSearch">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Pesquisar..."
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+    <button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <!-- Tabela -->
+  <table class="table table-hover align-middle text-center">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Tipo de usuário</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Componentes</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teachersFiltrados">
+        <td><img [src]="teacher.foto" class="foto" alt="foto" /></td>
+        <td>{{ teacher.nome }}</td>
+        <td>{{ teacher.tipo }}</td>
+        <td>{{ teacher.telefone }}</td>
+        <td>{{ teacher.email }}</td>
+        <td>{{ teacher.componentes }}</td>
+        <td>
+          <div>
+            <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-outline-danger btn-sm m-1" (click)="deletar(teacher)" title="Deletar">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination + botão -->
+  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+    <div class="flex-grow-1 d-flex justify-content-center">
+      <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="collectionSize"
+        (pageChange)="refreshTeachers()"
+        class="custom-pagination"
+      ></ngb-pagination>
+    </div>
+
+    <button class="btn btn-primary add-btn" style="margin-bottom: 11px;">Adicionar</button>
+  </div>
+</div>
