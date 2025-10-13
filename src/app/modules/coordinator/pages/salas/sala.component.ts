@@ -62,4 +62,5 @@ export class SalaComponent implements OnInit {
     console.log('Editar Lab:', lab.nome);
     // Aqui você implementaria a navegação para o formulário de edição
   }
+  
 }

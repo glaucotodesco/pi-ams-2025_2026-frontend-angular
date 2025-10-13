@@ -112,3 +112,50 @@ export const LargeList: Story = {
     })),
   },
 };
+
+/**
+* História que inclui o componente de modal.
+* Permite testar a abertura e o comportamento do modal no Storybook.
+*/
+import { SalaModal } from './sala-modal/sala-modal';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+ 
+export const ComModal: Story = {
+  render: (args) => ({
+    props: {
+      ...args,
+      onCadastrar: (novaSala: any) => {
+        console.log('Nova sala cadastrada no Storybook:', novaSala);
+        alert(`Sala cadastrada: ${novaSala.nome}`);
+      },
+    },
+    template: `
+<app-sala [labs]="labs"></app-sala>
+ 
+      <!-- Modal de Sala -->
+<app-sala-modal (cadastrar)="onCadastrar($event)"></app-sala-modal>
+ 
+      <!-- Botão para abrir o modal -->
+<div style="margin-top: 16px;">
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#salaModal">
+          Abrir Modal (Storybook)
+</button>
+</div>
+    `,
+    moduleMetadata: {
+      declarations: [SalaModal],
+      imports: [CommonModule, FormsModule],
+    },
+  }),
+  args: {
+    labs: mockLabs,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Exibe a lista de salas com o botão para abrir o modal de cadastro.',
+      },
+    },
+  },
+};

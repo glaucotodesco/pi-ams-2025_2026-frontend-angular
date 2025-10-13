@@ -74,7 +74,15 @@
             <a href="#" class="page-link">4</a>
             <a href="#" class="page-link">&gt;</a>
         </div>
-        <button class="btn-add">Adicionar</button>
+        <button
+        class="btn-add"
+        data-bs-toggle="modal"
+        data-bs-target="#salaModal">
+        Adicionar
+        </button>
+        
+        <!-- Coloque o componente modal aqui -->
+        <app-sala-modal (cadastrar)="cadastrarSala($event)"></app-sala-modal>
     </div>
 
 </div>
