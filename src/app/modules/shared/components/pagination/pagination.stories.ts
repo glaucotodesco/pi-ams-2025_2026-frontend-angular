@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Pagination } from './pagination';
 
 const meta: Meta<Pagination> = {
-  title: 'Shared/Pagination',
+  title: 'Shared/Components/Pagination',
   component: Pagination,
   decorators: [
     moduleMetadata({
