@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Modal } from './components/modal/modal';
+import { ModalComponent } from '../shared/components/modal/modal';
 import { Pagination } from './components/pagination/pagination';
 import { Radios } from './components/radios/radios';
 import { RouterModule } from '@angular/router';
@@ -12,7 +12,7 @@ import { InputComponent } from './components/input/input';
 
 @NgModule({
   declarations: [
-    Modal,
+    ModalComponent,
     Pagination,
     Radios,
     ButtonComponent,
@@ -25,7 +25,7 @@ import { InputComponent } from './components/input/input';
     NgbModule
   ],
   exports: [
-    Modal,
+    ModalComponent,
     Pagination,
     Radios,
     ButtonComponent,

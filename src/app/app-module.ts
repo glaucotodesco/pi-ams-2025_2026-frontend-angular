@@ -14,7 +14,7 @@ import { SharedModule } from "./modules/shared/shared-module";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    SharedModule // módulo para exibir os componentes compartilhados
+    SharedModule
 ],
   providers: [
     provideBrowserGlobalErrorListeners()
