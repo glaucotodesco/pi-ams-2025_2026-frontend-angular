@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
     selector: 'app-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.css'],
-    imports: [CommonModule]
+    standalone: false
 })
 export class Table {
     @Input() columns: string[] = [];

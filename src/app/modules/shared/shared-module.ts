@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
+import { Table } from './components/table/table';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { InputComponent } from './components/input/input';
     Radios,
     ButtonComponent,
     NavbarComponent,
-    InputComponent
+    InputComponent,
+    Table
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { InputComponent } from './components/input/input';
     Pagination,
     Radios,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    Table
   ]
 })
 export class SharedModule { }

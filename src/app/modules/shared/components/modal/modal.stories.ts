@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export default {
-  title: 'shared/Modal',
+  title: 'Shared/Components/Modal',
   component: ModalComponent,
   decorators: [
     moduleMetadata({

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button'; // ajuste o caminho se for button.component.ts
 
 const meta: Meta<ButtonComponent> = {
-  title: 'Shared/Button',
+  title: 'Shared/Components/Button',
   component: ButtonComponent,
   argTypes: {
     variant: {
