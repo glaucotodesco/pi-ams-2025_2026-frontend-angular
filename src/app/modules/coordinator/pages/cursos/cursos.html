@@ -1,0 +1,47 @@
+<!--Inicio: Container e titulo-->
+<div class="container mt-4">
+  <h2 class="fw-bold mb-3">Cursos</h2>
+
+  <!-- Linha superior com: botão de pesquisa -->
+  <div class="d-flex justify-content-end align-items-center mb-3">
+    <div class="input-group me-2" *ngIf="showSearch">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Pesquisar..."
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+    <button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+ 
+    <app-table [columns]="columns">
+      <tr *ngFor="cursosFiltrados">
+        <td>{{ curso.id }}</td>
+        <td>{{ curso.nome }}</td>
+        <td>{{ curso.sigla }}</td>
+        <td>{{ curso.tipo }}</td>
+        <td>{{ curso.duracao }}</td>
+        <td>{{ curso.modalidade }}</td>
+        <td>{{ curso.quantidadeSemestre }}</td>
+        <td>{{ curso.coordenador }}</td>
+      </tr>
+   </app-table>
+
+  <!-- Pagination + botão de adicionar -->
+  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+    <div class="flex-grow-1 d-flex justify-content-center">
+      <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="collectionSize"
+        (pageChange)="refreshCursos()"
+        class="custom-pagination"
+      ></ngb-pagination>
+    </div>
+
+    <button class="btn btn-primary add-btn">Adicionar</button>
+  </div>
+</div>
