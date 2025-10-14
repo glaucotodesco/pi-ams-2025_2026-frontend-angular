@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { Input } from '@angular/core';
 
 @Component({
@@ -12,8 +9,36 @@ import { Input } from '@angular/core';
 })
 
 export class Cursos {
-  columns: string[] = ["Foto", "Nome", "Tipo de usuário", "Telefone", "Email", "Componentes"];
-  @Input() cursos: Curso[] = [];
+  columns: string[] = ["id","Nome", "Modalidade", "Eixo Tecnologico", "Num Componentes", ""];
+  @Input() cursos: Curso[] = [
+   { id: 1, 
+        nome: 'Analise em Desenvolvimento de Sistemas', 
+        modalidade: 'Presencial', 
+        eixotecnologico: 'informação e comunicação', 
+        numerocomponentes: 28
+       },
+
+      {  id: 2, 
+        nome: 'gestão Empresarial', 
+        modalidade: 'Presencial', 
+        eixotecnologico: 'Gestão e Negócios', 
+        numerocomponentes: 30
+      },
+
+      {  id: 3, 
+        nome: 'matematica', 
+        modalidade: 'Presencial', 
+        eixotecnologico: 'Matemática e suas Tecnologias', 
+        numerocomponentes: 25
+      },
+
+      {  id: 4, 
+        nome: 'Gestão de Eventos', 
+        modalidade: 'hibrido', 
+        eixotecnologico: 'informação e comunicação', 
+        numerocomponentes: 35 
+      },
+  ];
   @Input() page = 1;
   @Input() pageSize = 8;
   @Input() collectionSize = 0;
@@ -52,4 +77,3 @@ export interface Curso {
   eixotecnologico: string;
   numerocomponentes: number;
 }
-

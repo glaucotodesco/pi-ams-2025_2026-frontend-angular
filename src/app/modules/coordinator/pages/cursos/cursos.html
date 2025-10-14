@@ -2,9 +2,10 @@
 <div class="container mt-4">
   <h2 class="fw-bold mb-3">Cursos</h2>
 
-  <!-- Linha superior com: botão de pesquisa -->
+  <!-- Linha superior: botão de pesquisa -->
   <div class="d-flex justify-content-end align-items-center mb-3">
-    <div class="input-group me-2" *ngIf="showSearch">
+    @if (showSearch) {
+    <div class="input-group me-2">
       <input
         type="text"
         class="form-control"
@@ -12,36 +13,48 @@
         [(ngModel)]="searchTerm"
       />
     </div>
-    <button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
+    }
+    <button
+      class="btn btn-outline-secondary"
+      (click)="toggleSearch()"
+      title="Pesquisar"
+    >
       <i class="bi bi-search"></i>
     </button>
   </div>
- 
-    <app-table [columns]="columns">
-      <tr *ngFor="cursosFiltrados">
-        <td>{{ curso.id }}</td>
-        <td>{{ curso.nome }}</td>
-        <td>{{ curso.sigla }}</td>
-        <td>{{ curso.tipo }}</td>
-        <td>{{ curso.duracao }}</td>
-        <td>{{ curso.modalidade }}</td>
-        <td>{{ curso.quantidadeSemestre }}</td>
-        <td>{{ curso.coordenador }}</td>
-      </tr>
-   </app-table>
 
-  <!-- Pagination + botão de adicionar -->
+  <app-table [columns]="columns">
+    @for (curso of cursosFiltrados; track $index) {
+    <tr>
+      <td>{{ curso.id }}</td>
+      <td>{{ curso.nome }}</td>
+      <td>{{ curso.modalidade }}</td>
+      <td>{{ curso.eixotecnologico }}</td>
+      <td>{{ curso.numerocomponentes }}</td>
+      <td>
+        <div>
+          <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+    }
+  </app-table>
+
+  <!-- Pagination + botão -->
   <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
     <div class="flex-grow-1 d-flex justify-content-center">
-      <ngb-pagination
-        [(page)]="page"
-        [pageSize]="pageSize"
-        [collectionSize]="collectionSize"
+      <app-pagination
+        [totalPages]="pageSize"
+        [currentPage]="page"
         (pageChange)="refreshCursos()"
-        class="custom-pagination"
-      ></ngb-pagination>
+      ></app-pagination>
     </div>
 
-    <button class="btn btn-primary add-btn">Adicionar</button>
+    <app-button variant="primary" size="md">Adicionar</app-button>
   </div>
 </div>

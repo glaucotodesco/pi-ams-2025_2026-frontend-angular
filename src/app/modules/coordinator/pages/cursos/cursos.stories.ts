@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 
   const meta: Meta<Cursos> = {
-  title: 'Page/Cursos',
+  title: 'Coordenador/Page/Cursos',
   component: Cursos,
    decorators: [
     moduleMetadata({
@@ -13,9 +13,6 @@ import { SharedModule } from '../../../shared/shared-module';
       declarations: [Cursos], 
     }),
   ],
- parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
 };
 
