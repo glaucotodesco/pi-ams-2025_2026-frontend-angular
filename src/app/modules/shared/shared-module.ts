@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
+import { Login } from './components/login/login';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { InputComponent } from './components/input/input';
     Radios,
     ButtonComponent,
     NavbarComponent,
-    InputComponent
+    InputComponent,
+    Login
   ],
   imports: [
     CommonModule,
