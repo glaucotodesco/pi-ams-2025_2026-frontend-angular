@@ -1,1 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Paleta principal */
+  --bs-primary: #B20000;
+  --bs-secondary: #005992;
+  --bs-success: #0B9247;
+  --bs-danger: #FF161F;
+  --bs-warning: #FBB900;
+  --bs-info: #62C9E0;
+  --bs-light: #FFFFFF;
+  --bs-dark: #000000;
+
+  /* Texto */
+  --bs-body-color: #000000;
+  --bs-secondary-color: #666666;
+  --bs-heading-color: #000000;
+
+  /* Fundo */
+  --bs-body-bg: #FFFFFF;
+  --bs-secondary-bg: #BFBFBF;
+
+  /* Bordas */
+  --bs-border-color: #808080;
+}
+
+/* Tipografia oficial */
+body {
+  font-family: "Verdana", sans-serif;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+}
+
+/* Botões */
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+.btn-primary:hover {
+  background-color: #8C0000;
+  border-color: #8C0000;
+}
+.btn-secondary {
+  background-color: var(--bs-secondary);
+  border-color: var(--bs-secondary);
+}
+
+/* Links */
+a {
+  color: var(--bs-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: #8C0000;
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar, .navbar-light {
+  background-color: var(--bs-primary) !important;
+}
+.navbar .nav-link, .navbar-brand {
+  color: #FFFFFF !important;
+}
+
+/* Cards */
+.card {
+  border-color: var(--bs-border-color);
+}
+
+/* Formulários */
+.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.25rem rgba(178, 0, 0, 0.25);
+}
