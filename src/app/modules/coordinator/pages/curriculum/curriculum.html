@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <h2 class="fw-bold mb-3">Professores</h2>
+
+    <div class="d-flex justify-content-end align-items-center mb-3">
+        @if (showSearch) {
+        <div class="input-group me-2">
+            <input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
+        </div>
+        }
+        <button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+
+    <app-table [columns]="columnLabels">
+        @for (professor of professoresFiltrados; track $index) {
+        <tr>
+            <td>{{ professor.id }}</td>
+            <td>{{ professor.nome }}</td>
+            <td>{{ professor.professor }}</td>
+            <td>{{ professor.aulasPraticas }}</td>
+            <td>{{ professor.aulasTeoricas }}</td>
+            <td>{{ professor.modalidade }}</td>
+            <td>{{ professor.curso }}</td>
+            <td>
+                <div>
+                    <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        }
+    </app-table>
+
+    <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+        <div class="flex-grow-1 d-flex justify-content-center">
+            <app-pagination [totalPages]="pageSize" [currentPage]="page"
+                (pageChange)="refreshProfessores()"></app-pagination>
+        </div>
+
+        <app-button variant="primary" size="md">Adicionar</app-button>
+    </div>
+</div>
