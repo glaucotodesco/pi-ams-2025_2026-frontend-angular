@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
 import { Table } from './components/table/table';
+import { PageLayout } from './components/page-layout/page-layout';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { Table } from './components/table/table';
     ButtonComponent,
     NavbarComponent,
     InputComponent,
-    Table
+    Table,
+    PageLayout
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { Table } from './components/table/table';
     Radios,
     ButtonComponent,
     NavbarComponent,
-    Table
+    Table,
+    PageLayout
   ]
 })
 export class SharedModule { }

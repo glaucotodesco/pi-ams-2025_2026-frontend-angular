@@ -1,0 +1,11 @@
+<div [ngClass]="[fluid ? 'container-fluid' : 'container', paddingClass, marginClass, 'page-layout']">
+    @if (title) {
+        <header class="border-bottom mb-4">
+            <h2 class="fw-semibold text-primary page-title">{{ title }}</h2>
+        </header>
+    }
+
+    <main>
+        <ng-content></ng-content>
+    </main>
+</div>
