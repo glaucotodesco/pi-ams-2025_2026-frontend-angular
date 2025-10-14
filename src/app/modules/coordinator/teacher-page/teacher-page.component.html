@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2 class="fw-bold mb-3">Usuários</h2>
+
+  <!-- Linha superior: botão de pesquisa -->
+  <div class="d-flex justify-content-end align-items-center mb-3">
+    <div class="input-group me-2" *ngIf="showSearch">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Pesquisar..."
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+    <button
+      class="btn btn-outline-secondary"
+      (click)="toggleSearch()"
+      title="Pesquisar"
+    >
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <!-- Componente de tabela -->
+  <app-table
+    [data]="teachersFiltrados"
+    (onDelete)="deletar($event)"
+  ></app-table>
+
+  <!-- Pagination + botão -->
+  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+    <div class="flex-grow-1 d-flex justify-content-center">
+      <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="collectionSize"
+        (pageChange)="refreshTeachers()"
+        class="custom-pagination"
+      ></ngb-pagination>
+    </div>
+
+    <button
+      class="btn btn-primary add-btn"
+      style="margin-bottom: 11px;"
+      (click)="abrirModalAdicionar()"
+    >
+      Adicionar
+    </button>
+  </div>
+</div>
