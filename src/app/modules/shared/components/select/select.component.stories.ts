@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SelectComponent } from './select.component';
 
 const meta: Meta<SelectComponent> = {
-  title: 'Components/Select',
+  title: 'Shared/Components/Select',
   component: SelectComponent,
   decorators: [
     moduleMetadata({

@@ -1,3 +1,20 @@
-<div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
+<ng-template #content>
+  <div class="modal-custom">
+    <div class="modal-header">
+      <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="modal-footer">
+      <app-button variant="outline" size="md" (buttonClick)="onCancel()">
+        {{ actionText2 }}
+      </app-button>
+      <app-button variant="primary" size="md" (buttonClick)="onAction()">
+        {{ actionText }}
+      </app-button>
+    </div>
+  </div>
+</ng-template>
+
+ 
