@@ -1,0 +1,51 @@
+/* Container */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+/* Caixa do checkbox */
+.custom-checkbox .form-check-input {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 2px solid #b5b5b5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+
+  /* Mantém o ícone padrão */
+  appearance: auto !important;
+  -webkit-appearance: auto !important;
+}
+
+/* Quando marcado */
+.custom-checkbox .form-check-input:checked {
+  background-color: #7b61ff !important;
+  border-color: #7b61ff !important;
+  box-shadow: 0 2px 6px rgba(123, 97, 255, 0.4) !important;
+}
+
+/* Ajuste da cor do check padrão */
+.custom-checkbox .form-check-input:checked[type="checkbox"] {
+  accent-color: #7b61ff; /* Força a cor do ícone nativo em browsers modernos */
+}
+
+/* Label */
+.custom-checkbox .form-check-label {
+  font-size: 16px;
+  color: #b5b5b5;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+/* Label muda de cor quando marcado */
+.custom-checkbox .form-check-input:checked ~ .form-check-label {
+  color: #000;
+}
+
+/* Hover */
+.custom-checkbox .form-check-input:hover {
+  border-color: #9b7bff;
+}
