@@ -1,0 +1,20 @@
+.section-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #133b45;
+    order: -1; 
+  }
+
+  &__line {
+    flex: 1;
+    height: 6px;
+    min-width: 100px;
+  }
+}
