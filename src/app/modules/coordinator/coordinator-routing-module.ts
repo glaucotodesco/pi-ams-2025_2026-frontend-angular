@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
 import { Cursos } from './pages/cursos/cursos';
+import { Curriculums } from './pages/curriculum/curriculums';
+
 
 const routes: Routes = [
   {
@@ -12,6 +14,10 @@ const routes: Routes = [
   {
     path: 'courses',
     component: Cursos
+  },
+  {
+    path: 'curriculum',
+    component: Curriculums
   }
 ];
 
@@ -31,6 +37,8 @@ export class CoordinatorRoutingModule {
         ],
       },
       { label: 'Cursos', path: '/coordinator/courses' },
+
+      { label: 'Componente Curricular', path: '/coordinator/curriculum' },
     ]);
   }
 }
