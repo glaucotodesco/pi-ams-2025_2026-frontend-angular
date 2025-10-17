@@ -4,6 +4,8 @@ import { Home } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
 import { Cursos } from './pages/cursos/cursos';
 import { TeachersPage } from './pages/teacher/teacher-page';
+import { Curriculums } from './pages/curriculum/curriculums';
+
 
 const routes: Routes = [
   {
@@ -16,8 +18,12 @@ const routes: Routes = [
   },
   {
     path: 'teachers',
-    component: TeachersPage
+    component: TeachersPage,
   },
+  {
+    path: 'curriculum',
+    component: Curriculums
+  }
 ];
 
 @NgModule({
@@ -37,6 +43,7 @@ export class CoordinatorRoutingModule {
       },
       { label: 'Cursos', path: '/coordinator/courses' },
       { label: 'Professores', path: '/coordinator/teachers' },
+      { label: 'Componente Curricular', path: '/coordinator/curriculum' },
     ]);
   }
 }

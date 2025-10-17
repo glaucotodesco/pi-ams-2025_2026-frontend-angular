@@ -4,19 +4,10 @@
   <div class="d-flex justify-content-end align-items-center mb-3">
     @if (showSearch) {
     <div class="input-group me-2">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Pesquisar..."
-        [(ngModel)]="searchTerm"
-      />
+      <input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
     </div>
     }
-    <button
-      class="btn btn-outline-secondary"
-      (click)="toggleSearch()"
-      title="Pesquisar"
-    >
+    <button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
       <i class="bi bi-search"></i>
     </button>
   </div>
@@ -46,11 +37,7 @@
   <!-- Pagination + botão -->
   <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
     <div class="flex-grow-1 d-flex justify-content-center">
-      <app-pagination
-        [totalPages]="pageSize"
-        [currentPage]="page"
-        (pageChange)="refreshCursos()"
-      ></app-pagination>
+      <app-pagination [totalPages]="pageSize" [currentPage]="page" (pageChange)="refreshCursos()"></app-pagination>
     </div>
 
     <app-button variant="primary" size="md" (buttonClick)="modal.open()"
