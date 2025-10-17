@@ -19,7 +19,7 @@
             <td>{{ curriculum.id }}</td>
             <td>{{ curriculum.name }}</td>
             <td>{{ curriculum.teacher }}</td>
-            <td>{{ curriculum.technologicalAxis }}</td>
+            <td>{{ curriculum.technologicalArea }}</td>
             <td>{{ curriculum.practicalClasses }}</td>
             <td>{{ curriculum.theoreticalClasses }}</td>
             <td>{{ curriculum.modality }}</td>
@@ -43,6 +43,116 @@
       <app-pagination [totalPages]="pageSize" [currentPage]="page" (pageChange)="refreshCurriculums()"></app-pagination>
     </div>
 
-    <app-button variant="primary" size="md">Adicionar</app-button>
+    <app-button variant="primary" size="md" (buttonClick)="openAddModal()">Adicionar</app-button>
   </div>
+
+  <!-- Modal para adicionar currículo -->
+  <app-modal-generic 
+    #addModal 
+    title="Adicionar Componente Curricular"
+    actionText="Salvar"
+    actionText2="Cancelar"
+    [actionFunction]="onAddCurriculum.bind(this)"
+    (cancelled)="onCancelAdd()">
+    
+    <div class="row">
+      <div class="col-md-6">
+        <label for="curriculumName" class="form-label">Nome do Componente</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="curriculumName" 
+          placeholder="Digite o nome do componente"
+          [(ngModel)]="newCurriculum.name">
+      </div>
+      <div class="col-md-6">
+        <label for="acronym" class="form-label">Sigla</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="acronym" 
+          placeholder="Digite a sigla"
+          [(ngModel)]="newCurriculum.acronym">
+      </div>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="teacher" class="form-label">Professor</label>
+        <select 
+          class="form-select" 
+          id="teacher"
+          [(ngModel)]="newCurriculum.teacher">
+          <option value="">Selecione o professor</option>
+          @for (teacher of teachers; track teacher) {
+          <option [value]="teacher">{{ teacher }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="technologicalArea" class="form-label">Área Tecnológica</label>
+        <select 
+          class="form-select" 
+          id="technologicalArea"
+          [(ngModel)]="newCurriculum.technologicalArea">
+          <option value="">Selecione a área tecnológica</option>
+          @for (area of technologicalAreas; track area) {
+          <option [value]="area">{{ area }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="theoreticalClasses" class="form-label">Aulas Teóricas</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="theoreticalClasses" 
+          placeholder="Número de aulas teóricas"
+          [(ngModel)]="newCurriculum.theoreticalClasses"
+          (ngModelChange)="calculateTotalWorkload()"
+          min="0">
+      </div>
+      <div class="col-md-6">
+        <label for="practicalClasses" class="form-label">Aulas Práticas</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="practicalClasses" 
+          placeholder="Número de aulas práticas"
+          [(ngModel)]="newCurriculum.practicalClasses"
+          (ngModelChange)="calculateTotalWorkload()"
+          min="0">
+      </div>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="modality" class="form-label">Modalidade</label>
+        <select 
+          class="form-select" 
+          id="modality"
+          [(ngModel)]="newCurriculum.modality">
+          <option value="">Selecione a modalidade</option>
+          @for (modality of modalities; track modality) {
+          <option [value]="modality">{{ modality }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="totalWorkload" class="form-label">Carga Horária Total</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="totalWorkload" 
+          placeholder="Calculado automaticamente"
+          [(ngModel)]="newCurriculum.totalWorkload"
+          readonly>
+      </div>
+    </div>
+    
+  </app-modal-generic>
+
 </app-page-layout>

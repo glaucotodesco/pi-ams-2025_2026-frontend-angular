@@ -1,6 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { Curriculums } from './curriculums';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 
@@ -9,7 +10,7 @@ const meta: Meta<Curriculums> = {
   component: Curriculums,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, NgbModule, SharedModule],
+      imports: [CommonModule, FormsModule, NgbModule, SharedModule],
       declarations: [Curriculums],
     }),
   ],
@@ -25,29 +26,35 @@ export const Default: Story = {
       {
         id: 1,
         name: 'Desenvolvimento de Sistemas',
+        acronym: 'DS',
         teacher: 'Prof. João Silva',
-        technologicalAxis: 'Informação e Comunicação',
+        technologicalArea: 'Informação e Comunicação',
         practicalClasses: 400,
         theoreticalClasses: 200,
         modality: 'Presencial',
+        totalWorkload: 600
       },
       {
         id: 2,
         name: 'Redes de Computadores',
+        acronym: 'RC',
         teacher: 'Prof. Maria Santos',
-        technologicalAxis: 'Informação e Comunicação',
+        technologicalArea: 'Informação e Comunicação',
         practicalClasses: 350,
         theoreticalClasses: 250,
         modality: 'Híbrido',
+        totalWorkload: 600
       },
       {
         id: 3,
         name: 'Automação Industrial',
+        acronym: 'AI',
         teacher: 'Prof. Carlos Oliveira',
-        technologicalAxis: 'Controle e Processos Industriais',
+        technologicalArea: 'Controle e Processos Industriais',
         practicalClasses: 450,
         theoreticalClasses: 150,
         modality: 'Presencial',
+        totalWorkload: 600
       },
     ],
     page: 1,

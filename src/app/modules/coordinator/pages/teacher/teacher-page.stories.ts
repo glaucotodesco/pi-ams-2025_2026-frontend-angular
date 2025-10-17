@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 
   const meta: Meta<TeachersPage> = {
-  title: 'Coordenador/Page/Cursos',
+  title: 'Coordenador/Page/Professor',
   component: TeachersPage,
    decorators: [
     moduleMetadata({
