@@ -1,15 +1,13 @@
 <div [ngClass]="[fluid ? 'container-fluid' : 'container', paddingClass, marginClass, 'page-layout']">
-    @if (title) {
-        <header class="position-relative d-flex flex-wrap">
-            <h2 #titleRef class="m-0">{{ title }}</h2>
-            <svg class="section-title__line" xmlns="http://www.w3.org/2000/svg" [attr.viewBox]="'0 0 100 4'"
-                preserveAspectRatio="none">
-                <line x1="2" y1="2" x2="100" y2="2" stroke="#a3241f" stroke-width="0.3" />
-                <line x1="0.5" y1="2" [attr.x2]="getThickLineWidth(titleRef)" y2="2" stroke="#a3241f" stroke-width="1"
-                    stroke-linecap="round" />
-            </svg>
-        </header>
-    }
+    <header *ngIf="title" class="d-flex flex-column gap-2 align-items-start">
+        <h2 #titleRef class="m-0" style="color: #133b45;">{{ title }}</h2>
+        <svg class="w-100" xmlns="http://www.w3.org/2000/svg" [attr.viewBox]="'0 0 100 4'"
+            preserveAspectRatio="none" style="height:6px; min-width:0;">
+            <line x1="2" y1="2" x2="100" y2="2" stroke="#a3241f" stroke-width="0.3" />
+            <line x1="0.5" y1="2" [attr.x2]="getThickLineWidth(titleRef)" y2="2" stroke="#a3241f" stroke-width="1"
+                stroke-linecap="round" />
+        </svg>
+    </header>
 
     <main>
         <ng-content></ng-content>

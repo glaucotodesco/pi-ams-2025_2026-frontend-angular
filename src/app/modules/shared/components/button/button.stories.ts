@@ -86,3 +86,18 @@ export const Small: Story = {
     </app-button>`,
   }),
 };
+
+export const Disabled: Story = {
+  args: {
+    variant: 'secondary',
+    size: 'sm',
+    disabled: true,
+  },
+  render: (args) => ({
+    props: args,
+    template: `<app-button [variant]="variant" [size]="size" [disabled]="disabled" (buttonClick)="buttonClick($event)">
+      Botão Pequeno
+    </app-button>`,
+  }),
+};
+
