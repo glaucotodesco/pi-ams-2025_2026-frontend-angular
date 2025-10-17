@@ -1,73 +1,137 @@
 :root {
   /* Paleta principal */
-  --bs-primary: #B20000;
-  --bs-secondary: #005992;
-  --bs-success: #0B9247;
-  --bs-danger: #FF161F;
-  --bs-warning: #FBB900;
-  --bs-info: #62C9E0;
-  --bs-light: #FFFFFF;
-  --bs-dark: #000000;
+  --color-primary: #B20000;
+  --color-primary-dark: #8C0000;
+  --color-secondary: #005992;
+  --color-success: #0B9247;
+  --color-danger: #FF161F;
+  --color-warning: #FBB900;
+  --color-info: #62C9E0;
+  --color-light: #FFFFFF;
+  --color-dark: #000000;
 
-  /* Texto */
-  --bs-body-color: #000000;
-  --bs-secondary-color: #666666;
-  --bs-heading-color: #000000;
+  /* Tons neutros */
+  --color-gray-100: #FFFFFF;
+  --color-gray-200: #BFBFBF;
+  --color-gray-400: #808080;
+  --color-gray-600: #666666;
+  --color-gray-900: #000000;
 
-  /* Fundo */
-  --bs-body-bg: #FFFFFF;
-  --bs-secondary-bg: #BFBFBF;
+  /* Variações de estado */
+  --primary-hover: var(--color-primary-dark);
+  --primary-active: var(--color-primary-dark);
+  --primary-focus-shadow: rgba(178, 0, 0, 0.25);
 
-  /* Bordas */
-  --bs-border-color: #808080;
+  /* Links */
+  --link-color: var(--color-primary);
+  --link-hover: var(--color-primary-dark);
+
+  /* Tipografia */
+  --font-base: "Verdana", sans-serif;
+
+  /* Bootstrap Overrides */
+  --bs-primary: var(--color-primary);
+  --bs-secondary: var(--color-secondary);
+  --bs-success: var(--color-success);
+  --bs-danger: var(--color-danger);
+  --bs-warning: var(--color-warning);
+  --bs-info: var(--color-info);
+  --bs-light: var(--color-light);
+  --bs-dark: var(--color-dark);
+  --bs-body-bg: var(--color-gray-100);
+  --bs-body-color: var(--color-gray-900);
+  --bs-secondary-bg: var(--color-gray-200);
+  --bs-secondary-color: var(--color-gray-600);
+  --bs-border-color: var(--color-gray-400);
+  --bs-heading-color: #004854;
 }
 
-/* Tipografia oficial */
 body {
-  font-family: "Verdana", sans-serif;
+  font-family: var(--font-base);
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
+  line-height: 1.5;
 }
 
-/* Botões */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bs-heading-color);
+  font-weight: normal;
+}
+
 .btn-primary {
   background-color: var(--bs-primary);
   border-color: var(--bs-primary);
+  color: #fff;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-.btn-primary:hover {
-  background-color: #8C0000;
-  border-color: #8C0000;
+
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #fff;
 }
+
+.btn-outline-primary {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+  background-color: var(--bs-primary);
+  color: #fff;
+  border-color: var(--bs-primary);
+}
+
 .btn-secondary {
   background-color: var(--bs-secondary);
   border-color: var(--bs-secondary);
+  color: #fff;
 }
 
-/* Links */
 a {
-  color: var(--bs-primary);
+  color: var(--link-color);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
+
 a:hover {
-  color: #8C0000;
+  color: var(--link-hover);
   text-decoration: underline;
 }
 
-/* Navbar */
-.navbar, .navbar-light {
-  background-color: var(--bs-primary) !important;
-}
-.navbar .nav-link, .navbar-brand {
-  color: #FFFFFF !important;
+.navbar {
+  background-color: var(--bs-primary);
 }
 
-/* Cards */
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #fff;
+}
+
+.navbar .nav-link:hover {
+  color: var(--color-gray-200);
+}
+
 .card {
   border-color: var(--bs-border-color);
+  background-color: var(--bs-light);
+  color: var(--bs-body-color);
 }
 
-/* Formulários */
 .form-control:focus {
   border-color: var(--bs-primary);
-  box-shadow: 0 0 0 0.25rem rgba(178, 0, 0, 0.25);
+  box-shadow: 0 0 0 0.25rem var(--primary-focus-shadow);
+}
+
+[data-theme="dark"] {
+  --bs-body-bg: #121212;
+  --bs-body-color: #EAEAEA;
+  --bs-border-color: #333;
+  --bs-primary: #FF4C4C;
+  --link-color: #FF4C4C;
+  --link-hover: #FF7878;
 }
