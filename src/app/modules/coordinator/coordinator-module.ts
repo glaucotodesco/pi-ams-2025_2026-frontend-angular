@@ -7,12 +7,13 @@ import { Cursos } from './pages/cursos/cursos';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TeachersPage } from './pages/teacher/teacher-page';
 
 @NgModule({
   declarations: [
-    Home, Cursos
+    Home, Cursos, TeachersPage
   ],
   imports: [CommonModule, CoordinatorRoutingModule, FormsModule, SharedModule, NgbModule],
-  exports: [Home, Cursos],
+  exports: [Home, Cursos,TeachersPage],
 })
 export class CoordinatorModule {}

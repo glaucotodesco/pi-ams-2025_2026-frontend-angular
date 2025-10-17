@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
 import { Cursos } from './pages/cursos/cursos';
+import { TeachersPage } from './pages/teacher/teacher-page';
 
 const routes: Routes = [
   {
@@ -12,7 +13,11 @@ const routes: Routes = [
   {
     path: 'courses',
     component: Cursos
-  }
+  },
+  {
+    path: 'teachers',
+    component: TeachersPage
+  },
 ];
 
 @NgModule({
@@ -31,6 +36,7 @@ export class CoordinatorRoutingModule {
         ],
       },
       { label: 'Cursos', path: '/coordinator/courses' },
+      { label: 'Professores', path: '/coordinator/teachers' },
     ]);
   }
 }

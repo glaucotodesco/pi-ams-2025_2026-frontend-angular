@@ -1,5 +1,5 @@
 <!--Inicio: Container e titulo-->
-<app-page-layout title="Cursos">
+<app-page-layout title="Professores">
   <!-- Linha superior: botão de pesquisa -->
   <div class="d-flex justify-content-end align-items-center mb-3">
     @if (showSearch) {
@@ -22,13 +22,13 @@
   </div>
 
   <app-table [columns]="columns">
-    @for (curso of cursosFiltrados; track $index) {
+    @for (curso of filteredTeachers; track $index) {
     <tr>
       <td>{{ curso.id }}</td>
-      <td>{{ curso.nome }}</td>
-      <td>{{ curso.modalidade }}</td>
-      <td>{{ curso.eixotecnologico }}</td>
-      <td>{{ curso.numerocomponentes }}</td>
+      <td>{{ curso.name }}</td>
+      <td>{{ curso.type }}</td>
+      <td>{{ curso.phone }}</td>
+      <td>{{ curso.components }}</td>
       <td>
         <div>
           <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
@@ -49,7 +49,7 @@
       <app-pagination
         [totalPages]="pageSize"
         [currentPage]="page"
-        (pageChange)="refreshCursos()"
+        (pageChange)="refreshTeachers()"
       ></app-pagination>
     </div>
 
