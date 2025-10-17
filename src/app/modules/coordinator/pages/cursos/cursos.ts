@@ -68,6 +68,7 @@ export class Cursos {
     this.collectionSize = this.cursos.length;
   }
 
+
 }
 
 export interface Curso {

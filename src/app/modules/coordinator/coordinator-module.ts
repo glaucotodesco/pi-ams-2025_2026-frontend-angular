@@ -8,12 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Curriculums } from './pages/curriculum/curriculums';
+import { TeachersPage } from './pages/teacher/teacher-page';
+
 
 @NgModule({
   declarations: [
-    Home, Cursos, Curriculums
+    Home, Cursos, TeachersPage,Curriculums
   ],
- imports: [CommonModule, CoordinatorRoutingModule, FormsModule, SharedModule, NgbModule],
-  exports: [Home, Cursos,Curriculums],
+  imports: [CommonModule, CoordinatorRoutingModule, FormsModule, SharedModule, NgbModule],
+  exports: [Home, Cursos,TeachersPage, Curriculums],
 })
 export class CoordinatorModule {}
