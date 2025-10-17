@@ -1,7 +1,4 @@
-<!--Inicio: Container e titulo-->
 <app-page-layout title="Componente Curricular">
-
- <!-- Linha superior: botão de pesquisa -->
   <div class="d-flex justify-content-end align-items-center mb-3">
     @if (showSearch) {
     <div class="input-group me-2">
@@ -37,7 +34,6 @@
         }
     </app-table>
 
-  <!-- Pagination + botão -->
   <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
     <div class="flex-grow-1 d-flex justify-content-center">
       <app-pagination [totalPages]="pageSize" [currentPage]="page" (pageChange)="refreshCurriculums()"></app-pagination>
@@ -46,7 +42,6 @@
     <app-button variant="primary" size="md" (buttonClick)="openAddModal()">Adicionar</app-button>
   </div>
 
-  <!-- Modal para adicionar currículo -->
   <app-modal-generic 
     #addModal 
     title="Adicionar Componente Curricular"

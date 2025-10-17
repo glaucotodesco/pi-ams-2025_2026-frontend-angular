@@ -60,9 +60,8 @@ export class Curriculums {
   collectionSize = 0;
   searchTerm = '';
 
-  showSearch = false; // controla visibilidade do input
-
-  // Propriedades para o formulário do modal
+  showSearch = false;
+  
   newCurriculum: Partial<Curriculum> = {
     name: '',
     acronym: '',
@@ -74,7 +73,6 @@ export class Curriculums {
     totalWorkload: 0
   };
 
-  // Opções para os selects
   teachers = [
     'Prof. João Silva',
     'Prof. Maria Santos', 
@@ -125,10 +123,8 @@ export class Curriculums {
   }
 
   onAddCurriculum() {
-    // Gerar um novo ID baseado no maior ID existente
     const newId = Math.max(...this.curriculums.map(c => c.id)) + 1;
     
-    // Criar o novo currículo
     const curriculum: Curriculum = {
       id: newId,
       name: this.newCurriculum.name || '',
@@ -141,23 +137,18 @@ export class Curriculums {
       totalWorkload: this.newCurriculum.totalWorkload || 0
     };
     
-    // Adicionar à lista
     this.curriculums.push(curriculum);
     
-    // Fechar o modal
     this.addModal.modalService.dismissAll();
     
-    // Resetar o formulário
     this.resetForm();
     
-    // Atualizar a paginação
     this.refreshCurriculums();
     
     console.log('Currículo adicionado com sucesso!', curriculum);
   }
 
   onCancelAdd() {
-    // Resetar o formulário quando cancelar
     this.resetForm();
     console.log('Adição cancelada');
   }
