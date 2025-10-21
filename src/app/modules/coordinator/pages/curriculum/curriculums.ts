@@ -52,6 +52,9 @@ export class Curriculums {
   searchTerm = '';
 
   showSearch = false; // controla visibilidade do input
+  
+  itensSemester: string[] = ['Analise e Desenvolvimento de Sistemas', 'Redes de Computadores', 'Automação Industrial'];
+  itensCourse: string[] = ['1º Semestre', '2º Semestre', '3º Semestre', '4º Semestre'];
 
   get filteredCurriculums(): Curriculum[] {
     const filtered = this.curriculums.filter((c) =>
