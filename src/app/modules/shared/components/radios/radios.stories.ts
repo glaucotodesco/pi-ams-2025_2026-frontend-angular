@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { Radios } from './radios';
 
 const meta: Meta<Radios> = {
-  title: 'Shared/Radios',
+  title: 'Shared/Components/Radios',
   component: Radios,
   parameters: {
     layout: 'centered',

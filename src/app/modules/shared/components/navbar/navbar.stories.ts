@@ -4,7 +4,7 @@ import { NavbarComponent } from './navbar';
 import { RouterTestingModule } from '@angular/router/testing';
 
 export default {
-  title: 'Shared/Navbar',
+  title: 'Shared/Components/Navbar',
   component: NavbarComponent,
   decorators: [
     moduleMetadata({

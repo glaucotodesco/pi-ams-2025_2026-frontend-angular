@@ -1,0 +1,24 @@
+<div class="mb-3">
+  <!-- O label só aparece se for passado -->
+  <label *ngIf="label" [for]="id" class="form-label">{{ label }}</label>
+
+  <input
+    [type]="type"
+    class="form-control {{ class }}"
+    [id]="id"
+    [name]="name"
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    [required]="required"
+    [readonly]="readonly"
+    [autocomplete]="autocomplete"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    [ngClass]="{
+      'is-focused': focused,
+      'is-filled': value
+    }"
+  />
+</div>
