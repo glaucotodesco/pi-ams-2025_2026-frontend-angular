@@ -10,6 +10,7 @@ import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
 import { Table } from './components/table/table';
 import { PageLayout } from './components/page-layout/page-layout';
+import { SelectComponent } from './components/select/select.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PageLayout } from './components/page-layout/page-layout';
     NavbarComponent,
     InputComponent,
     Table,
-    PageLayout
+    PageLayout,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { PageLayout } from './components/page-layout/page-layout';
     ButtonComponent,
     NavbarComponent,
     Table,
-    PageLayout
+    PageLayout,
+    SelectComponent
   ]
 })
 export class SharedModule { }
