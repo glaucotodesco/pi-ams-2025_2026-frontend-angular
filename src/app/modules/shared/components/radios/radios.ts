@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-radios',
@@ -13,4 +13,7 @@ export class Radios {
     value: string = '';
    @Input()
    name: string = '';
+
+   @Output()
+   selectionChange = new EventEmitter<String>();
 }
