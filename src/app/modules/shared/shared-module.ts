@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
 import { Table } from './components/table/table';
-
+import { CheckboxComponent } from './components/checkbox/checkbox';
 
 @NgModule({
   declarations: [
@@ -19,12 +19,13 @@ import { Table } from './components/table/table';
     ButtonComponent,
     NavbarComponent,
     InputComponent,
-    Table
+    Table,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    CheckboxComponent,
   ],
   exports: [
     ModalComponent,
@@ -32,7 +33,8 @@ import { Table } from './components/table/table';
     Radios,
     ButtonComponent,
     NavbarComponent,
-    Table
+    Table,
+    CheckboxComponent,
   ]
 })
 export class SharedModule { }

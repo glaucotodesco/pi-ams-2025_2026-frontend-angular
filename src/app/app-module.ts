@@ -5,12 +5,10 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./modules/shared/shared-module";
-import { Checkbox } from './checkbox/checkbox';
 
 @NgModule({
   declarations: [
     App,
-    Checkbox,
   ],
   imports: [
     BrowserModule,

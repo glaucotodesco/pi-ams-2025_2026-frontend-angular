@@ -4,7 +4,9 @@
     type="checkbox"
     [checked]="checked"
     (change)="onChange($event)"
-    id="{{ label }}"
+    [id]="label"
+    [style.width]="width"
+    [style.height]="height"
   />
   <label class="form-check-label" [for]="label">
     {{ label }}

@@ -8,6 +8,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class CheckboxComponent {
   @Input() label: string = '';
   @Input() checked: boolean = false;
+  @Input() width: string = '28px';   
+  @Input() height: string = '28px';  
+
   @Output() checkedChange = new EventEmitter<boolean>();
 
   onChange(event: Event) {
