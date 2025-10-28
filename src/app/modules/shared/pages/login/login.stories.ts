@@ -1,9 +1,9 @@
 import { Meta, moduleMetadata, StoryFn } from '@storybook/angular';
-import { Login } from '../login/login';
-import { ButtonComponent } from '../button/button'; 
+import { Login } from './login';
+import { ButtonComponent } from '../../components/button/button'; 
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InputComponent } from '../input/input';
+import { InputComponent } from '../../components/input/input';
 
 export default {
   title: 'Pages/Login',
