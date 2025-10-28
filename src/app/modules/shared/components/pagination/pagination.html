@@ -1,4 +1,4 @@
-<nav aria-label="Paginação">
+<nav aria-label="Paginação" class="d-flex flex-row">
   <ul class="pagination">
     <!-- Botão anterior -->
     <li class="page-item" [class.disabled]="currentPage === 1">
@@ -19,7 +19,8 @@
       [class.active]="page === currentPage"
     >
       <button
-        class="page-link"
+        type="button"
+        [ngClass]="page === currentPage ? 'btn btn-primary' : 'btn opacity-50 border'"
         (click)="goToPage(page)"
         [attr.aria-current]="page === currentPage ? 'page' : null"
       >

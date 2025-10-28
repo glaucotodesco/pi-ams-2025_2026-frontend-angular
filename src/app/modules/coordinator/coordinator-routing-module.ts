@@ -2,12 +2,28 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
+import { Cursos } from './pages/cursos/cursos';
+import { TeachersPage } from './pages/teacher/teacher-page';
+import { Curriculums } from './pages/curriculum/curriculums';
+
 
 const routes: Routes = [
   {
     path: '',
     component: Home, // rota /admin/home renderiza o componente Home
   },
+  {
+    path: 'courses',
+    component: Cursos
+  },
+  {
+    path: 'teachers',
+    component: TeachersPage,
+  },
+  {
+    path: 'curriculum',
+    component: Curriculums
+  }
 ];
 
 @NgModule({
@@ -25,6 +41,9 @@ export class CoordinatorRoutingModule {
           { label: 'Criar', path: '/coordinator/users/create' },
         ],
       },
+      { label: 'Cursos', path: '/coordinator/courses' },
+      { label: 'Professores', path: '/coordinator/teachers' },
+      { label: 'Componente Curricular', path: '/coordinator/curriculum' },
     ]);
   }
 }
