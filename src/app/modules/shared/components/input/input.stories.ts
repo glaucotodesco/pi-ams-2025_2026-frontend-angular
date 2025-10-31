@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from './input';
 
 const meta: Meta<InputComponent> = {
-  title: 'Shared/Input',
+  title: 'Shared/Components/Input',
   component: InputComponent,
   decorators: [
     moduleMetadata({

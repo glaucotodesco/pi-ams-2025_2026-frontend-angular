@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button'; // ajuste o caminho se for button.component.ts
 
 const meta: Meta<ButtonComponent> = {
-  title: 'Shared/Button',
+  title: 'Shared/Components/Button',
   component: ButtonComponent,
   argTypes: {
     variant: {
@@ -86,3 +86,18 @@ export const Small: Story = {
     </app-button>`,
   }),
 };
+
+export const Disabled: Story = {
+  args: {
+    variant: 'secondary',
+    size: 'sm',
+    disabled: true,
+  },
+  render: (args) => ({
+    props: args,
+    template: `<app-button [variant]="variant" [size]="size" [disabled]="disabled" (buttonClick)="buttonClick($event)">
+      Botão Pequeno
+    </app-button>`,
+  }),
+};
+

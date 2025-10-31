@@ -9,6 +9,6 @@ const config: StorybookConfig = {
     "name": "@storybook/angular",
     "options": {}
   },
-  "staticDirs": ["../node_modules/bootstrap/dist/css", "../node_modules/bootstrap-icons/font"]
+  "staticDirs": ["../src/","../node_modules/bootstrap/dist/css", "../node_modules/bootstrap-icons/font"]
 };
 export default config;

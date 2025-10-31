@@ -9,6 +9,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent {
   @Input() variant: 'primary' | 'secondary' | 'outline' = 'primary';
   @Input() size: 'sm' | 'md' | 'lg' = 'md';
+  @Input() disabled = false;
   @Output() buttonClick = new EventEmitter<Event>();
 
   get buttonClasses(): string {

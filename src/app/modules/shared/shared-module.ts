@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Modal } from './components/modal/modal';
+import { ModalComponent } from '../shared/components/modal/modal';
 import { Pagination } from './components/pagination/pagination';
 import { Radios } from './components/radios/radios';
 import { RouterModule } from '@angular/router';
@@ -8,16 +8,22 @@ import { NavbarComponent } from './components/navbar/navbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
+import { Table } from './components/table/table';
+import { PageLayout } from './components/page-layout/page-layout';
+import { SelectComponent } from './components/select/select.component';
 
 
 @NgModule({
   declarations: [
-    Modal,
+    ModalComponent,
     Pagination,
     Radios,
     ButtonComponent,
     NavbarComponent,
-    InputComponent
+    InputComponent,
+    Table,
+    PageLayout,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
@@ -25,11 +31,14 @@ import { InputComponent } from './components/input/input';
     NgbModule
   ],
   exports: [
-    Modal,
+    ModalComponent,
     Pagination,
     Radios,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    Table,
+    PageLayout,
+    SelectComponent
   ]
 })
 export class SharedModule { }
