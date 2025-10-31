@@ -1,19 +1,4 @@
-:host {
-  display: block;
-  padding: 20px;
-  background-color: #f8f9fa; 
-}
-
-/* customização do botão ativo para roxo */
-.page-item.active .page-link {
-  background-color: #7749F8 !important;
-  border-color: #7749F8 !important;
-  color: #fff !important;
-}
-
-/* customização dos quadradinhos */
 .page-link {
-  color: #6C757D;
   cursor: pointer;
   border-radius: 7px;
 }
@@ -24,12 +9,14 @@
   cursor: not-allowed;
 }
 
-/* espaçamento entre os itens de página */
-.pagination {
-  gap: 8px; 
+.page-link{
+  color: var(--bs-body-color) ;
 }
 
-/* aumenta o padding interno dos botões */
+.pagination {
+  gap: 4px; 
+}
+
 .page-link {
   padding: 6px 12px; 
 }

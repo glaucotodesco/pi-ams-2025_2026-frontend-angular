@@ -6,9 +6,10 @@ import { App } from './app';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./modules/shared/shared-module";
 
+
 @NgModule({
   declarations: [
-    App
+    App,   
   ],
   imports: [
     BrowserModule,
