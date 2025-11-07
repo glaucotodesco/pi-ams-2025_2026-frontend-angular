@@ -10,6 +10,7 @@ import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
 import { Login } from './pages/login/login';
 import { Table } from './components/table/table';
+import { CheckboxComponent } from './components/checkbox/checkbox';
 import { PageLayout } from './components/page-layout/page-layout';
 import { SelectComponent } from './components/select/select.component';
 
@@ -26,11 +27,12 @@ import { SelectComponent } from './components/select/select.component';
     Table,
     PageLayout,
     SelectComponent,
+    CheckboxComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
   ],
   exports: [
     ModalComponent,
@@ -40,6 +42,7 @@ import { SelectComponent } from './components/select/select.component';
     NavbarComponent,
     Login,
     Table,
+    CheckboxComponent,
     PageLayout,
     SelectComponent
   ]
