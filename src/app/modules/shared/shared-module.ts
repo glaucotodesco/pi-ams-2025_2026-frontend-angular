@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
+import { Login } from './pages/login/login';
 import { Table } from './components/table/table';
 import { PageLayout } from './components/page-layout/page-layout';
 import { SelectComponent } from './components/select/select.component';
@@ -21,6 +22,7 @@ import { SelectComponent } from './components/select/select.component';
     ButtonComponent,
     NavbarComponent,
     InputComponent,
+    Login,
     Table,
     PageLayout,
     SelectComponent,
@@ -36,6 +38,7 @@ import { SelectComponent } from './components/select/select.component';
     Radios,
     ButtonComponent,
     NavbarComponent,
+    Login,
     Table,
     PageLayout,
     SelectComponent
