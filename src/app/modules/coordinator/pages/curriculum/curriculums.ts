@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ModalComponent } from '../../../shared/components/modal/modal';
 
 @Component({
   selector: 'app-curriculums',
@@ -7,11 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './curriculums.css',
 })
 export class Curriculums {
+  @ViewChild('addModal') addModal!: ModalComponent;
+
   columns: string[] = [
     'id',
     'Nome',
     'Professor',
-    'Eixo Tecnologico',
+    'Área Tecnológica',
     'Aulas Práticas',
     'Aulas Teóricas',
     'Modalidade',
@@ -21,36 +24,75 @@ export class Curriculums {
     {
       id: 1,
       name: 'Desenvolvimento de Sistemas',
+      acronym: 'DS',
       teacher: 'Prof. João Silva',
-      technologicalAxis: 'Informação e Comunicação',
+      technologicalArea: 'Informação e Comunicação',
       practicalClasses: 400,
       theoreticalClasses: 200,
-      modality: 'Presencial'
+      modality: 'Presencial',
+      totalWorkload: 600
     },
     {
       id: 2,
       name: 'Redes de Computadores',
+      acronym: 'RC',
       teacher: 'Prof. Maria Santos',
-      technologicalAxis: 'Informação e Comunicação',
+      technologicalArea: 'Informação e Comunicação',
       practicalClasses: 350,
       theoreticalClasses: 250,
-      modality: 'Híbrido'
+      modality: 'Híbrido',
+      totalWorkload: 600
     },
     {
       id: 3,
       name: 'Automação Industrial',
+      acronym: 'AI',
       teacher: 'Prof. Carlos Oliveira',
-      technologicalAxis: 'Controle e Processos Industriais',
+      technologicalArea: 'Controle e Processos Industriais',
       practicalClasses: 450,
       theoreticalClasses: 150,
-      modality: 'Presencial'
+      modality: 'Presencial',
+      totalWorkload: 600
     }
   ];
   page = 1;
   pageSize = 8;
   collectionSize = 0;
   searchTerm = '';
+  
+  newCurriculum: Partial<Curriculum> = {
+    name: '',
+    acronym: '',
+    teacher: '',
+    technologicalArea: '',
+    practicalClasses: 0,
+    theoreticalClasses: 0,
+    modality: '',
+    totalWorkload: 0
+  };
 
+  teachers = [
+    'Prof. João Silva',
+    'Prof. Maria Santos', 
+    'Prof. Carlos Oliveira',
+    'Prof. Ana Costa',
+    'Prof. Pedro Almeida'
+  ];
+
+  technologicalAreas = [
+    'Informação e Comunicação',
+    'Controle e Processos Industriais',
+    'Produção Alimentícia',
+    'Gestão e Negócios',
+    'Recursos Naturais'
+  ];
+
+  modalities = [
+    'Presencial',
+    'Híbrido',
+    'Online',
+    'EAD'
+  ];
   showSearch = false; // controla visibilidade do input
   
   itensSemester: string[] = ['Analise e Desenvolvimento de Sistemas', 'Redes de Computadores', 'Automação Industrial'];
@@ -77,14 +119,70 @@ export class Curriculums {
   refreshCurriculums() {
     this.collectionSize = this.curriculums.length;
   }
+
+  openAddModal() {
+    this.addModal.open();
+  }
+
+  onAddCurriculum() {
+    const newId = Math.max(...this.curriculums.map(c => c.id)) + 1;
+    
+    const curriculum: Curriculum = {
+      id: newId,
+      name: this.newCurriculum.name || '',
+      acronym: this.newCurriculum.acronym || '',
+      teacher: this.newCurriculum.teacher || '',
+      technologicalArea: this.newCurriculum.technologicalArea || '',
+      practicalClasses: this.newCurriculum.practicalClasses || 0,
+      theoreticalClasses: this.newCurriculum.theoreticalClasses || 0,
+      modality: this.newCurriculum.modality || '',
+      totalWorkload: this.newCurriculum.totalWorkload || 0
+    };
+    
+    this.curriculums.push(curriculum);
+    
+    this.addModal.modalService.dismissAll();
+    
+    this.resetForm();
+    
+    this.refreshCurriculums();
+    
+    console.log('Currículo adicionado com sucesso!', curriculum);
+  }
+
+  onCancelAdd() {
+    this.resetForm();
+    console.log('Adição cancelada');
+  }
+
+  calculateTotalWorkload() {
+    const practical = this.newCurriculum.practicalClasses || 0;
+    const theoretical = this.newCurriculum.theoreticalClasses || 0;
+    this.newCurriculum.totalWorkload = practical + theoretical;
+  }
+
+  private resetForm() {
+    this.newCurriculum = {
+      name: '',
+      acronym: '',
+      teacher: '',
+      technologicalArea: '',
+      practicalClasses: 0,
+      theoreticalClasses: 0,
+      modality: '',
+      totalWorkload: 0
+    };
+  }
 }
 
 export interface Curriculum {
   id: number;
   name: string;
+  acronym: string;
   teacher: string;
-  technologicalAxis: string;
+  technologicalArea: string;
   practicalClasses: number;
   theoreticalClasses: number;
   modality: string;
+  totalWorkload: number;
 }

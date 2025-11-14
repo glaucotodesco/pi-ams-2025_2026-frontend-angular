@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.html',
+  standalone: false,
   styleUrls: ['./checkbox.css']
 })
 export class CheckboxComponent {
