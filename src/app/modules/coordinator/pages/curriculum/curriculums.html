@@ -29,10 +29,10 @@
             <td>{{ curriculum.modality }}</td>
             <td>
                 <div>
-                    <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+                    <button class="btn btn-outline-secondary btn-sm m-1" title="Editar" (click)="openEditModal(curriculum)">
                         <i class="bi bi-pencil"></i>
                     </button>
-                    <button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+                    <button class="btn btn-outline-danger btn-sm m-1" title="Deletar" (click)="onDeleteCurriculum(curriculum.id)">
                         <i class="bi bi-trash"></i>
                     </button>
                 </div>
@@ -151,6 +151,114 @@
           id="totalWorkload" 
           placeholder="Calculado automaticamente"
           [(ngModel)]="newCurriculum.totalWorkload"
+          readonly>
+      </div>
+    </div>
+    
+  </app-modal-generic>
+
+  <app-modal-generic 
+    #editModal 
+    title="Editar Componente Curricular"
+    actionText="Salvar"
+    actionText2="Cancelar"
+    [actionFunction]="onEditCurriculum.bind(this)"
+    (cancelled)="onCancelEdit()">
+    
+    <div class="row">
+      <div class="col-md-6">
+        <label for="editCurriculumName" class="form-label">Nome do Componente</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="editCurriculumName" 
+          placeholder="Digite o nome do componente"
+          [(ngModel)]="editingCurriculum.name">
+      </div>
+      <div class="col-md-6">
+        <label for="editAcronym" class="form-label">Sigla</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="editAcronym" 
+          placeholder="Digite a sigla"
+          [(ngModel)]="editingCurriculum.acronym">
+      </div>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="editTeacher" class="form-label">Professor</label>
+        <select 
+          class="form-select" 
+          id="editTeacher"
+          [(ngModel)]="editingCurriculum.teacher">
+          <option value="">Selecione o professor</option>
+          @for (teacher of teachers; track teacher) {
+          <option [value]="teacher">{{ teacher }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="editTechnologicalArea" class="form-label">Área Tecnológica</label>
+        <select 
+          class="form-select" 
+          id="editTechnologicalArea"
+          [(ngModel)]="editingCurriculum.technologicalArea">
+          <option value="">Selecione a área tecnológica</option>
+          @for (area of technologicalAreas; track area) {
+          <option [value]="area">{{ area }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="editTheoreticalClasses" class="form-label">Aulas Teóricas</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="editTheoreticalClasses" 
+          placeholder="Número de aulas teóricas"
+          [(ngModel)]="editingCurriculum.theoreticalClasses"
+          (ngModelChange)="calculateEditTotalWorkload()"
+          min="0">
+      </div>
+      <div class="col-md-6">
+        <label for="editPracticalClasses" class="form-label">Aulas Práticas</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="editPracticalClasses" 
+          placeholder="Número de aulas práticas"
+          [(ngModel)]="editingCurriculum.practicalClasses"
+          (ngModelChange)="calculateEditTotalWorkload()"
+          min="0">
+      </div>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="editModality" class="form-label">Modalidade</label>
+        <select 
+          class="form-select" 
+          id="editModality"
+          [(ngModel)]="editingCurriculum.modality">
+          <option value="">Selecione a modalidade</option>
+          @for (modality of modalities; track modality) {
+          <option [value]="modality">{{ modality }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="editTotalWorkload" class="form-label">Carga Horária Total</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="editTotalWorkload" 
+          placeholder="Calculado automaticamente"
+          [(ngModel)]="editingCurriculum.totalWorkload"
           readonly>
       </div>
     </div>

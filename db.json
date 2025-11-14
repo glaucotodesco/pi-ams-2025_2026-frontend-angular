@@ -14,5 +14,10 @@
   "components": [
     { "id": 1, "name": "Programação Orientada a Objetos", "courseId": 1 },
     { "id": 2, "name": "Banco de Dados", "courseId": 2 }
+  ],
+  "curriculums": [
+    { "id": 1, "name": "Desenvolvimento de Sistemas", "abbreviation": "DS", "courseId": 1, "technologyArea": "Informação e Comunicação", "theoretical": 200, "practical": 400, "quantityClass": 600, "modality": "Presencial" },
+    { "id": 2, "name": "Redes de Computadores", "abbreviation": "RC", "courseId": 1, "technologyArea": "Informação e Comunicação", "theoretical": 250, "practical": 350, "quantityClass": 600, "modality": "Híbrido" },
+    { "id": 3, "name": "Automação Industrial", "abbreviation": "AI", "courseId": 2, "technologyArea": "Controle e Processos Industriais", "theoretical": 150, "practical": 450, "quantityClass": 600, "modality": "Presencial" }
   ]
 }

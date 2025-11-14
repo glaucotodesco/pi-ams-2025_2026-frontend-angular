@@ -1,5 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { ModalComponent } from '../../../shared/components/modal/modal';
+import { CurriculumService } from '../../../../services/curriculum.service';
+import { CurriculumProps } from '../../../../interfaces/CurriculumProps';
 
 @Component({
   selector: 'app-curriculums',
@@ -7,8 +9,9 @@ import { ModalComponent } from '../../../shared/components/modal/modal';
   templateUrl: './curriculums.html',
   styleUrl: './curriculums.css',
 })
-export class Curriculums {
+export class Curriculums implements OnInit {
   @ViewChild('addModal') addModal!: ModalComponent;
+  @ViewChild('editModal') editModal!: ModalComponent;
 
   columns: string[] = [
     'id',
@@ -20,41 +23,7 @@ export class Curriculums {
     'Modalidade',
     '',
   ];
-  curriculums: Curriculum[] = [
-    {
-      id: 1,
-      name: 'Desenvolvimento de Sistemas',
-      acronym: 'DS',
-      teacher: 'Prof. João Silva',
-      technologicalArea: 'Informação e Comunicação',
-      practicalClasses: 400,
-      theoreticalClasses: 200,
-      modality: 'Presencial',
-      totalWorkload: 600
-    },
-    {
-      id: 2,
-      name: 'Redes de Computadores',
-      acronym: 'RC',
-      teacher: 'Prof. Maria Santos',
-      technologicalArea: 'Informação e Comunicação',
-      practicalClasses: 350,
-      theoreticalClasses: 250,
-      modality: 'Híbrido',
-      totalWorkload: 600
-    },
-    {
-      id: 3,
-      name: 'Automação Industrial',
-      acronym: 'AI',
-      teacher: 'Prof. Carlos Oliveira',
-      technologicalArea: 'Controle e Processos Industriais',
-      practicalClasses: 450,
-      theoreticalClasses: 150,
-      modality: 'Presencial',
-      totalWorkload: 600
-    }
-  ];
+  curriculums: Curriculum[] = [];
   page = 1;
   pageSize = 8;
   collectionSize = 0;
@@ -70,6 +39,9 @@ export class Curriculums {
     modality: '',
     totalWorkload: 0
   };
+  
+  editingCurriculum: Partial<Curriculum> = {};
+  editingId: number = 0;
 
   teachers = [
     'Prof. João Silva',
@@ -98,6 +70,35 @@ export class Curriculums {
   itensSemester: string[] = ['Analise e Desenvolvimento de Sistemas', 'Redes de Computadores', 'Automação Industrial'];
   itensCourse: string[] = ['1º Semestre', '2º Semestre', '3º Semestre', '4º Semestre'];
 
+  constructor(private curriculumService: CurriculumService) {}
+
+  ngOnInit() {
+    this.loadCurriculums();
+  }
+
+  loadCurriculums() {
+    this.curriculumService.getAll().subscribe({
+      next: (data) => {
+        this.curriculums = data.map(item => ({
+          id: item.id,
+          name: item.name,
+          acronym: item.abbreviation,
+          teacher: 'Prof. Placeholder', // This field doesn't exist in CurriculumProps
+          technologicalArea: item.technologyArea,
+          practicalClasses: item.practical,
+          theoreticalClasses: item.theoretical,
+          modality: item.modality,
+          totalWorkload: item.quantityClass
+        }));
+        this.refreshCurriculums();
+      },
+      error: (error) => {
+        console.error('Erro ao carregar componentes curriculares:', error);
+        alert('Erro ao carregar componentes curriculares. Verifique se o servidor está rodando.');
+      }
+    });
+  }
+
   get filteredCurriculums(): Curriculum[] {
     const filtered = this.curriculums.filter((c) =>
       c.name.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -125,29 +126,31 @@ export class Curriculums {
   }
 
   onAddCurriculum() {
-    const newId = Math.max(...this.curriculums.map(c => c.id)) + 1;
-    
-    const curriculum: Curriculum = {
-      id: newId,
+    const curriculumData: CurriculumProps = {
+      id: 0,
       name: this.newCurriculum.name || '',
-      acronym: this.newCurriculum.acronym || '',
-      teacher: this.newCurriculum.teacher || '',
-      technologicalArea: this.newCurriculum.technologicalArea || '',
-      practicalClasses: this.newCurriculum.practicalClasses || 0,
-      theoreticalClasses: this.newCurriculum.theoreticalClasses || 0,
-      modality: this.newCurriculum.modality || '',
-      totalWorkload: this.newCurriculum.totalWorkload || 0
+      abbreviation: this.newCurriculum.acronym || '',
+      courseId: 1, // Default courseId
+      technologyArea: this.newCurriculum.technologicalArea || '',
+      theoretical: this.newCurriculum.theoreticalClasses || 0,
+      practical: this.newCurriculum.practicalClasses || 0,
+      quantityClass: this.newCurriculum.totalWorkload || 0,
+      modality: this.newCurriculum.modality || ''
     };
     
-    this.curriculums.push(curriculum);
-    
-    this.addModal.modalService.dismissAll();
-    
-    this.resetForm();
-    
-    this.refreshCurriculums();
-    
-    console.log('Currículo adicionado com sucesso!', curriculum);
+    this.curriculumService.create(curriculumData).subscribe({
+      next: (created) => {
+        console.log('Currículo adicionado com sucesso!', created);
+        this.addModal.modalService.dismissAll();
+        this.resetForm();
+        this.loadCurriculums();
+        alert('Componente curricular criado com sucesso!');
+      },
+      error: (error) => {
+        console.error('Erro ao criar componente curricular:', error);
+        alert('Erro ao criar componente curricular. Tente novamente.');
+      }
+    });
   }
 
   onCancelAdd() {
@@ -155,10 +158,71 @@ export class Curriculums {
     console.log('Adição cancelada');
   }
 
+  openEditModal(curriculum: Curriculum) {
+    this.editingId = curriculum.id;
+    this.editingCurriculum = { ...curriculum };
+    this.editModal.open();
+  }
+
+  onEditCurriculum() {
+    const curriculumData: CurriculumProps = {
+      id: this.editingId,
+      name: this.editingCurriculum.name || '',
+      abbreviation: this.editingCurriculum.acronym || '',
+      courseId: 1, // Default courseId
+      technologyArea: this.editingCurriculum.technologicalArea || '',
+      theoretical: this.editingCurriculum.theoreticalClasses || 0,
+      practical: this.editingCurriculum.practicalClasses || 0,
+      quantityClass: this.editingCurriculum.totalWorkload || 0,
+      modality: this.editingCurriculum.modality || ''
+    };
+    
+    this.curriculumService.update(this.editingId, curriculumData).subscribe({
+      next: (updated) => {
+        console.log('Currículo atualizado com sucesso!', updated);
+        this.editModal.modalService.dismissAll();
+        this.resetEditForm();
+        this.loadCurriculums();
+        alert('Componente curricular atualizado com sucesso!');
+      },
+      error: (error) => {
+        console.error('Erro ao atualizar componente curricular:', error);
+        alert('Erro ao atualizar componente curricular. Tente novamente.');
+      }
+    });
+  }
+
+  onCancelEdit() {
+    this.resetEditForm();
+    console.log('Edição cancelada');
+  }
+
+  onDeleteCurriculum(id: number) {
+    if (confirm('Tem certeza que deseja excluir este componente curricular?')) {
+      this.curriculumService.delete(id).subscribe({
+        next: () => {
+          console.log('Currículo deletado com sucesso!');
+          this.loadCurriculums();
+          alert('Componente curricular excluído com sucesso!');
+        },
+        error: (error) => {
+          console.error('Erro ao deletar componente curricular:', error);
+          alert('Erro ao deletar componente curricular. Tente novamente.');
+        }
+      });
+    }
+  }
+
   calculateTotalWorkload() {
     const practical = this.newCurriculum.practicalClasses || 0;
     const theoretical = this.newCurriculum.theoreticalClasses || 0;
     this.newCurriculum.totalWorkload = practical + theoretical;
+  }
+
+  calculateEditTotalWorkload() {
+    const practical = this.editingCurriculum.practicalClasses || 0;
+    const theoretical = this.editingCurriculum.theoreticalClasses || 0;
+    this.editingCurriculum.totalWorkload = practical + theoretical;
   }
 
   private resetForm() {
@@ -172,6 +236,11 @@ export class Curriculums {
       modality: '',
       totalWorkload: 0
     };
+  }
+
+  private resetEditForm() {
+    this.editingCurriculum = {};
+    this.editingId = 0;
   }
 }
 
