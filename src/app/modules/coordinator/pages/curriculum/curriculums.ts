@@ -59,8 +59,6 @@ export class Curriculums {
   pageSize = 8;
   collectionSize = 0;
   searchTerm = '';
-
-  showSearch = false;
   
   newCurriculum: Partial<Curriculum> = {
     name: '',
@@ -95,6 +93,10 @@ export class Curriculums {
     'Online',
     'EAD'
   ];
+  showSearch = false; // controla visibilidade do input
+  
+  itensSemester: string[] = ['Analise e Desenvolvimento de Sistemas', 'Redes de Computadores', 'Automação Industrial'];
+  itensCourse: string[] = ['1º Semestre', '2º Semestre', '3º Semestre', '4º Semestre'];
 
   get filteredCurriculums(): Curriculum[] {
     const filtered = this.curriculums.filter((c) =>

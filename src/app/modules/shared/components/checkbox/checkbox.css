@@ -1,0 +1,40 @@
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox .form-check-input {
+  border-radius: 8px;
+  border: 2px solid #b5b5b5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  appearance: auto !important;
+  -webkit-appearance: auto !important;
+}
+
+.custom-checkbox .form-check-input:checked {
+  background-color: #7b61ff !important;
+  border-color: #7b61ff !important;
+  box-shadow: 0 2px 6px rgba(123, 97, 255, 0.4) !important;
+}
+
+.custom-checkbox .form-check-input:checked[type="checkbox"] {
+  accent-color: #7b61ff;
+}
+
+.custom-checkbox .form-check-label {
+  font-size: 16px;
+  color: #b5b5b5;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.custom-checkbox .form-check-input:checked ~ .form-check-label {
+  color: #000;
+}
+
+.custom-checkbox .form-check-input:hover {
+  border-color: #9b7bff;
+}
