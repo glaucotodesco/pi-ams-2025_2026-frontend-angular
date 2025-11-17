@@ -9,7 +9,7 @@ import { CourseProps } from '../../../../interfaces/CourseProps';
   standalone: false,
 })
 
-export class Courses {
+export class CoursesPage {
   columns: string[] = ["id","Nome", "Modalidade", "Eixo Tecnologico", "Num Componentes", ""];
   @Input() courses: CourseProps[] = [
    { id: 1, 

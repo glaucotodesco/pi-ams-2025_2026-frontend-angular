@@ -7,7 +7,7 @@ import { ModalComponent } from '../../../shared/components/modal/modal';
   templateUrl: './curriculums.html',
   styleUrl: './curriculums.css',
 })
-export class Curriculums {
+export class CurriculumsPage {
   @ViewChild('addModal') addModal!: ModalComponent;
 
   columns: string[] = [

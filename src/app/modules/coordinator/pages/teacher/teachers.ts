@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-teacher-page',
-  templateUrl: './teacher-page.html',
-  styleUrls: ['./teacher-page.css'],
+  selector: 'app-teacher',
+  templateUrl: './teachers.html',
+  styleUrls: ['./teachers.css'],
   standalone: false,
 })
 export class TeachersPage {

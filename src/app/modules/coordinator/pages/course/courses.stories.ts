@@ -1,23 +1,23 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { Courses } from './courses';
+import { CoursesPage } from './courses';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 
-  const meta: Meta<Courses> = {
+  const meta: Meta<CoursesPage> = {
   title: 'Coordenador/Page/Courses',
-  component: Courses,
+  component: CoursesPage,
    decorators: [
     moduleMetadata({
       imports: [CommonModule, NgbModule, SharedModule],
-      declarations: [Courses], 
+      declarations: [CoursesPage], 
     }),
   ],
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<Courses>;
+type Story = StoryObj<CoursesPage>;
 
 // Story 1: Padrão com 4 
 export const Default:Story = {
