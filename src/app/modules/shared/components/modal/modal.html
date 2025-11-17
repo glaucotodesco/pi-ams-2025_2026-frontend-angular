@@ -1,20 +1,168 @@
-<ng-template #content>
-  <div class="modal-custom">
-    <div class="modal-header">
-      <h4 class="modal-title">{{ title }}</h4>
-    </div>
-    <div class="modal-body">
-      <ng-content></ng-content>
-    </div>
-    <div class="modal-footer">
-      <app-button variant="outline" size="md" (buttonClick)="onCancel()">
-        {{ actionText2 }}
-      </app-button>
-      <app-button variant="primary" size="md" (buttonClick)="onAction()">
-        {{ actionText }}
-      </app-button>
-    </div>
-  </div>
-</ng-template>
+<ng-template #content let-modal>
 
- 
+  <!-- HEADER -->
+  <div class="modal-header modal-header-figma" role="banner">
+    <h3 class="modal-title-figma">{{ title }}</h3>
+    <button type="button" 
+            class="modal-close-figma" 
+            (click)="onCancel()"
+            aria-label="Fechar diálogo"
+            title="Fechar">✕</button>
+  </div>
+
+  <!-- BODY -->
+  <div class="modal-body modal-body-figma" role="main">
+
+    <!-- MENSAGEM DE ERRO -->
+    <div *ngIf="erroValidacao" class="error-message-figma" role="alert" aria-live="polite">
+      {{ erroValidacao }}
+    </div>
+
+    <!-- GRID SUPERIOR -->
+    <div class="form-grid-figma" role="group" aria-label="Dados do usuário">
+
+      <!-- Nome -->
+      <div class="form-group-figma">
+        <label for="nome-input">Nome Completo <span aria-label="obrigatório">*</span></label>
+        <input id="nome-input"
+               type="text" 
+               class="input-figma" 
+               [(ngModel)]="nome"
+               aria-describedby="nome-error"
+               required/>
+      </div>
+
+      <!-- Tipo de Usuário -->
+      <div class="form-group-figma">
+        <label for="tipo-select">Tipo de Usuário <span aria-label="obrigatório">*</span></label>
+        <select id="tipo-select"
+                class="input-figma" 
+                [(ngModel)]="tipoUsuario"
+                aria-describedby="tipo-error"
+                required>
+          <option value="">Selecione...</option>
+          <option *ngFor="let t of tiposUsuario" [value]="t.nome">{{ t.nome }}</option>
+        </select>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group-figma">
+        <label for="email-input">E-mail <span aria-label="obrigatório">*</span></label>
+        <input id="email-input"
+               type="email" 
+               class="input-figma" 
+               [(ngModel)]="email"
+               aria-describedby="email-error"
+               required/>
+      </div>
+
+      <!-- Matrícula -->
+      <div class="form-group-figma">
+        <label for="matricula-input">Matrícula <span aria-label="obrigatório">*</span></label>
+        <input id="matricula-input"
+               type="text" 
+               class="input-figma" 
+               [(ngModel)]="matricula"
+               aria-describedby="matricula-error"
+               required/>
+      </div>
+
+      <!-- Telefone -->
+      <div class="form-group-figma">
+        <label for="telefone-input">Telefone</label>
+        <input id="telefone-input"
+               type="tel" 
+               class="input-figma" 
+               [(ngModel)]="telefone"/>
+      </div>
+
+      <!-- Curso -->
+      <div class="form-group-figma">
+        <label for="curso-select">Curso</label>
+
+        <select id="curso-select"
+                class="input-figma" 
+                [(ngModel)]="cursoSelecionado">
+          <option [ngValue]="null">Selecione...</option>
+          <option *ngFor="let c of cursos" [ngValue]="c">{{ c.nome }}</option>
+        </select>
+
+        <button type="button"
+                class="add-link-figma" 
+                (click)="addCurso()"
+                aria-label="Adicionar curso selecionado">
+          + Adicionar curso
+        </button>
+      </div>
+
+      <!-- Componente -->
+      <div class="form-group-figma">
+        <label for="componente-select">Componente</label>
+
+        <select id="componente-select"
+                class="input-figma" 
+                [(ngModel)]="componenteSelecionado">
+          <option [ngValue]="null">Selecione...</option>
+          <option *ngFor="let comp of componentes" [ngValue]="comp">{{ comp.nome }}</option>
+        </select>
+
+        <button type="button"
+                class="add-link-figma" 
+                (click)="addComponente()"
+                aria-label="Adicionar componente selecionado">
+          + Adicionar componente
+        </button>
+      </div>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="divider-figma"></div>
+
+    <!-- ATRIBUIÇÕES -->
+    <h4 class="section-title-figma">Curso(s) e Componente(s) Atribuídos</h4>
+
+    <div *ngFor="let curso of atribuicoes" class="curso-bloco-figma" role="group" [attr.aria-label]="'Curso: ' + curso.nome">
+
+      <div class="curso-nome-figma">{{ curso.nome }}</div>
+
+      <div class="chips-area-figma">
+
+        <div *ngFor="let comp of curso.componentes" class="chip-figma" role="button">
+          {{ comp.nome }}
+          <button type="button"
+                  class="chip-remove-figma" 
+                  (click)="removeComponente(curso.id, comp.id)"
+                  [attr.aria-label]="'Remover ' + comp.nome">✕</button>
+        </div>
+
+        <button type="button"
+                class="remove-curso-figma" 
+                (click)="removeCurso(curso.id)"
+                [attr.aria-label]="'Remover curso ' + curso.nome">
+          Remover curso
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="modal-footer modal-footer-figma" role="contentinfo">
+    <button type="button"
+            class="btn-secondary"
+            (click)="onCancel()"
+            aria-label="{{ actionText2 }}">
+      {{ actionText2 }}
+    </button>
+    <button type="submit"
+            class="btn-primary"
+            (click)="onAction()"
+            aria-label="{{ actionText }}">
+      {{ actionText }}
+    </button>
+  </div>
+
+</ng-template>
