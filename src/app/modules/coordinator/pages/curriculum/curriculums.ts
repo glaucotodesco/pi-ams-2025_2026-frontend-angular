@@ -1,5 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Injector, OnInit } from '@angular/core';
 import { ModalComponent } from '../../../shared/components/modal/modal';
+import { HttpClient } from '@angular/common/http';
+import { CurriculumService } from '../../../../services/curriculum-service';
 
 @Component({
   selector: 'app-curriculums',
@@ -7,8 +9,34 @@ import { ModalComponent } from '../../../shared/components/modal/modal';
   templateUrl: './curriculums.html',
   styleUrl: './curriculums.css',
 })
-export class Curriculums {
+export class Curriculums implements OnInit {
   @ViewChild('addModal') addModal!: ModalComponent;
+
+  // Control modal state for create/edit reuse
+  isEditing = false;
+  private editingId: number | null = null;
+  modalTitle = 'Adicionar Componente Curricular';
+  actionText = 'Salvar';
+
+  constructor(private injector: Injector) {}
+
+  private get httpAvailable(): boolean {
+    try {
+      const http = this.injector.get(HttpClient, null as any);
+      return !!http;
+    } catch {
+      return false;
+    }
+  }
+
+  private get svc(): CurriculumService | null {
+    if (!this.httpAvailable) return null;
+    try {
+      return this.injector.get(CurriculumService);
+    } catch {
+      return null;
+    }
+  }
 
   columns: string[] = [
     'id',
@@ -98,6 +126,29 @@ export class Curriculums {
   itensSemester: string[] = ['Analise e Desenvolvimento de Sistemas', 'Redes de Computadores', 'Automação Industrial'];
   itensCourse: string[] = ['1º Semestre', '2º Semestre', '3º Semestre', '4º Semestre'];
 
+  ngOnInit(): void {
+    this.loadCurriculums();
+  }
+
+  private loadCurriculums() {
+    const service = this.svc;
+    if (service) {
+      service.getAll().subscribe({
+        next: (data) => {
+          // Mantém fallback se API retornar vazio
+          this.curriculums = (data && data.length) ? data : this.curriculums;
+          this.refreshCurriculums();
+        },
+        error: () => {
+          console.warn('Falha ao carregar dados da API. Usando dados locais.');
+          this.refreshCurriculums();
+        }
+      });
+    } else {
+      this.refreshCurriculums();
+    }
+  }
+
   get filteredCurriculums(): Curriculum[] {
     const filtered = this.curriculums.filter((c) =>
       c.name.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -121,13 +172,34 @@ export class Curriculums {
   }
 
   openAddModal() {
+    this.isEditing = false;
+    this.editingId = null;
+    this.modalTitle = 'Adicionar Componente Curricular';
+    this.actionText = 'Salvar';
+    this.resetForm();
     this.addModal.open();
   }
 
+  openEditModal(curriculum: Curriculum) {
+    this.isEditing = true;
+    this.editingId = curriculum.id;
+    this.modalTitle = 'Editar Componente Curricular';
+    this.actionText = 'Atualizar';
+    this.newCurriculum = { ...curriculum };
+    this.addModal.open();
+  }
+
+  onSave() {
+    if (this.isEditing && this.editingId != null) {
+      this.onUpdateCurriculum(this.editingId);
+    } else {
+      this.onAddCurriculum();
+    }
+  }
+
   onAddCurriculum() {
-    const newId = Math.max(...this.curriculums.map(c => c.id)) + 1;
-    
-    const curriculum: Curriculum = {
+    const newId = this.curriculums.length ? Math.max(...this.curriculums.map(c => c.id)) + 1 : 1;
+    const payload: Curriculum = {
       id: newId,
       name: this.newCurriculum.name || '',
       acronym: this.newCurriculum.acronym || '',
@@ -138,16 +210,92 @@ export class Curriculums {
       modality: this.newCurriculum.modality || '',
       totalWorkload: this.newCurriculum.totalWorkload || 0
     };
-    
-    this.curriculums.push(curriculum);
-    
-    this.addModal.modalService.dismissAll();
-    
-    this.resetForm();
-    
-    this.refreshCurriculums();
-    
-    console.log('Currículo adicionado com sucesso!', curriculum);
+
+    const service = this.svc;
+    if (service) {
+      service.create(payload).subscribe({
+        next: (created) => {
+          this.curriculums.push(created);
+          this.addModal.modalService.dismissAll();
+          this.resetForm();
+          this.refreshCurriculums();
+          alert('Componente curricular criado com sucesso!');
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Erro ao criar componente curricular.');
+        }
+      });
+    } else {
+      // Fallback local para ambiente de teste/storybook
+      this.curriculums.push(payload);
+      this.addModal.modalService.dismissAll();
+      this.resetForm();
+      this.refreshCurriculums();
+      console.log('Currículo adicionado com sucesso!', payload);
+    }
+  }
+
+  onUpdateCurriculum(id: number) {
+    const updated: Curriculum = {
+      id,
+      name: this.newCurriculum.name || '',
+      acronym: this.newCurriculum.acronym || '',
+      teacher: this.newCurriculum.teacher || '',
+      technologicalArea: this.newCurriculum.technologicalArea || '',
+      practicalClasses: this.newCurriculum.practicalClasses || 0,
+      theoreticalClasses: this.newCurriculum.theoreticalClasses || 0,
+      modality: this.newCurriculum.modality || '',
+      totalWorkload: this.newCurriculum.totalWorkload || 0
+    };
+
+    const service = this.svc;
+    if (service) {
+      service.update(id, updated).subscribe({
+        next: (saved) => {
+          const i = this.curriculums.findIndex(c => c.id === id);
+          if (i >= 0) this.curriculums[i] = saved;
+          this.addModal.modalService.dismissAll();
+          this.resetForm();
+          this.refreshCurriculums();
+          alert('Componente curricular atualizado com sucesso!');
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Erro ao atualizar componente curricular.');
+        }
+      });
+    } else {
+      const i = this.curriculums.findIndex(c => c.id === id);
+      if (i >= 0) this.curriculums[i] = updated;
+      this.addModal.modalService.dismissAll();
+      this.resetForm();
+      this.refreshCurriculums();
+      console.log('Currículo atualizado (local) com sucesso!', updated);
+    }
+  }
+
+  onDeleteCurriculum(id: number) {
+    if (!confirm('Deseja realmente excluir este componente curricular?')) return;
+
+    const service = this.svc;
+    if (service) {
+      service.delete(id).subscribe({
+        next: () => {
+          this.curriculums = this.curriculums.filter(c => c.id !== id);
+          this.refreshCurriculums();
+          alert('Componente curricular excluído com sucesso!');
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Erro ao excluir componente curricular.');
+        }
+      });
+    } else {
+      this.curriculums = this.curriculums.filter(c => c.id !== id);
+      this.refreshCurriculums();
+      console.log('Currículo excluído (local) com sucesso!');
+    }
   }
 
   onCancelAdd() {
