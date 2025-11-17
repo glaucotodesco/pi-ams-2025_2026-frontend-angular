@@ -4,12 +4,12 @@
   <div class="d-flex justify-content-end align-items-center mb-3">
     @if (showSearch) {
     <div class="input-group me-2">
-      <input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
+      <app-input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
     </div>
     }
-    <button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
+    <app-button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
       <i class="bi bi-search"></i>
-    </button>
+    </app-button>
   </div>
 
   <app-table [columns]="columns">
@@ -22,12 +22,12 @@
       <td>{{ curso.numerocomponentes }}</td>
       <td>
         <div>
-          <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+          <app-button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
             <i class="bi bi-pencil"></i>
-          </button>
-          <button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+          </app-button>
+          <app-button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
             <i class="bi bi-trash"></i>
-          </button>
+          </app-button>
         </div>
       </td>
     </tr>
