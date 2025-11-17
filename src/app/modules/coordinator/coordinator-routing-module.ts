@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
-import { Cursos } from './pages/cursos/cursos';
+import { Courses } from './pages/course/courses';
 import { TeachersPage } from './pages/teacher/teacher-page';
 import { Curriculums } from './pages/curriculum/curriculums';
 
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    component: Cursos
+    component: Courses
   },
   {
     path: 'teachers',

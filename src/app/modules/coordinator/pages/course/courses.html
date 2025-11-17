@@ -13,13 +13,13 @@
   </div>
 
   <app-table [columns]="columns">
-    @for (curso of cursosFiltrados; track $index) {
+    @for (course of filteredCourses; track $index) {
     <tr>
-      <td>{{ curso.id }}</td>
-      <td>{{ curso.nome }}</td>
-      <td>{{ curso.modalidade }}</td>
-      <td>{{ curso.eixotecnologico }}</td>
-      <td>{{ curso.numerocomponentes }}</td>
+      <td>{{ course.id }}</td>
+      <td>{{ course.name }}</td>
+      <td>{{ course.modality }}</td>
+      <td>{{ course.technologicalAxis }}</td>
+      <td>{{ course.componentsCount }}</td>
       <td>
         <div>
           <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
@@ -37,7 +37,7 @@
   <!-- Pagination + botão -->
   <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
     <div class="flex-grow-1 d-flex justify-content-center">
-      <app-pagination [totalPages]="pageSize" [currentPage]="page" (pageChange)="refreshCursos()"></app-pagination>
+      <app-pagination [totalPages]="pageSize" [currentPage]="page" (pageChange)="refreshCourses()"></app-pagination>
     </div>
 
     <app-button variant="primary" size="md" (buttonClick)="modal.open()"

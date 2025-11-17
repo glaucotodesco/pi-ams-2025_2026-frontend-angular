@@ -1,5 +1,7 @@
 export interface CourseProps {
   id: number;
   name: string;
-  description: string;
+  modality: string;
+  technologicalAxis: string;
+  componentsCount: number;
 }
