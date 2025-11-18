@@ -1,0 +1,22 @@
+.page-link {
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.page-link:disabled,
+.page-item.disabled .page-link {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-link{
+  color: var(--bs-body-color) ;
+}
+
+.pagination {
+  gap: 4px; 
+}
+
+.page-link {
+  padding: 6px 12px; 
+}

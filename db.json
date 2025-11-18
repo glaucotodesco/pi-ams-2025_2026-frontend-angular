@@ -1,0 +1,18 @@
+{
+  "classrooms": [
+    { "id": 1, "name": "Sala 1", "capacity": 40, "type": "Padrão", "location": "Prédio" },
+    { "id": 2, "name": "Laboratório 1", "capacity": 25, "type": "Laboratório", "location": "Prédio" }
+  ],
+  "teachers": [
+    { "id": 1, "name": "João Silva", "email": "joao.silva@email.com", "phone": "(11) 99999-1111", "type": "Tempo integral" },
+    { "id": 2, "name": "Maria Souza", "email": "maria.souza@email.com", "phone": "(11) 98888-2222", "type": "Meio período" }
+  ],
+  "courses": [
+    { "id": 1, "name": "Engenharia de Software", "description": "Aborda metodologias e práticas de desenvolvimento de software." },
+    { "id": 2, "name": "Ciência da Computação", "description": "Foca em algoritmos, estruturas de dados e design de sistemas." }
+  ],
+  "components": [
+    { "id": 1, "name": "Programação Orientada a Objetos", "courseId": 1 },
+    { "id": 2, "name": "Banco de Dados", "courseId": 2 }
+  ]
+}

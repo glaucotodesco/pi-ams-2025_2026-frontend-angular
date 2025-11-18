@@ -1,15 +1,50 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Modal } from './components/modal/modal';
-
+import { ModalComponent } from '../shared/components/modal/modal';
+import { Pagination } from './components/pagination/pagination';
+import { Radios } from './components/radios/radios';
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './components/navbar/navbar';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ButtonComponent } from './components/button/button';
+import { InputComponent } from './components/input/input';
+import { Login } from './pages/login/login';
+import { Table } from './components/table/table';
+import { CheckboxComponent } from './components/checkbox/checkbox';
+import { PageLayout } from './components/page-layout/page-layout';
+import { SelectComponent } from './components/select/select.component';
 
 
 @NgModule({
   declarations: [
-    Modal
+    ModalComponent,
+    Pagination,
+    Radios,
+    ButtonComponent,
+    NavbarComponent,
+    InputComponent,
+    Login,
+    Table,
+    PageLayout,
+    SelectComponent,
+    CheckboxComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    NgbModule,
+  ],
+  exports: [
+    ModalComponent,
+    Pagination,
+    Radios,
+    ButtonComponent,
+    NavbarComponent,
+    Login,
+    Table,
+    CheckboxComponent,
+    PageLayout,
+    SelectComponent
   ]
 })
 export class SharedModule { }

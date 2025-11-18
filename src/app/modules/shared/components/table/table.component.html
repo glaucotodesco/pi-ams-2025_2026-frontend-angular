@@ -1,0 +1,12 @@
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th *ngFor="let col of columns" class="fw-semibold">{{ col }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-content></ng-content>
+        </tbody>
+    </table>
+</div>
