@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { TextareaComponent } from './textarea.component';
 
 const meta: Meta<TextareaComponent> = {
-  title: 'Components/Textarea',
+  title: 'Shared/Components/Textarea',
   component: TextareaComponent,
   tags: ['autodocs'],
   argTypes: {
@@ -27,7 +27,7 @@ export const Default: Story = {
 
 export const SemLabel: Story = {
   args: {
-    label: 'Escondida',
+    label: '',
   },
 };
 
