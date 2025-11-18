@@ -141,7 +141,7 @@ export class Curriculums {
     
     this.curriculums.push(curriculum);
     
-    this.addModal.modalService.dismissAll();
+    this.addModal.onCancel();
     
     this.resetForm();
     

@@ -1,0 +1,118 @@
+/* ============================= */
+/* LAYOUT DO FORMULARIO */
+/* ============================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 40px;
+  margin-top: 20px;
+}
+
+label {
+  font-weight: 600;
+  color: #1F2937;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #F6F6F6;
+  border: 1px solid #D1D5DB;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* Remove estilo feio do bootstrap nos selects */
+select.input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='15' height='15' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8L10 12L14 8' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Botão de adicionar */
+.add {
+  margin-top: 8px;
+  background: none;
+  border: none;
+  color: #7749F8;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.add:hover {
+  opacity: 0.8;
+}
+
+/* Divisor */
+.divider {
+  height: 1px;
+  background: #E5E7EB;
+  margin: 32px 0;
+}
+
+/* Título da seção */
+h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 16px;
+}
+
+/* ============================= */
+/* CHIPS DE CURSOS E COMPONENTES */
+/* ============================= */
+
+.curso-card {
+  margin-bottom: 20px;
+}
+
+.curso-nome {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  background: #EDE9FE;
+  border: 1px solid #C4B5FD;
+  color: #6D28D9;
+  padding: 6px 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.chip button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #6D28D9;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Remover curso */
+.remove-curso {
+  background: none;
+  border: none;
+  color: #DC2626;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+}
