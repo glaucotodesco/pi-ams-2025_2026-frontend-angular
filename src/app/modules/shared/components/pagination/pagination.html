@@ -2,14 +2,14 @@
   <ul class="pagination">
     <!-- Botão anterior -->
     <li class="page-item" [class.disabled]="currentPage === 1">
-      <button
+      <app-button
         class="page-link"
         (click)="goToPrevious()"
         [disabled]="currentPage === 1"
         aria-label="Página anterior"
       >
         ‹
-      </button>
+      </app-button>
     </li>
 
     <!-- Páginas -->
@@ -18,26 +18,26 @@
       *ngFor="let page of visiblePages"
       [class.active]="page === currentPage"
     >
-      <button
+      <app-button
         type="button"
         [ngClass]="page === currentPage ? 'btn btn-primary' : 'btn opacity-50 border'"
         (click)="goToPage(page)"
         [attr.aria-current]="page === currentPage ? 'page' : null"
       >
         {{ page }}
-      </button>
+      </app-button>
     </li>
 
     <!-- Botão próximo -->
     <li class="page-item" [class.disabled]="currentPage === totalPages">
-      <button
+      <app-button
         class="page-link"
         (click)="goToNext()"
         [disabled]="currentPage === totalPages"
         aria-label="Próxima página"
       >
         ›
-      </button>
+      </app-button>
     </li>
   </ul>
 </nav>

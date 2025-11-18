@@ -2,14 +2,14 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Brand</a>
 
-      <button
+      <app-button
       class="navbar-toggler d-lg-none"
       type="button"
       aria-label="Abrir menu"
       (click)="toggleCollapse()"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </app-button>
 
     <div class="collapse navbar-collapse d-none d-lg-flex">
       <ul class="navbar-nav">
@@ -26,7 +26,7 @@
             {{ item.label }}
           </a>
 
-          <button
+          <app-button
             *ngIf="item.children"
             class="nav-link dropdown-toggle"
             type="button"
@@ -34,7 +34,7 @@
             [attr.aria-expanded]="isDropdownOpen(i)"
           >
             {{ item.label }}
-          </button>
+          </app-button>
 
           <ul
             *ngIf="item.children"
@@ -63,7 +63,7 @@
     >
       <div class="offcanvas-header">
         <h5 class="offcanvas-title">Menu</h5>
-        <button type="button" class="btn-close" aria-label="Fechar" (click)="toggleCollapse()"></button>
+        <app-button type="button" class="btn-close" aria-label="Fechar" (click)="toggleCollapse()"></app-button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav">
@@ -81,7 +81,7 @@
               {{ item.label }}
             </a>
 
-            <button
+            <app-button
               *ngIf="item.children"
               class="nav-link dropdown-toggle"
               type="button"
@@ -89,7 +89,7 @@
               [attr.aria-expanded]="isDropdownOpen(i)"
             >
               {{ item.label }}
-            </button>
+            </app-button>
             <ul
               *ngIf="item.children"
               class="dropdown-menu"
