@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { Curriculums } from './curriculums';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 
@@ -10,7 +10,7 @@ const meta: Meta<Curriculums> = {
   component: Curriculums,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, FormsModule, NgbModule, SharedModule],
+      imports: [CommonModule, FormsModule, NgbModule, SharedModule, ReactiveFormsModule],
       declarations: [Curriculums],
     }),
   ],

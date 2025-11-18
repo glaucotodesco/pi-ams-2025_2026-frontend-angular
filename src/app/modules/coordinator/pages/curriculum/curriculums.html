@@ -5,14 +5,14 @@
   <div class="d-flex justify-content-end align-items-center mb-3">
     @if (showSearch) {
     <div class="input-group me-2">
-      <app-input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
+      <app-input type="text" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
     </div>
     }
     <div class="d-flex align-items-center mb-3">
       <app-select [itens]='itensSemester' ></app-select>
       <app-select [itens]='itensCourse' ></app-select>
     </div>
-    <app-button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
+    <app-button (click)="toggleSearch()" title="Pesquisar">
       <i class="bi bi-search"></i>
     </app-button>
   </div>
@@ -28,11 +28,11 @@
             <td>{{ curriculum.theoreticalClasses }}</td>
             <td>{{ curriculum.modality }}</td>
             <td>
-                <div>
-                    <app-button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+                <div class="d-flex gap-2">
+                    <app-button class="btn-sm m-1" title="Editar">
                         <i class="bi bi-pencil"></i>
                     </app-button>
-                    <app-button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+                    <app-button class="btn-sm mt-20 m-1" title="Deletar">
                         <i class="bi bi-trash"></i>
                     </app-button>
                 </div>
@@ -61,28 +61,25 @@
       <div class="col-md-6">
         <label for="curriculumName" class="form-label">Nome do Componente</label>
         <app-input 
-          type="text" 
-          class="form-control" 
+          type="text"
           id="curriculumName" 
           placeholder="Digite o nome do componente"
-          [(ngModel)]="newCurriculum.name">
+          [(ngModel)]="newCurriculum.name"/>
       </div>
       <div class="col-md-6">
         <label for="acronym" class="form-label">Sigla</label>
         <app-input 
-          type="text" 
-          class="form-control" 
+          type="text"
           id="acronym" 
           placeholder="Digite a sigla"
-          [(ngModel)]="newCurriculum.acronym">
+          [(ngModel)]="newCurriculum.acronym"/>
       </div>
     </div>
     
     <div class="row mt-3">
       <div class="col-md-6">
         <label for="teacher" class="form-label">Professor</label>
-        <app-select 
-          class="form-select" 
+        <app-select  
           id="teacher"
           [(ngModel)]="newCurriculum.teacher">
           <option value="">Selecione o professor</option>
@@ -93,8 +90,7 @@
       </div>
       <div class="col-md-6">
         <label for="technologicalArea" class="form-label">Área Tecnológica</label>
-        <app-select 
-          class="form-select" 
+        <app-select  
           id="technologicalArea"
           [(ngModel)]="newCurriculum.technologicalArea">
           <option value="">Selecione a área tecnológica</option>
@@ -109,24 +105,22 @@
       <div class="col-md-6">
         <label for="theoreticalClasses" class="form-label">Aulas Teóricas</label>
         <app-input 
-          type="number" 
-          class="form-control" 
+          type="number"  
           id="theoreticalClasses" 
           placeholder="Número de aulas teóricas"
           [(ngModel)]="newCurriculum.theoreticalClasses"
           (ngModelChange)="calculateTotalWorkload()"
-          min="0">
+          min="0"/>
       </div>
       <div class="col-md-6">
         <label for="practicalClasses" class="form-label">Aulas Práticas</label>
         <app-input 
           type="number" 
-          class="form-control" 
           id="practicalClasses" 
           placeholder="Número de aulas práticas"
           [(ngModel)]="newCurriculum.practicalClasses"
           (ngModelChange)="calculateTotalWorkload()"
-          min="0">
+          min="0"/>
       </div>
     </div>
     
@@ -134,7 +128,6 @@
       <div class="col-md-6">
         <label for="modality" class="form-label">Modalidade</label>
         <app-select 
-          class="form-select" 
           id="modality"
           [(ngModel)]="newCurriculum.modality">
           <option value="">Selecione a modalidade</option>
@@ -147,11 +140,10 @@
         <label for="totalWorkload" class="form-label">Carga Horária Total</label>
         <app-input 
           type="number" 
-          class="form-control" 
           id="totalWorkload" 
           placeholder="Calculado automaticamente"
           [(ngModel)]="newCurriculum.totalWorkload"
-          readonly>
+          [readonly]="true"/>
       </div>
     </div>
     

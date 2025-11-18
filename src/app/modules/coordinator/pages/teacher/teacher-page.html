@@ -13,7 +13,6 @@
     </div>
     }
     <app-button
-      class="btn btn-outline-secondary"
       (click)="toggleSearch()"
       title="Pesquisar"
     >
@@ -31,11 +30,11 @@
       <td>{{ curso.email }}</td>
       <td>{{ curso.components }}</td>
       <td>
-        <div>
-          <app-button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+        <div class="d-flex gap-2">
+          <app-button class="btn-sm m-1" title="Editar">
             <i class="bi bi-pencil"></i>
           </app-button>
-          <app-button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+          <app-button class="btn-sm m-1" title="Deletar">
             <i class="bi bi-trash"></i>
           </app-button>
         </div>

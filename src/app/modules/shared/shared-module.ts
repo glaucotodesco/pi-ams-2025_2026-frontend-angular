@@ -42,6 +42,7 @@ import { SelectComponent } from './components/select/select.component';
     NavbarComponent,
     Login,
     Table,
+    InputComponent,
     CheckboxComponent,
     PageLayout,
     SelectComponent

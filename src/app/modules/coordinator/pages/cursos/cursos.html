@@ -7,7 +7,7 @@
       <app-input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
     </div>
     }
-    <app-button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
+    <app-button (click)="toggleSearch()" title="Pesquisar">
       <i class="bi bi-search"></i>
     </app-button>
   </div>
@@ -21,11 +21,11 @@
       <td>{{ curso.eixotecnologico }}</td>
       <td>{{ curso.numerocomponentes }}</td>
       <td>
-        <div>
-          <app-button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+        <div class="d-flex gap-2">
+          <app-button class="btn-sm m-1" title="Editar">
             <i class="bi bi-pencil"></i>
           </app-button>
-          <app-button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+          <app-button class="btn-sm m-1" title="Deletar">
             <i class="bi bi-trash"></i>
           </app-button>
         </div>
