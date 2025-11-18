@@ -7,7 +7,6 @@ const meta: Meta<TextareaComponent> = {
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text' },
-    showLabel: { control: 'boolean' },
     disabled: { control: 'boolean' },
     rows: { control: 'number' },
     cols: { control: 'number' },
@@ -20,7 +19,6 @@ type Story = StoryObj<TextareaComponent>;
 export const Default: Story = {
   args: {
     label: 'Digite sua mensagem',
-    showLabel: true,
     disabled: false,
     rows: 4,
     cols: 40,
@@ -30,7 +28,6 @@ export const Default: Story = {
 export const SemLabel: Story = {
   args: {
     label: 'Escondida',
-    showLabel: false,
   },
 };
 

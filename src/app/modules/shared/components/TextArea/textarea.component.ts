@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class TextareaComponent {
   @Input() label: string = '';             // Texto da label
-  @Input() showLabel: boolean = true;      // Mostrar ou não a label
   @Input() disabled: boolean = false;      // Ativar/desativar
   @Input() rows: number = 4;               // Número de linhas
   @Input() cols: number = 30;  
