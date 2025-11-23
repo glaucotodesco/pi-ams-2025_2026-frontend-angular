@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { ClassroomProps } from '../interfaces/ClassroomProps';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ClassroomProps } from '../../interfaces/ClassroomProps';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,32 +13,22 @@ export class ClassroomService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<ClassroomProps[]> {
-    return this.http.get<ClassroomProps[]>(this.apiUrl)
-      .pipe(catchError(this.handleError));
+    return this.http.get<ClassroomProps[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<ClassroomProps> {
-    return this.http.get<ClassroomProps>(`${this.apiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+  getById(classroom: ClassroomProps): Observable<ClassroomProps> {
+    return this.http.get<ClassroomProps>(`${this.apiUrl}/${classroom.id}`);
   }
 
-  create(classroomProps: ClassroomProps): Observable<ClassroomProps> {
-    return this.http.post<ClassroomProps>(this.apiUrl, classroomProps)
-      .pipe(catchError(this.handleError));
+  create(classroom: ClassroomProps): Observable<ClassroomProps> {
+    return this.http.post<ClassroomProps>(this.apiUrl, classroom);
   }
 
-  update(id: number, classroomProps: ClassroomProps): Observable<ClassroomProps> {
-    return this.http.put<ClassroomProps>(`${this.apiUrl}/${id}`, classroomProps)
-      .pipe(catchError(this.handleError));
+  update(classroom: ClassroomProps): Observable<ClassroomProps> {
+    return this.http.put<ClassroomProps>(`${this.apiUrl}/${classroom.id}`, classroom);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.error('Ocorreu um erro:', error.message);
-    return throwError(() => new Error('Algo deu errado. Por favor, tente novamente.'));
+  delete(classroom: ClassroomProps): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${classroom.id}`);
   }
 }
