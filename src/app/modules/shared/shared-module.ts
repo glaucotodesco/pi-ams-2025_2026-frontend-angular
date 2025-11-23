@@ -35,16 +35,17 @@ import { SelectComponent } from './components/select/select.component';
     NgbModule,
   ],
   exports: [
-    ModalComponent,
+ ModalComponent,
     Pagination,
     Radios,
     ButtonComponent,
     NavbarComponent,
+    InputComponent,
     Login,
     Table,
-    CheckboxComponent,
     PageLayout,
-    SelectComponent
+    SelectComponent,
+    CheckboxComponent,
   ]
 })
 export class SharedModule { }

@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CourseProps } from '../../interfaces/CourseProps';
 
-export interface CourseProps {
-  id: number;
-  name: string;
-  description: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +20,15 @@ export class CourseService {
     return this.http.get<CourseProps>(`${this.apiUrl}/${id}`);
   }
 
-  create(course: Omit<CourseProps, 'id'>): Observable<CourseProps> {
+  create(course: CourseProps): Observable<CourseProps> {
     return this.http.post<CourseProps>(this.apiUrl, course);
   }
 
-  update(id: number, course: CourseProps): Observable<CourseProps> {
-    return this.http.put<CourseProps>(`${this.apiUrl}/${id}`, course);
+  update( course: CourseProps): Observable<CourseProps> {
+    return this.http.put<CourseProps>(`${this.apiUrl}/${course.id}`, course);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  delete(course: CourseProps): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${course.id}`);
   }
 }

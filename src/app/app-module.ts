@@ -6,8 +6,6 @@ import { App } from './app';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./modules/shared/shared-module";
 import { provideHttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -18,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     SharedModule,
-    HttpClientModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

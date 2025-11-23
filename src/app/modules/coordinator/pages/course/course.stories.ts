@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 import { HttpClientModule } from '@angular/common/http';
-import { CourseService } from '../../../../services/CourseService';
-
+import { CourseService } from '../../../../services/course/course-service';
+  
 const meta: Meta<Course> = {
   title: 'Coordenador/Page/Courses',
   component: Course,
@@ -18,7 +18,7 @@ const meta: Meta<Course> = {
         HttpClientModule
       ],
       providers: [
-        CourseService 
+        CourseService,
       ],
     })
   ],
@@ -30,20 +30,6 @@ export default meta;
 type Story = StoryObj<Course>;
 
 export const Default: Story = {
-  args: {
-    courses: [
-      { id: 1, name: 'ADS', description: 'Curso técnico de ADS' },
-      { id: 2, name: 'Gestão', description: 'Administração' }
-    ],
-    page: 1,
-    pageSize: 8,
-    searchTerm: '',
-    showSearch: false,
-    columns: ['id', 'Name', 'Description', '']
-  }
-};
-
-export const Empty: Story = {
   args: {
     filteredCourses: [],
     page: 1,
