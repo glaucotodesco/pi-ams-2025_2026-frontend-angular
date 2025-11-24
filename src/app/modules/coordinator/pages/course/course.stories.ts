@@ -1,16 +1,15 @@
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { SubjetcPage } from './subjetc';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { Course } from './course';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
-import { SubjectService } from '../../../../services/subject/subject-service';
 import { HttpClientModule } from '@angular/common/http';
-
-const meta: Meta<SubjetcPage> = {
-  title: 'Coordenador/Page/Subjects',
-  component: SubjetcPage,
-   decorators: [
+import { CourseService } from '../../../../services/course/course-service';
+  
+const meta: Meta<Course> = {
+  title: 'Coordenador/Page/Courses',
+  component: Course,
+  decorators: [
     moduleMetadata({
       imports: [
         CommonModule,
@@ -19,22 +18,22 @@ const meta: Meta<SubjetcPage> = {
         HttpClientModule
       ],
       providers: [
-        SubjectService,
+        CourseService,
       ],
     })
   ],
-  tags: ['autodocs'],
+  tags: ['autodocs']
 };
 
 export default meta;
-type Story = StoryObj<SubjetcPage>;
+
+type Story = StoryObj<Course>;
 
 export const Default: Story = {
   args: {
-    filteredSubjects: [],
+    filteredCourses: [],
     page: 1,
     pageSize: 8,
     searchTerm: '',
   },
 };
-

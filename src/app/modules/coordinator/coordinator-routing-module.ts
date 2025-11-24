@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
-import { Cursos } from './pages/cursos/cursos';
+import { Course } from './pages/course/course';
 import { TeachersPage } from './pages/teacher/teacher-page';
-import { Curriculums } from './pages/subject/subjetcPage';
+import { SubjetcPage } from './pages/subject/subjetc';
+
 
 
 const routes: Routes = [
@@ -14,15 +15,15 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    component: Cursos
+    component: Course
   },
   {
     path: 'teachers',
     component: TeachersPage,
   },
   {
-    path: 'curriculum',
-    component: Curriculums
+    path: 'subjects',
+    component: SubjetcPage
   }
 ];
 
@@ -43,7 +44,7 @@ export class CoordinatorRoutingModule {
       },
       { label: 'Cursos', path: '/coordinator/courses' },
       { label: 'Professores', path: '/coordinator/teachers' },
-      { label: 'Componente Curricular', path: '/coordinator/curriculum' },
+      { label: 'Disciplinas', path: '/coordinator/subjects' },
     ]);
   }
 }

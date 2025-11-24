@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SubjectService } from '../../../../services/subject/subject-service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SubjectProps } from '../../../../interfaces/SubjectProps';
-import { S } from '@storybook/angular/dist/types-3b0b7107.js';
 
 @Component({
   selector: 'app-subjetc',
@@ -16,7 +15,7 @@ export class SubjetcPage implements OnInit {
     'Nome',
     'Sigla',
     'Aulas Práticas',
-    'Numero do Semestre',
+    'Número do Semestre',
     '',
   ];
 
@@ -134,7 +133,7 @@ export class SubjetcPage implements OnInit {
     '4º Semestre',
   ];
 
-  get filteredCurriculums(): SubjectProps[] {
+  get filteredSubjects(): SubjectProps[] {
     const filtered = this.subjects.filter((s) =>
       s.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
