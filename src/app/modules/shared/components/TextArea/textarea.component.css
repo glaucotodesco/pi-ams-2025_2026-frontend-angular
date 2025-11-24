@@ -1,0 +1,26 @@
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: Arial, sans-serif;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.custom-textarea {
+  resize: none;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.custom-textarea:disabled {
+  background-color: #f2f2f2;
+  color: #999;
+}

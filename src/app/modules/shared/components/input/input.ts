@@ -1,12 +1,20 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   standalone: false,
   templateUrl: './input.html',
-  styleUrls: ['./input.css']
+  styleUrls: ['./input.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true
+    }
+  ]
 })
-export class InputComponent {
+export class InputComponent implements ControlValueAccessor{
 
  @Input() type: string = 'text';
   @Input() label?: string = '';
@@ -19,6 +27,7 @@ export class InputComponent {
   @Input() readonly: boolean = false;
   @Input() autocomplete: string = 'off';
   @Input() class: string = ''; 
+  @Input() control: any;
 
   @Output() valueChange = new EventEmitter<string>();
   @Output() focusEvent = new EventEmitter<void>();
@@ -26,20 +35,41 @@ export class InputComponent {
 
   focused: boolean = false;
 
+  onChange = (_: any) => {};
+  onTouched = () => {};
+
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   onInput(event: Event) {
     const target = event.target as HTMLInputElement;
     this.value = target.value;
+    this.onChange(this.value);
     this.valueChange.emit(this.value);
-  }
-
-  onFocus() {
-    this.focused = true;
-    this.focusEvent.emit();
   }
 
   onBlur() {
     this.focused = false;
+    this.onTouched();
     this.blurEvent.emit();
   }
+  onFocus() {
+  this.focused = true;
+  this.focusEvent.emit();
+}
+
 }
 

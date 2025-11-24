@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CoordinatorRoutingModule } from './coordinator-routing-module';
 import { HomePage } from './pages/home/home';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CurriculumsPage } from './pages/curriculum/curriculums';
@@ -18,6 +18,7 @@ import { CoursesPage } from './pages/course/courses';
     FormsModule,
     SharedModule,
     NgbModule,
+    ReactiveFormsModule,
   ],
   exports: [HomePage, CoursesPage, TeachersPage, CurriculumsPage],
 })
