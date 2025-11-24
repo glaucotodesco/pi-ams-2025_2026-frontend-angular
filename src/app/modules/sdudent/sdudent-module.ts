@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentRoutingModule } from './student-routing-module';
-import { Home } from './pages/home/home';
+import { HomePage } from './pages/home/home';
 
 @NgModule({
   declarations: [
-    Home
+    HomePage
   ],
   imports: [CommonModule, StudentRoutingModule],
 })

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemoveMe } from './remove-me';
+import { SelectComponent } from './select';
 
-describe('RemoveMe', () => {
-  let component: RemoveMe;
-  let fixture: ComponentFixture<RemoveMe>;
+describe('SelectComponent', () => {
+  let component: SelectComponent;
+  let fixture: ComponentFixture<SelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RemoveMe]
+      declarations: [SelectComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RemoveMe);
+    fixture = TestBed.createComponent(SelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CoordinatorRoutingModule } from './coordinator-routing-module';
-import { Home } from './pages/home/home';
+import { HomePage } from './pages/home/home';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Curriculums } from './pages/curriculum/curriculums';
-import { TeachersPage } from './pages/teacher/teacher-page';
-import { Course } from './pages/course/course';
+import { CurriculumsPage } from './pages/curriculum/curriculums';
+import { TeachersPage } from './pages/teacher/teachers';
+import { CoursesPage } from './pages/course/courses';
 
 @NgModule({
-  declarations: [Home, Course, TeachersPage, Curriculums],
+  declarations: [HomePage, CoursesPage, TeachersPage, CurriculumsPage],
   imports: [
     CommonModule,
     CoordinatorRoutingModule,
@@ -20,6 +20,6 @@ import { Course } from './pages/course/course';
     NgbModule,
     ReactiveFormsModule,
   ],
-  exports: [Home, Course, TeachersPage, Curriculums],
+  exports: [HomePage, CoursesPage, TeachersPage, CurriculumsPage],
 })
 export class CoordinatorModule {}

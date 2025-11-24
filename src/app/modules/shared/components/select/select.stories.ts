@@ -1,7 +1,7 @@
 import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SelectComponent } from './select.component';
+import { SelectComponent } from './select';
 
 const meta: Meta<SelectComponent> = {
   title: 'Shared/Components/Select',

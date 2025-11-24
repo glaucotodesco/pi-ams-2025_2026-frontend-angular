@@ -3,8 +3,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-select',
   standalone: false,
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.css']
+  templateUrl: './select.html',
+  styleUrls: ['./select.css']
 })
 export class SelectComponent {
   @Input() itens: string[] = [''];
