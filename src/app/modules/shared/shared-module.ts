@@ -1,6 +1,5 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ModalComponent } from '../shared/components/modal/modal';
 import { Pagination } from './components/pagination/pagination';
 import { Radios } from './components/radios/radios';
@@ -34,9 +33,7 @@ import { SelectComponent } from './components/select/select.component';
     CommonModule,
     RouterModule,
     NgbModule,
-    FormsModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
     ModalComponent,
     Pagination,

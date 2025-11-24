@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgIf, NgFor } from '@angular/common';
 import { SharedModule } from '../../../shared/shared-module';
 
 interface Curso {
@@ -26,14 +25,11 @@ interface CursoAtribuido {
   styleUrls: ['./teacher-page.css'],
   imports: [
     FormsModule,  
-    SharedModule // <-- aqui o modal genérico é liberado
+    SharedModule
   ]
 })
 export class TeachersPage {
 
-  // =============================
-  // LISTA DA TABELA (DADOS REAIS)
-  // =============================
   teachers = [
     { id: 1, name: 'Ana Silva', type: 'Presencial', phone: '(11) 98765-4321', components: 'Matemática, Estatística, Cálculo', email: 'ana.silva@example.com' },
     { id: 2, name: 'Bruno Souza', type: 'EAD', phone: '(21) 99876-5432', components: 'Algoritmos, Estruturas de Dados', email: 'bruno.souza@example.com' },
@@ -46,7 +42,7 @@ export class TeachersPage {
     { id: 9, name: 'Igor Almeida', type: 'Presencial', phone: '(85) 98901-2345', components: 'Arquitetura de Computadores', email: 'igor.almeida@example.com' },
     { id: 10, name: 'Júlia Fernandes', type: 'Presencial', phone: '(92) 90012-3456', components: 'Design de Interação, UX', email: 'julia.fernandes@example.com' },
     { id: 11, name: 'Karen Ribeiro', type: 'EAD', phone: '(27) 91123-4567', components: 'Projeto Integrador, Metodologias Ágeis', email: 'karen.ribeiro@example.com' },
-    { id: 12, name: 'Lucas Oliveira', type: 'Presencial', phone: '(62) 92234-5678', components: 'DevOps, CI/CD, Docker', email: 'lucas.oliveira@example.com' },
+    { id: 12, name: 'Lucas Oliveira', type: 'Presencial', phone: '(62) 92234-5678', components: 'DevOps, CI/CD, Docker', email: 'lucas.oliveira@example.com' }
   ];
 
   columns = [
@@ -77,10 +73,6 @@ export class TeachersPage {
     this.showSearch = !this.showSearch;
     if (!this.showSearch) this.searchTerm = '';
   }
-
-  // =============================
-  // FORMULÁRIO DO MODAL
-  // =============================
 
   nome = '';
   matricula = '';
@@ -143,9 +135,6 @@ export class TeachersPage {
     this.atribuicoes = this.atribuicoes.filter(c => c.id !== cursoId);
   }
 
-  // =============================
-  // SALVAR PROFESSOR
-  // =============================
   onAddTeacher() {
     const componentesString = this.atribuicoes
       .flatMap(c => c.componentes.map(cc => cc.nome))
@@ -173,7 +162,6 @@ export class TeachersPage {
     this.email = '';
     this.telefone = '';
     this.tipoUsuario = '';
-
     this.cursoSelecionado = null;
     this.componenteSelecionado = null;
     this.atribuicoes = [];

@@ -21,8 +21,12 @@
         <td>{{ prof.email }}</td>
         <td>{{ prof.components }}</td>
         <td>
-          <button class="btn btn-sm btn-outline-secondary me-1"><i class="bi bi-pencil"></i></button>
-          <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+          <button class="btn btn-sm btn-outline-secondary me-1">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button class="btn btn-sm btn-outline-danger">
+            <i class="bi bi-trash"></i>
+          </button>
         </td>
       </tr>
     }
@@ -32,10 +36,10 @@
   <div class="d-flex justify-content-between align-items-center mt-4">
     <div class="flex-grow-1 d-flex justify-content-center">
       <app-pagination
-  [totalPages]="pageSize"
-  [currentPage]="page"
-  (pageChange)="page = $event">
-</app-pagination>
+        [totalPages]="pageSize"
+        [currentPage]="page"
+        (pageChange)="page = $event">
+      </app-pagination>
     </div>
 
     <app-button variant="primary" size="md" (buttonClick)="modal.open()">
@@ -46,7 +50,7 @@
 
 
 <!-- ============================================ -->
-<!-- MODAL GENÉRICO COM CAMPOS INJETADOS -->
+<!-- MODAL GENÉRICO COM FORMULÁRIO -->
 <!-- ============================================ -->
 <app-modal-generic
   #modal
@@ -66,136 +70,9 @@
       <label>Tipo de Usuário</label>
       <select class="input" [(ngModel)]="tipoUsuario">
         <option value="">Selecione...</option>
-        <option *ngFor="let t of tiposUsuario" [value]="t.nome">{{ t.nome }}</option>
-      </select>
-    </div>
-
-    <div>
-      <label>E-mail</label>
-      <input class="input" [(ngModel)]="email">
-    </div>
-
-    <div>
-      <label>Matrícula</label>
-      <input class="input" [(ngModel)]="matricula">
-    </div>
-
-    <div>
-      <label>Telefone</label>
-      <input class="input" [(ngModel)]="telefone">
-    </div>
-
-    <div>
-      <label>Curso</label>
-      <select class="input" [(ngModel)]="cursoSelecionado">
-        <option [ngValue]="null">Selecione...</option>
-        <option *ngFor="let c of cursos" [ngValue]="c">{{ c.nome }}</option>
-      </select>
-
-      <button class="add" (click)="addCurso()">+ Adicionar curso</button>
-    </div>
-
-    <div>
-      <label>Componente</label>
-      <select class="input" [(ngModel)]="componenteSelecionado">
-        <option [ngValue]="null">Selecione...</option>
-        <option *ngFor="let comp of componentes" [ngValue]="comp">{{ comp.nome }}</option>
-      </select>
-
-      <button class="add" (click)="addComponente()">+ Adicionar componente</button>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <h4>Curso(s) e Componente(s) Atribuídos</h4>
-
-  <div *ngFor="let curso of atribuicoes" class="curso-card">
-    <div class="curso-nome">{{ curso.nome }}</div>
-
-    <div class="chips">
-      <div *ngFor="let comp of curso.componentes" class="chip">
-        {{ comp.nome }}
-        <button (click)="removeComponente(curso.id, comp.id)">✕</button>
-      </div>
-
-      <button class="remove-curso" (click)="removeCurso(curso.id)">
-        Remover Curso
-      </button>
-    </div>
-  </div>
-
-</app-modal-generic>
-<app-page-layout title="Professores">
-
-  <!-- Barra superior -->
-  <div class="d-flex justify-content-end mb-3">
-    @if (showSearch) {
-      <input class="form-control w-25 me-2" placeholder="Pesquisar..." [(ngModel)]="searchTerm">
-    }
-    <button class="btn btn-outline-secondary" (click)="toggleSearch()">
-      <i class="bi bi-search"></i>
-    </button>
-  </div>
-
-  <!-- Tabela -->
-  <app-table [columns]="columns">
-    @for (prof of filteredTeachers; track $index) {
-      <tr>
-        <td>{{ prof.id }}</td>
-        <td>{{ prof.name }}</td>
-        <td>{{ prof.type }}</td>
-        <td>{{ prof.phone }}</td>
-        <td>{{ prof.email }}</td>
-        <td>{{ prof.components }}</td>
-        <td>
-          <button class="btn btn-sm btn-outline-secondary me-1"><i class="bi bi-pencil"></i></button>
-          <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-        </td>
-      </tr>
-    }
-  </app-table>
-
-  <!-- Rodapé -->
-  <div class="d-flex justify-content-between align-items-center mt-4">
-    <div class="flex-grow-1 d-flex justify-content-center">
-      <app-pagination
-  [totalPages]="pageSize"
-  [currentPage]="page"
-  (pageChange)="page = $event">
-   </app-pagination>
-
-    </div>
-
-    <app-button variant="primary" size="md" (buttonClick)="modal.open()">
-      Adicionar
-    </app-button>
-  </div>
-</app-page-layout>
-
-
-<!-- ============================================ -->
-<!-- MODAL GENÉRICO COM CAMPOS INJETADOS -->
-<!-- ============================================ -->
-<app-modal-generic
-  #modal
-  title="Cadastrar Professor"
-  actionText="Cadastrar"
-  actionText2="Cancelar"
-  [actionFunction]="onAddTeacher.bind(this)"
-  (cancelled)="onCancelAdd()">
-
-  <div class="form-grid">
-    <div>
-      <label>Nome Completo</label>
-      <input class="input" [(ngModel)]="nome">
-    </div>
-
-    <div>
-      <label>Tipo de Usuário</label>
-      <select class="input" [(ngModel)]="tipoUsuario">
-        <option value="">Selecione...</option>
-        <option *ngFor="let t of tiposUsuario" [value]="t.nome">{{ t.nome }}</option>
+        <option *ngFor="let t of tiposUsuario" [value]="t.nome">
+          {{ t.nome }}
+        </option>
       </select>
     </div>
 

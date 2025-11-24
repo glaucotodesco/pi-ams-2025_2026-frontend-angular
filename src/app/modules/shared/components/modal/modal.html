@@ -1,22 +1,18 @@
-<ng-template #content let-modal>
-
-  <div class="modal-header">
-    <h4 class="modal-title">{{ title }}</h4>
-    <button class="btn-close" (click)="onCancel()"></button>
+<ng-template #content>
+  <div class="modal-custom">
+    <div class="modal-header">
+      <h4 class="modal-title">{{ title }}</h4>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="modal-footer">
+      <app-button variant="outline" size="md" (buttonClick)="onCancel()">
+        {{ actionText2 }}
+      </app-button>
+      <app-button variant="primary" size="md" (buttonClick)="onAction()">
+        {{ actionText }}
+      </app-button>
+    </div>
   </div>
-
-  <div class="modal-body">
-    <ng-content></ng-content>
-  </div>
-
-  <div class="modal-footer">
-    <button class="btn btn-outline-secondary" (click)="onCancel()">
-      {{ actionText2 }}
-    </button>
-
-    <button class="btn btn-primary" (click)="onAction()">
-      {{ actionText }}
-    </button>
-  </div>
-
-</ng-template>
+</ng-template>  

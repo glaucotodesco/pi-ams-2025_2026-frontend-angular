@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-modal-generic',
   standalone: false,
@@ -19,11 +18,10 @@ export class ModalComponent {
 
   @ViewChild('content', { static: true }) content!: TemplateRef<any>;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(public modalService: NgbModal) { }
 
   open() {
-    this.modalService.open(this.content, { centered: true, size: 'xl' });
-  }
+this.modalService.open(this.content, { centered: true });  }
 
   onAction() {
     this.actionFunction();
