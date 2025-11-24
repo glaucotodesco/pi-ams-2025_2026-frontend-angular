@@ -11,8 +11,28 @@
     { "id": 1, "name": "Engenharia de Software", "description": "Aborda metodologias e práticas de desenvolvimento de software." },
     { "id": 2, "name": "Ciência da Computação", "description": "Foca em algoritmos, estruturas de dados e design de sistemas." }
   ],
-  "components": [
-    { "id": 1, "name": "Programação Orientada a Objetos", "courseId": 1 },
-    { "id": 2, "name": "Banco de Dados", "courseId": 2 }
-  ]
+  "subjects": [
+  {
+    "id": 1,
+    "name": "Cálculo I",
+    "acronym": "CALC1",
+    "practicalLessonsCount": 30,
+    "semesterNumber": 1
+  },
+  {
+    "id": 2,
+    "name": "Programação I",
+    "acronym": "PROG1",
+    "practicalLessonsCount": 45,
+    "semesterNumber": 1
+  },
+  {
+    "id": 3,
+    "name": "Laboratório de Física",
+    "acronym": "FISLAB",
+    "practicalLessonsCount": 20,
+    "semesterNumber": 2
+  }
+]
+
 }

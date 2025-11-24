@@ -6,12 +6,12 @@ import { HomePage } from './pages/home/home';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CurriculumsPage } from './pages/curriculum/curriculums';
 import { TeachersPage } from './pages/teacher/teachers';
+import { SubjetcPage } from './pages/subject/subjetc';
 import { CoursesPage } from './pages/course/courses';
 
 @NgModule({
-  declarations: [HomePage, CoursesPage, TeachersPage, CurriculumsPage],
+  declarations: [HomePage, CoursesPage, TeachersPage, SubjetcPage],
   imports: [
     CommonModule,
     CoordinatorRoutingModule,
@@ -20,6 +20,6 @@ import { CoursesPage } from './pages/course/courses';
     NgbModule,
     ReactiveFormsModule,
   ],
-  exports: [HomePage, CoursesPage, TeachersPage, CurriculumsPage],
+  exports: [HomePage, CoursesPage, TeachersPage, SubjetcPage],
 })
 export class CoordinatorModule {}

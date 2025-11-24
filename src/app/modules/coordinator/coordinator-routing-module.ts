@@ -4,7 +4,7 @@ import { HomePage } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
 import { CoursesPage } from './pages/course/courses';
 import { TeachersPage } from './pages/teacher/teachers';
-import { CurriculumsPage } from './pages/curriculum/curriculums';
+import { SubjetcPage } from './pages/subject/subjetc';
 
 
 const routes: Routes = [
@@ -21,8 +21,8 @@ const routes: Routes = [
     component: TeachersPage,
   },
   {
-    path: 'curriculum',
-    component: CurriculumsPage
+    path: 'subjects',
+    component: SubjetcPage
   }
 ];
 
@@ -43,7 +43,7 @@ export class CoordinatorRoutingModule {
       },
       { label: 'Cursos', path: '/coordinator/courses' },
       { label: 'Professores', path: '/coordinator/teachers' },
-      { label: 'Componente Curricular', path: '/coordinator/curriculum' },
+      { label: 'Disciplinas', path: '/coordinator/subjects' },
     ]);
   }
 }
