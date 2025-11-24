@@ -1,0 +1,183 @@
+<app-page-layout title="Componente Curricular">
+  <div class="d-flex justify-content-end align-items-center mb-3">
+    @if (showSearch) {
+    <div class="input-group me-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Pesquisar..."
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+    }
+    <div class="d-flex align-items-center mb-3">
+      <app-select [itens]="itensSemester"></app-select>
+      <app-select [itens]="itensCourse"></app-select>
+    </div>
+    <button
+      class="btn btn-outline-secondary"
+      (click)="toggleSearch()"
+      title="Pesquisar"
+    >
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <app-table [columns]="columns">
+    @for (curriculum of filteredCurriculums; track $index) {
+    <tr>
+      <td>{{ curriculum.id }}</td>
+      <td>{{ curriculum.name }}</td>
+      <td>{{ curriculum.acronym }}</td>
+      <td>{{ curriculum.practicalLessonsCount }}</td>
+      <td>{{ curriculum.semesterNumber }}</td>
+      <td>
+        <div>
+          <button
+            class="btn btn-outline-secondary btn-sm m-1"
+            title="Editar"
+            (click)="openEditModal(curriculum)"
+          >
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button
+            class="btn btn-outline-danger btn-sm m-1"
+            title="Deletar"
+            (click)="onDeleteCurriculum(curriculum.id)"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+    }
+  </app-table>
+
+  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+    <div class="flex-grow-1 d-flex justify-content-center">
+      <app-pagination
+        [totalPages]="pageSize"
+        [currentPage]="page"
+        (pageChange)="refreshCurriculums()"
+      ></app-pagination>
+    </div>
+
+    <app-button variant="primary" size="md" (buttonClick)="openAddModal()"
+      >Adicionar</app-button
+    >
+  </div>
+
+  <app-modal-generic
+    #addModal
+    title="modalTitle"
+    actionText="actionText"
+    actionText2="Cancelar"
+  >
+    <div class="row">
+      <div class="col-md-6">
+        <label for="curriculumName" class="form-label"
+          >Nome do Componente</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="curriculumName"
+          placeholder="Digite o nome do componente"
+
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="acronym" class="form-label">Sigla</label>
+        <input
+          type="text"
+          class="form-control"
+          id="acronym"
+          placeholder="Digite a sigla"
+        />
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="teacher" class="form-label">Professor</label>
+        <select
+          class="form-select"
+          id="teacher"
+        >
+          <option value="">Selecione o professor</option>
+          @for (teacher of teachers; track teacher) {
+          <option [value]="teacher">{{ teacher }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="technologicalArea" class="form-label"
+          >Área Tecnológica</label
+        >
+        <select
+          class="form-select"
+          id="technologicalArea"
+        >
+          <option value="">Selecione a área tecnológica</option>
+          @for (area of technologicalAreas; track area) {
+          <option [value]="area">{{ area }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="theoreticalClasses" class="form-label"
+          >Aulas Teóricas</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          id="theoreticalClasses"
+          placeholder="Número de aulas teóricas"
+          (ngModelChange)="calculateTotalWorkload()"
+          min="0"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="practicalClasses" class="form-label">Aulas Práticas</label>
+        <input
+          type="number"
+          class="form-control"
+          id="practicalClasses"
+          placeholder="Número de aulas práticas"
+          (ngModelChange)="calculateTotalWorkload()"
+          min="0"
+        />
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="modality" class="form-label">Modalidade</label>
+        <select
+          class="form-select"
+          id="modality"
+        >
+          <option value="">Selecione a modalidade</option>
+          @for (modality of modalities; track modality) {
+          <option [value]="modality">{{ modality }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="totalWorkload" class="form-label"
+          >Carga Horária Total</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          id="totalWorkload"
+          placeholder="Calculado automaticamente"
+          readonly
+        />
+      </div>
+    </div>
+  </app-modal-generic>
+</app-page-layout>

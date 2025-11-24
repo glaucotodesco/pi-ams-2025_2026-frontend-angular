@@ -2,32 +2,28 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
+import { SubjetcPage } from './subjetcPage';
 
-import { Curriculums } from './curriculums';
 
-describe('Curriculums', () => {
-  let component: Curriculums;
-  let fixture: ComponentFixture<Curriculums>;
+
+describe('SubjetcPage', () => {
+  let component: SubjetcPage;
+  let fixture: ComponentFixture<SubjetcPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Curriculums],
+      declarations: [SubjetcPage],
       imports: [FormsModule, NgbModule, SharedModule]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Curriculums);
+    fixture = TestBed.createComponent(SubjetcPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should initialize with default curriculums', () => {
-    expect(component.curriculums.length).toBe(3);
-    expect(component.filteredCurriculums.length).toBe(3);
   });
 
   it('should toggle search visibility', () => {

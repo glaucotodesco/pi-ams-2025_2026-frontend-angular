@@ -4,7 +4,7 @@ import { Home } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
 import { Cursos } from './pages/cursos/cursos';
 import { TeachersPage } from './pages/teacher/teacher-page';
-import { Curriculums } from './pages/curriculum/curriculums';
+import { Curriculums } from './pages/subject/subjetcPage';
 
 
 const routes: Routes = [
