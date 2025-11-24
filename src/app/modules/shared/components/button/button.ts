@@ -3,8 +3,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-button',
   standalone: false,
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+  templateUrl: './button.html',
+  styleUrls: ['./button.css']
 })
 export class ButtonComponent {
   @Input() variant: 'primary' | 'secondary' | 'outline' = 'primary';

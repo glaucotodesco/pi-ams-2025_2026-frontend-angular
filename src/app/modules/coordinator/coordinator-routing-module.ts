@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Home } from './pages/home/home';
+import { HomePage } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
-import { Course } from './pages/course/course';
-import { TeachersPage } from './pages/teacher/teacher-page';
+import { CoursesPage } from './pages/course/courses';
+import { TeachersPage } from './pages/teacher/teachers';
 import { SubjetcPage } from './pages/subject/subjetc';
-
 
 
 const routes: Routes = [
   {
     path: '',
-    component: Home, // rota /admin/home renderiza o componente Home
+    component: HomePage, // rota /admin/home renderiza o componente Home
   },
   {
     path: 'courses',
-    component: Course
+    component: CoursesPage
   },
   {
     path: 'teachers',
