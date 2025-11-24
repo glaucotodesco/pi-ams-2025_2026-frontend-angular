@@ -1,10 +1,8 @@
-<!--Inicio: Container e titulo-->
 <app-page-layout title="Cursos">
-  <!-- Linha superior: botão de pesquisa -->
   <div class="d-flex justify-content-end align-items-center mb-3">
     @if (showSearch) {
     <div class="input-group me-2">
-      <input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" />
+      <input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTerm" name="searchTermInput" />
     </div>
     }
     <button class="btn btn-outline-secondary" (click)="toggleSearch()" title="Pesquisar">
@@ -34,7 +32,6 @@
     }
   </app-table>
 
-  <!-- Pagination + botão -->
   <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
     <div class="flex-grow-1 d-flex justify-content-center">
       <app-pagination [totalPages]="pageSize" [currentPage]="page" (pageChange)="refreshCourses()"></app-pagination>
@@ -46,4 +43,100 @@
   </div>
 </app-page-layout>
 
-<app-modal-generic #modal title="Cadastro"> </app-modal-generic>
+<app-modal-generic
+  #modal
+  title="Cadastro de Curso"
+  actionText="Cadastrar"
+  actionText2="Cancelar"
+  [actionFunction]="onSaveCourse.bind(this)"
+  (cancelled)="onCancelAdd()">
+
+  <div class="container-fluid px-4 pt-3">
+    <div style="color: #6c757d; font-size: 0.9rem; margin-bottom: 20px;">Modal: Cadastro de Curso</div>
+    <h2 class="mb-4" style="font-weight: 700; color: #343a40;">Cadastrar Curso</h2>
+  </div>
+
+  <div class="container-fluid px-4">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="courseName" class="form-label">Nome do Curso</label>
+        <app-input
+          id="courseName" 
+          placeholder="Processos Gerenciais"
+          type="text"
+          [value]="newCourse.name || ''"
+          (valueChange)="newCourse.name = $event">
+        </app-input>
+      </div>
+      <div class="col-md-6">
+        <label for="courseAcronym" class="form-label">Sigla do Curso</label>
+        <app-input
+          id="courseAcronym" 
+          placeholder="PG"
+          type="text"
+          [value]="newCourse.acronym || ''"
+          (valueChange)="newCourse.acronym = $event">
+        </app-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="technologicalAxis" class="form-label">Eixo Tecnológico</label>
+        <app-select 
+          [itens]="technologicalAxes" 
+          [selectedItem]="newCourse.technologicalAxis || ''" 
+          (selectedItemChange)="newCourse.technologicalAxis = $event">
+        </app-select>
+      </div>
+      <div class="col-md-6">
+        <label for="offeringType" class="form-label">Forma de Oferecimento</label>
+        <app-select 
+          [itens]="offeringTypes" 
+          [selectedItem]="newCourse.offeringType || ''"
+          (selectedItemChange)="newCourse.offeringType = $event">
+        </app-select>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <label for="durationHours" class="form-label">Duração do Curso (em Horas)</label>
+        <app-input
+          id="durationHours" 
+          placeholder="180"
+          type="number"
+          [value]="newCourse.durationHours?.toString() || ''"
+          (valueChange)="newCourse.durationHours = +$event">
+        </app-input>
+      </div>
+      <div class="col-md-6">
+        <label for="modality" class="form-label">Modalidade</label>
+        <app-select 
+          [itens]="modalities" 
+          [selectedItem]="newCourse.modality || ''"
+          (selectedItemChange)="newCourse.modality = $event">
+        </app-select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="semesters" class="form-label">Quantidade de semestres ou anos</label>
+        <app-select 
+          [itens]="semestersOptions" 
+          [selectedItem]="newCourse.semesters || ''"
+          (selectedItemChange)="newCourse.semesters = $event">
+        </app-select>
+      </div>
+      <div class="col-md-6">
+        <label for="coordinator" class="form-label">Coordenador</label>
+        <app-select 
+          [itens]="coordinators" 
+          [selectedItem]="newCourse.coordinator || ''"
+          (selectedItemChange)="newCourse.coordinator = $event">
+        </app-select>
+      </div>
+    </div>
+  </div>
+</app-modal-generic>

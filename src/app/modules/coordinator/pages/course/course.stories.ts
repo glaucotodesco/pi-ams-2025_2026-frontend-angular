@@ -1,4 +1,4 @@
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Course } from './course';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CourseService } from '../../../../services/course/course-service';
   
 const meta: Meta<Course> = {
-  title: 'Coordenador/Page/Courses',
+  title: 'Coordenador/Page/Course (Antigo)',
   component: Course,
   decorators: [
     moduleMetadata({
@@ -31,9 +31,5 @@ type Story = StoryObj<Course>;
 
 export const Default: Story = {
   args: {
-    filteredCourses: [],
-    page: 1,
-    pageSize: 8,
-    searchTerm: '',
   },
 };
