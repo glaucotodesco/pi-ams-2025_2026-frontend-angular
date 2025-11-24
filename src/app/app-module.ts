@@ -15,7 +15,7 @@ import { provideHttpClient } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
