@@ -1,41 +1,37 @@
-<!--Inicio: Container e titulo-->
 <app-page-layout title="Professores">
-  <!-- Linha superior: botão de pesquisa -->
-  <div class="d-flex justify-content-end align-items-center mb-3">
+  <div class="d-flex justify-content-end mb-3">
     @if (showSearch) {
-    <div class="input-group me-2">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Pesquisar..."
-        [(ngModel)]="searchTerm"
-      />
-    </div>
+    <input
+      class="form-control w-25 me-2"
+      placeholder="Pesquisar..."
+      [(ngModel)]="searchTerm"
+    />
     }
-    <button
-      class="btn btn-outline-secondary"
-      (click)="toggleSearch()"
-      title="Pesquisar"
-    >
+    <button class="btn btn-outline-secondary" (click)="toggleSearch()">
       <i class="bi bi-search"></i>
     </button>
   </div>
 
   <app-table [columns]="columns">
-    @for (curso of filteredTeachers; track $index) {
+    @for (teacher of filteredTeachers; track $index) {
     <tr>
-      <td>{{ curso.id }}</td>
-      <td>{{ curso.name }}</td>
-      <td>{{ curso.type }}</td>
-      <td>{{ curso.phone }}</td>
-      <td>{{ curso.email }}</td>
-      <td>{{ curso.components }}</td>
+      <td>{{ teacher.id }}</td>
+      <td>{{ teacher.name }}</td>
+      <td>{{ teacher.email }}</td>
       <td>
         <div>
-          <button class="btn btn-outline-secondary btn-sm m-1" title="Editar">
+          <button
+            class="btn btn-outline-secondary btn-sm m-1"
+            title="Editar"
+            (click)="[modal.open(), edit(teacher)]"
+          >
             <i class="bi bi-pencil"></i>
           </button>
-          <button class="btn btn-outline-danger btn-sm m-1" title="Deletar">
+          <button
+            class="btn btn-outline-danger btn-sm m-1"
+            title="Deletar"
+            (click)="delete(teacher)"
+          >
             <i class="bi bi-trash"></i>
           </button>
         </div>
@@ -44,20 +40,54 @@
     }
   </app-table>
 
-  <!-- Pagination + botão -->
-  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+  <div class="d-flex justify-content-between align-items-center mt-4">
     <div class="flex-grow-1 d-flex justify-content-center">
       <app-pagination
         [totalPages]="pageSize"
         [currentPage]="page"
-        (pageChange)="refreshTeachers()"
-      ></app-pagination>
+        (pageChange)="page = $event"
+      >
+      </app-pagination>
     </div>
 
-    <app-button variant="primary" size="md" (buttonClick)="modal.open()"
+    <app-button
+      variant="primary"
+      size="md"
+      (buttonClick)="[modal.open(), (isEditing = false)]"
       >Adicionar</app-button
     >
   </div>
 </app-page-layout>
 
-<app-modal-generic #modal title="Cadastro"> </app-modal-generic>
+<!-- ============================================ -->
+<!-- MODAL GENÉRICO COM FORMULÁRIO -->
+<!-- ============================================ -->
+<app-modal-generic
+  #modal
+  title="Cadastrar Professor"
+  actionText="Cadastrar"
+  actionText2="Cancelar"
+  (confirmed)="save()"
+  [canCloseOnAction]="formGroupTeacher.valid"
+  (cancelled)="reset()"
+>
+  <form [formGroup]="formGroupTeacher">
+    <app-input
+      type="text"
+      label="Nome"
+      placeholder="Digite o nome"
+      formControlName="name"
+      id="name"
+      [control]="formGroupTeacher.get('name')"
+    />
+
+    <app-input
+      type="email"
+      label="Email"
+      placeholder="Digite o email"
+      formControlName="email"
+      id="email"
+      [control]="formGroupTeacher.get('email')"
+    />
+  </form>
+</app-modal-generic>

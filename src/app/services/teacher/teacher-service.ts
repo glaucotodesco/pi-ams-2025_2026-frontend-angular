@@ -1,45 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { TeacherProps } from '../../interfaces/TeacherProps';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class TeacherService {
   private apiUrl = 'http://localhost:8080/teachers';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<TeacherProps[]> {
-    return this.http.get<TeacherProps[]>(this.apiUrl)
-      .pipe(catchError(this.handleError));
+    return this.http.get<TeacherProps[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<TeacherProps> {
-    return this.http.get<TeacherProps>(`${this.apiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+  getById(teacher: TeacherProps): Observable<TeacherProps> {
+    return this.http.get<TeacherProps>(`${this.apiUrl}/${teacher.id}`);
   }
 
   create(teacher: TeacherProps): Observable<TeacherProps> {
-    return this.http.post<TeacherProps>(this.apiUrl, teacher)
-      .pipe(catchError(this.handleError));
+    return this.http.post<TeacherProps>(this.apiUrl, teacher);
   }
 
-  update(id: number, teacher: TeacherProps): Observable<TeacherProps> {
-    return this.http.put<TeacherProps>(`${this.apiUrl}/${id}`, teacher)
-      .pipe(catchError(this.handleError));
+  update(teacher: TeacherProps): Observable<TeacherProps> {
+    return this.http.put<TeacherProps>(`${this.apiUrl}/${teacher.id}`, teacher);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.error('Ocorreu um erro:', error.message);
-    return throwError(() => new Error('Algo deu errado. Por favor, tente novamente.'));
+  delete(teacher: TeacherProps): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${teacher.id}`);
   }
 }
