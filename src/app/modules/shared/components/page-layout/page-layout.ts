@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class PageLayout {
   @Input() title: string = '';
-  @Input() paddingClass: string = 'p-4';
-  @Input() marginClass: string = 'my-3 mx-auto';
+  @Input() paddingClass: string = '';
+  @Input() marginClass: string = '';
   @Input() fluid: boolean = false;
 
   getThickLineWidth(title: HTMLElement): number {
@@ -17,5 +17,4 @@ export class PageLayout {
 
     return (width / containerWidth) * 100 + 1;
   }
-
 }

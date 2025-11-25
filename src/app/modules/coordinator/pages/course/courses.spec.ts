@@ -1,18 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CoursesPage } from './courses';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SharedModule } from '../../../shared/shared-module';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { Cursos } from './courses';
-
-describe('Cursos', () => {
-  let component: Cursos;
-  let fixture: ComponentFixture<Cursos>;
+describe('CoursesPage', () => {
+  let component: CoursesPage;
+  let fixture: ComponentFixture<CoursesPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Cursos]
+      declarations: [CoursesPage],
+      imports: [
+        HttpClientTestingModule,
+        SharedModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Cursos);
+    fixture = TestBed.createComponent(CoursesPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

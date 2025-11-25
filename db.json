@@ -1,38 +1,65 @@
 {
   "classrooms": [
-    { "id": 1, "name": "Sala 1", "capacity": 40, "type": "Padrão", "location": "Prédio" },
-    { "id": 2, "name": "Laboratório 1", "capacity": 25, "type": "Laboratório", "location": "Prédio" }
+    {
+      "id": "1",
+      "name": "Sala 1",
+      "capacity": 40,
+      "type": "Padrão",
+      "location": "Prédio"
+    },
+    {
+      "id": "2",
+      "name": "Laboratório 1",
+      "capacity": 25,
+      "type": "Laboratório",
+      "location": "Prédio"
+    }
   ],
   "teachers": [
-    { "id": 1, "name": "João Silva", "email": "joao.silva@email.com" },
-    { "id": 2, "name": "Maria Souza", "email": "maria.souza@email.com" }
+    {
+      "id": "1",
+      "name": "João Silva",
+      "email": "joao.silva@email.com"
+    },
+    {
+      "id": "2",
+      "name": "Maria Souza",
+      "email": "maria.souza@email.com"
+    }
   ],
   "courses": [
-    { "id": 1, "name": "Engenharia de Software", "description": "Aborda metodologias e práticas de desenvolvimento de software." },
-    { "id": 2, "name": "Ciência da Computação", "description": "Foca em algoritmos, estruturas de dados e design de sistemas." }
+    {
+      "id": "1",
+      "name": "Engenharia de Software",
+      "description": "Aborda metodologias e práticas de desenvolvimento de software."
+    },
+    {
+      "id": "2",
+      "name": "Ciência da Computação",
+      "description": "Foca em algoritmos, estruturas de dados e design de sistemas."
+    }
   ],
   "subjects": [
-  {
-    "id": 1,
-    "name": "Cálculo I",
-    "acronym": "CALC1",
-    "practicalLessonsCount": 30,
-    "semesterNumber": 1
-  },
-  {
-    "id": 2,
-    "name": "Programação I",
-    "acronym": "PROG1",
-    "practicalLessonsCount": 45,
-    "semesterNumber": 1
-  },
-  {
-    "id": 3,
-    "name": "Laboratório de Física",
-    "acronym": "FISLAB",
-    "practicalLessonsCount": 20,
-    "semesterNumber": 2
-  }
-]
-
+    {
+      "id": "1",
+      "name": "Cálculo I",
+      "acronym": "CALC1",
+      "practicalLessonsCount": 30,
+      "semesterNumber": 1
+    },
+    {
+      "id": "2",
+      "name": "Programação I",
+      "acronym": "PROG1",
+      "practicalLessonsCount": 45,
+      "semesterNumber": 1
+    },
+    {
+      "id": "3",
+      "name": "Laboratório de Física",
+      "acronym": "FISLAB",
+      "practicalLessonsCount": 20,
+      "semesterNumber": 2
+    }
+  ]
 }

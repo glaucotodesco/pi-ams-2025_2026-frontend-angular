@@ -1,4 +1,4 @@
-<div [ngClass]="[fluid ? 'container-fluid' : 'container', paddingClass, marginClass, 'page-layout']">
+<div [ngClass]="['page-layout']">
     <header *ngIf="title" class="d-flex flex-column gap-2 align-items-start">
         <h2 #titleRef class="m-0" style="color: #133b45;">{{ title }}</h2>
         <svg class="w-100" xmlns="http://www.w3.org/2000/svg" [attr.viewBox]="'0 0 100 4'"
