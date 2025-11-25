@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SalaModal } from './pages/salas/sala-modal/sala-modal';
 import { CoordinatorRoutingModule } from './coordinator-routing-module';
-import { Cursos } from './pages/cursos/cursos';
-import { FormsModule } from '@angular/forms';
+import { HomePage } from './pages/home/home';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Curriculums } from './pages/curriculum/curriculums';
-import { TeachersPage } from './pages/teacher/teacher-page';
-import { Home } from './pages/home/home';
-
+import { TeachersPage } from './pages/teacher/teachers';
+import { SubjetcPage } from './pages/subject/subjetc';
+import { CoursesPage } from './pages/course/courses';
+import { ClassroomPage } from './pages/classroom/classroom';
 
 @NgModule({
-  declarations: [
-    Home, Cursos, TeachersPage,Curriculums,SalaModal
+  declarations: [HomePage, CoursesPage, TeachersPage, SubjetcPage, ClassroomPage],
+  imports: [
+    CommonModule,
+    CoordinatorRoutingModule,
+    FormsModule,
+    SharedModule,
+    NgbModule,
+    ReactiveFormsModule,
   ],
-  imports: [CommonModule, CoordinatorRoutingModule, FormsModule, SharedModule, NgbModule],
-  exports: [Home, Cursos,TeachersPage, Curriculums, SalaModal],
+  exports: [HomePage, CoursesPage, TeachersPage, SubjetcPage, ClassroomPage],
 })
 export class CoordinatorModule {}

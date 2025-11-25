@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-table',
-    templateUrl: './table.component.html',
-    styleUrls: ['./table.component.css'],
+    templateUrl: './table.html',
+    styleUrls: ['./table.css'],
     standalone: false
 })
 export class Table {

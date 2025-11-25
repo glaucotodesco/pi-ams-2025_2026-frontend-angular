@@ -13,6 +13,7 @@ export class ModalComponent {
   @Input() actionText: string = 'Confirmar';
   @Input() actionText2: string = 'Cancelar';
   @Input() actionFunction: () => void = () => { };
+  @Input() canCloseOnAction: boolean = false;
 
   @Output() confirmed = new EventEmitter<void>();
   @Output() cancelled = new EventEmitter<void>();
@@ -28,7 +29,7 @@ export class ModalComponent {
   onAction() {
     this.actionFunction();
     this.confirmed.emit();
-    this.modalService.dismissAll();
+    if(this.canCloseOnAction) this.modalService.dismissAll();
   }
 
   onCancel() {

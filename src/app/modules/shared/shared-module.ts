@@ -8,10 +8,11 @@ import { NavbarComponent } from './components/navbar/navbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
+import { Login } from './pages/login/login';
 import { Table } from './components/table/table';
+import { CheckboxComponent } from './components/checkbox/checkbox';
 import { PageLayout } from './components/page-layout/page-layout';
-import { SelectComponent } from './components/select/select.component';
-
+import { SelectComponent } from './components/select/select';
 
 @NgModule({
   declarations: [
@@ -21,24 +22,29 @@ import { SelectComponent } from './components/select/select.component';
     ButtonComponent,
     NavbarComponent,
     InputComponent,
+    Login,
     Table,
     PageLayout,
     SelectComponent,
+    CheckboxComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
   ],
   exports: [
-    ModalComponent,
+ ModalComponent,
     Pagination,
     Radios,
     ButtonComponent,
     NavbarComponent,
+    InputComponent,
+    Login,
     Table,
     PageLayout,
-    SelectComponent
+    SelectComponent,
+    CheckboxComponent,
   ]
 })
 export class SharedModule { }

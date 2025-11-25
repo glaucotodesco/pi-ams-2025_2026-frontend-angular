@@ -1,29 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Home } from './pages/home/home';
+import { HomePage } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
-import { Cursos } from './pages/cursos/cursos';
-import { TeachersPage } from './pages/teacher/teacher-page';
-import { Curriculums } from './pages/curriculum/curriculums';
-
+import { CoursesPage } from './pages/course/courses';
+import { TeachersPage } from './pages/teacher/teachers';
+import { SubjetcPage } from './pages/subject/subjetc';
+import { ClassroomPage } from './pages/classroom/classroom';
 
 const routes: Routes = [
   {
     path: '',
-    component: Home, // rota /admin/home renderiza o componente Home
+    component: HomePage, // rota /admin/home renderiza o componente Home
   },
   {
     path: 'courses',
-    component: Cursos
+    component: CoursesPage,
   },
   {
     path: 'teachers',
     component: TeachersPage,
   },
   {
-    path: 'curriculum',
-    component: Curriculums
-  }
+    path: 'subjects',
+    component: SubjetcPage,
+  },
+  {
+    path: 'classrooms',
+    component: ClassroomPage,
+  },
 ];
 
 @NgModule({
@@ -34,16 +38,11 @@ export class CoordinatorRoutingModule {
   constructor(private menuService: MenuService) {
     this.menuService.addMenu([
       { label: 'Início', path: '/coordinator/' },
-      {
-        label: 'Usuários',
-        children: [
-          { label: 'Lista', path: '/coordinator/users/list' },
-          { label: 'Criar', path: '/coordinator/users/create' },
-        ],
-      },
+      { label: 'Salas', path: '/coordinator/classrooms' },
       { label: 'Cursos', path: '/coordinator/courses' },
       { label: 'Professores', path: '/coordinator/teachers' },
-      { label: 'Componente Curricular', path: '/coordinator/curriculum' },
+      { label: 'Disciplinas', path: '/coordinator/subjects' },
     ]);
   }
 }
+0;

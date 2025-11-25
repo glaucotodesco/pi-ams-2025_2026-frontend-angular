@@ -1,0 +1,90 @@
+<app-page-layout title="Salas">
+  <div class="d-flex justify-content-end align-items-center mb-3">
+    @if (showSearch) {
+    <div class="input-group me-2">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+    }
+    <button class="btn btn-outline-secondary" (click)="toggleSearch()">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <app-table [columns]="columns">
+    @for (classroom of filteredClassrooms; track $index) {
+    <tr>
+      <td>{{ classroom.id }}</td>
+      <td>{{ classroom.name }}</td>
+      <td>{{ classroom.location }}</td>
+      <td>{{ classroom.physicalResources }}</td>
+      <td>{{ classroom.softwareResources }}</td>
+      <td>{{ classroom.capacity }}</td>
+      <td>
+        <button
+          class="btn btn-outline-secondary btn-sm m-1"
+          (click)="[modal.open(), edit(classroom)]"
+        >
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button
+          class="btn btn-outline-danger btn-sm m-1"
+          (click)="delete(classroom)"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+    }
+  </app-table>
+
+  <!-- Paginação + Botão adicionar -->
+  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+    <div class="flex-grow-1 d-flex justify-content-center">
+      <app-pagination
+        [totalPages]="pageSize"
+        [currentPage]="page"
+        (pageChange)="collectionSize = classrooms.length"
+      ></app-pagination>
+    </div>
+
+    <app-button
+      variant="primary"
+      size="md"
+      (buttonClick)="[modal.open(), (isEditing = false)]"
+    >
+      Adicionar
+    </app-button>
+  </div>
+
+  <app-modal-generic
+    #modal
+    title="Adicionar Sala"
+    actionText="Salvar"
+    actionText2="Cancelar"
+    (confirmed)="save()"
+    [canCloseOnAction]="formGroupClassroom.valid"
+    (cancelled)="reset()"
+  >
+    <form [formGroup]="formGroupClassroom">
+      <app-input
+        type="text"
+        label="Nome"
+        placeholder="Digite o nome"
+        formControlName="name"
+        [control]="formGroupClassroom.get('name')"
+      />
+      <app-input
+        type="text"
+        label="Descrição"
+        placeholder="Digite a descrição"
+        formControlName="description"
+        [control]="formGroupClassroom.get('description')"
+      />
+    </form>
+  </app-modal-generic>
+</app-page-layout>

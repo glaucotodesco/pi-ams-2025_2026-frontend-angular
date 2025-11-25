@@ -5,20 +5,22 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./modules/shared/shared-module";
+import { provideHttpClient } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    App,   
+    App
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    SharedModule
-],
+    SharedModule,
+  ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient()
   ],
   bootstrap: [App]
 })

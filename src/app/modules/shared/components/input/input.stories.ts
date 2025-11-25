@@ -17,12 +17,6 @@ const meta: Meta<InputComponent> = {
     placeholder: { control: 'text' },
     value: { control: 'text' },
     disabled: { control: 'boolean' },
-    required: { control: 'boolean' },
-    readonly: { control: 'boolean' },
-    class: { control: 'text' },
-    valueChange: { action: 'valueChange' },
-    focusEvent: { action: 'focusEvent' },
-    blurEvent: { action: 'blurEvent' },
   },
 };
 
@@ -57,9 +51,6 @@ export const Default: Story = {
     placeholder: 'Digite seu nome',
     value: '',
     disabled: false,
-    required: false,
-    readonly: false,
-    class: '',
   },
   render: storyTemplate,
 };
@@ -71,9 +62,6 @@ export const ComValor: Story = {
     placeholder: 'Digite seu nome',
     value: 'Exemplo',
     disabled: false,
-    required: false,
-    readonly: false,
-    class: '',
   },
   render: storyTemplate,
 };
@@ -85,9 +73,6 @@ export const Desabilitado: Story = {
     placeholder: 'Digite seu nome',
     value: 'Não editável',
     disabled: true,
-    required: false,
-    readonly: false,
-    class: '',
   },
   render: storyTemplate,
 };
@@ -99,9 +84,6 @@ export const ApenasLeitura: Story = {
     placeholder: 'Digite seu nome',
     value: 'Somente leitura',
     disabled: false,
-    required: false,
-    readonly: true,
-    class: '',
   },
   render: storyTemplate,
 };
