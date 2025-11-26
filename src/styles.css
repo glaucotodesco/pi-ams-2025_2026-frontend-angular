@@ -44,10 +44,12 @@
   --bs-secondary-color: var(--color-gray-600);
   --bs-border-color: var(--color-gray-400);
   --bs-heading-color: #004854;
+
+  --bs-border-color: #ccc;
 }
 
 body {
-  font-family: var(--font-base);
+  /* font-family: var(--font-base); */
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
   line-height: 1.5;
@@ -135,3 +137,4 @@ a:hover {
   --link-color: #FF4C4C;
   --link-hover: #FF7878;
 }
+
