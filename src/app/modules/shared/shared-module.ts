@@ -14,6 +14,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox';
 import { PageLayout } from './components/page-layout/page-layout';
 import { SelectComponent } from './components/select/select';
 import { CardComponent } from './components/card/card';
+import { SectionTitleComponent } from './components/section-title/section-title';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CardComponent } from './components/card/card';
     SelectComponent,
     CheckboxComponent,
     CardComponent,
+    SectionTitleComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { CardComponent } from './components/card/card';
     PageLayout,
     SelectComponent,
     CheckboxComponent,
-    CardComponent
+    CardComponent,
+    SectionTitleComponent
   ]
 })
 export class SharedModule { }
