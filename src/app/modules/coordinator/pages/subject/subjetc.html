@@ -1,74 +1,64 @@
-<app-page-layout title="Disciplinas">
-  <div class="d-flex justify-content-end align-items-center mb-3">
-    @if (showSearch) {
-    <div class="input-group me-2">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Pesquisar..."
-        [(ngModel)]="searchTerm"
-      />
+<section class="pt-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <SectionTitle>Disciplinas</SectionTitle>
+
+    <div class="d-flex justify-content-end align-items-center gap-2">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Digite o nome do curso..."
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+      <div class="d-flex align-items-center">
+        <app-select
+          selectedItem="Semestre"
+          [itens]="itensSemester"
+        ></app-select>
+        <app-select selectedItem="Curso" [itens]="itensCourse"></app-select>
+      </div>
+      <app-button
+        variant="primary"
+        size="md"
+        (buttonClick)="[modal.open(), (isEditing = false)]"
+      >
+        <i class="bi bi-plus fs-6"></i>Adicionar</app-button
+      >
     </div>
-    }
-    <div class="d-flex align-items-center mb-3">
-      <app-select [itens]="itensSemester"></app-select>
-      <app-select [itens]="itensCourse"></app-select>
-    </div>
-    <button
-      class="btn btn-outline-secondary"
-      (click)="toggleSearch()"
-      title="Pesquisar"
-    >
-      <i class="bi bi-search"></i>
-    </button>
   </div>
 
-  <app-table [columns]="columns">
-    @for (subject of filteredSubjects; track $index) {
-    <tr>
-      <td>{{ subject.id }}</td>
-      <td>{{ subject.name }}</td>
-      <td>{{ subject.acronym }}</td>
-      <td>{{ subject.practicalLessonsCount }}</td>
-      <td>{{ subject.semesterNumber }}</td>
-      <td>
-        <div>
-          <button
-            class="btn btn-outline-secondary btn-sm m-1"
-            title="Editar"
-            (click)="[modal.open(), edit(subject)]"
-          >
-            <i class="bi bi-pencil"></i>
-          </button>
-          <button
-            class="btn btn-outline-danger btn-sm m-1"
-            title="Deletar"
-            (click)="delete(subject)"
-          >
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
-    }
-  </app-table>
-
-  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
-    <div class="flex-grow-1 d-flex justify-content-center">
-      <app-pagination
-        [totalPages]="pageSize"
-        [currentPage]="page"
-        (pageChange)="refreshCurriculums()"
-      ></app-pagination>
-    </div>
-
-    <app-button
-      variant="primary"
-      size="md"
-      (buttonClick)="[modal.open(), (isEditing = false)]"
-      >Adicionar</app-button
-    >
-  </div>
+  <Card
+    ><app-table [columns]="columns">
+      @for (subject of filteredSubjects; track $index) {
+      <tr>
+        <td>{{ subject.id }}</td>
+        <td>{{ subject.name }}</td>
+        <td>{{ subject.acronym }}</td>
+        <td>{{ subject.practicalLessonsCount }}</td>
+        <td>{{ subject.semesterNumber }}</td>
+        <td>
+          <div>
+            <button
+              class="btn btn-outline-secondary btn-sm m-1"
+              title="Editar"
+              (click)="[modal.open(), edit(subject)]"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button
+              class="btn btn-outline-danger btn-sm m-1"
+              title="Deletar"
+              (click)="delete(subject)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      }
+    </app-table></Card
+  >
 
   <app-modal-generic
     #modal
@@ -126,4 +116,13 @@
       </div>
     </form>
   </app-modal-generic>
-</app-page-layout>
+  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+    <div class="flex-grow-1 d-flex justify-content-end">
+      <app-pagination
+        [totalPages]="pageSize"
+        [currentPage]="page"
+        (pageChange)="refreshCurriculums()"
+      ></app-pagination>
+    </div>
+  </div>
+</section>
