@@ -1,0 +1,18 @@
+.layout-grid {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  overflow-y: auto;
+}
+
+
+
+:host ::ng-deep .nav-link.active {
+  background-color: var(--color-primary);
+  color: #fff !important;
+  border-radius: 8px;
+}

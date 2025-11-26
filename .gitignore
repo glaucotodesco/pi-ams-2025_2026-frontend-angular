@@ -8,6 +8,7 @@
 
 # Node
 /node_modules
+/.qodo
 npm-debug.log
 yarn-error.log
 
@@ -43,3 +44,4 @@ Thumbs.db
 
 *storybook.log
 storybook-static
+

@@ -1,114 +1,54 @@
-<nav class="navbar navbar-expand-lg px-2" style="border-bottom: .5px solid #ccc;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Brand</a>
+<aside class="sidebar bg-light vh-100 d-flex flex-column px-2 pt-3 border-end">
+  <ul class="nav flex-column">
+    <li *ngFor="let item of menuItems; let i = index" class="nav-item">
+      <a
+        *ngIf="!item.children"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        class="nav-link d-flex align-items-center justify-content-center gap-2"
+        style="color: black"
+      >
+        <div class="d-flex flex-column align-items-center">
+          <i
+            *ngIf="item.icon"
+            [class]="item.icon"
+            style="font-size: 1.3rem"
+          ></i>
+          <span>{{ item.label }}</span>
+        </div>
+      </a>
 
       <button
-      class="navbar-toggler d-lg-none"
-      type="button"
-      aria-label="Abrir menu"
-      (click)="toggleCollapse()"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        *ngIf="item.children"
+        class="nav-link d-flex align-items-center gap-2 w-100 text-start bg-transparent border-0"
+        (click)="toggleDropdown(i)"
+        aria-expanded="{{ isDropdownOpen(i) }}"
+      >
+        <i *ngIf="item.icon" [class]="item.icon"></i>
+        <span>{{ item.label }}</span>
+        <i
+          class="ms-auto bi"
+          [ngClass]="{
+            'bi-chevron-right': !isDropdownOpen(i),
+            'bi-chevron-down': isDropdownOpen(i)
+          }"
+        ></i>
+      </button>
 
-    <div class="collapse navbar-collapse d-none d-lg-flex">
-      <ul class="navbar-nav">
-        <li
-          *ngFor="let item of menuItems; let i = index"
-          class="nav-item"
-          [ngClass]="{ dropdown: item.children?.length }"
-        >
-          <a
-            *ngIf="!item.children"
-            class="nav-link"
-            [routerLink]="item.path"
-          >
-            {{ item.label }}
-          </a>
-
-          <button
-            *ngIf="item.children"
-            class="nav-link dropdown-toggle"
-            type="button"
-            (click)="toggleDropdown(i)"
-            [attr.aria-expanded]="isDropdownOpen(i)"
-          >
-            {{ item.label }}
-          </button>
-
-          <ul
-            *ngIf="item.children"
-            class="dropdown-menu"
-            [class.show]="isDropdownOpen(i)"
-          >
-            <li *ngFor="let child of item.children">
-              <a
-                class="dropdown-item"
-                [routerLink]="child.path"
-                routerLinkActive="active"
-              >
-                {{ child.label }}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <div
-      class="offcanvas offcanvas-end d-flex d-lg-none"
-      [class.show]="!isCollapsed"
-      [style.visibility]="isCollapsed ? 'hidden' : 'visible'"
-      tabindex="-1"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Menu</h5>
-        <button type="button" class="btn-close" aria-label="Fechar" (click)="toggleCollapse()"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav">
-          <li
-            *ngFor="let item of menuItems; let i = index"
-            class="nav-item"
-          >
+      <div class="collapse" [class.show]="isDropdownOpen(i)">
+        <ul class="nav flex-column ms-3">
+          <li *ngFor="let child of item.children">
             <a
-              *ngIf="!item.children"
-              class="nav-link"
-              [routerLink]="item.path"
+              class="nav-link d-flex align-items-center gap-2"
+              [routerLink]="child.path"
               routerLinkActive="active"
-              (click)="toggleCollapse()"
             >
-              {{ item.label }}
+              <i *ngIf="child.icon" [class]="child.icon"></i>
+              <span>{{ child.label }}</span>
             </a>
-
-            <button
-              *ngIf="item.children"
-              class="nav-link dropdown-toggle"
-              type="button"
-              (click)="toggleDropdown(i)"
-              [attr.aria-expanded]="isDropdownOpen(i)"
-            >
-              {{ item.label }}
-            </button>
-            <ul
-              *ngIf="item.children"
-              class="dropdown-menu"
-              [class.show]="isDropdownOpen(i)"
-            >
-              <li *ngFor="let child of item.children">
-                <a
-                  class="dropdown-item"
-                  [routerLink]="child.path"
-                  routerLinkActive="active"
-                  (click)="toggleCollapse(); openDropdowns[i] = false"
-                >
-                  {{ child.label }} 
-                </a>
-              </li>
-            </ul>
           </li>
         </ul>
       </div>
-    </div>
-  </div>
-</nav>
+    </li>
+  </ul>
+</aside>

@@ -1,0 +1,7 @@
+.nav-link:hover {
+    text-decoration: none !important;
+}
+
+.active {
+    backgrund-color: black
+}
