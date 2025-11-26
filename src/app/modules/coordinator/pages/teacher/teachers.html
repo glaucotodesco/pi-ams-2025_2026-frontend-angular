@@ -1,5 +1,5 @@
-<section class="pt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
+<section class="pt-5">
+  <div class="d-flex justify-content-between align-items-center">
     <SectionTitle>Professores</SectionTitle>
     <div class="d-flex justify-content-end align-items-center gap-2">
       <input
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <Card>
+  <Card class="p-0 px-4">
     <app-table [columns]="columns">
       @for (teacher of filteredTeachers; track $index) {
       <tr>

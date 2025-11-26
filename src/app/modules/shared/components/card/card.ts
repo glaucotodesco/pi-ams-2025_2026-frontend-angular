@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'Card',
-  standalone: false,
   templateUrl: './card.html',
-  styleUrl: './card.css'
+  styleUrls: ['./card.css'],
+  standalone: false,
 })
 export class CardComponent {
-
+  @Input() class = '';
 }

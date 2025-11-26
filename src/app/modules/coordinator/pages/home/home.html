@@ -1,1 +1,16 @@
-<p>Welcome to the Coordinator Home Page!</p>
+<section class="pt-5">
+  <SectionTitle>{{ welcomeMessage }}</SectionTitle>
+
+  <div class="row g-3">
+    <div class="col-12 col-md-4" *ngFor="let card of cards">
+      <Card class="p-4">
+        <div>
+          <h1 class="fw-medium fs-4">{{ card.title }}</h1>
+          <div class="d-flex gap-2 align-items-end">
+            <span class="fw-medium fs-3">{{ card.value }}</span>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </div>
+</section>
