@@ -9,9 +9,7 @@
   overflow-y: auto;
 }
 
-.content-container {
-    padding-inline: 2rem
-}
+
 
 :host ::ng-deep .nav-link.active {
   background-color: var(--color-primary);
