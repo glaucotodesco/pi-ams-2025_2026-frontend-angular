@@ -13,7 +13,7 @@ export class ButtonComponent {
   @Output() buttonClick = new EventEmitter<Event>();
 
   get buttonClasses(): string {
-    const baseClass = 'btn';
+    const baseClass = 'btn d-flex align-items-center gap-1';
     const variantClass =
       this.variant === 'outline' ? 'btn-outline-primary' : `btn-${this.variant}`;
     const sizeClass =

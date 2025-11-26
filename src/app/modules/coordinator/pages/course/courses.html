@@ -1,87 +1,87 @@
-<app-page-layout title="Cursos">
-  <div class="d-flex justify-content-end align-items-center mb-3">
-    @if (showSearch) {
-    <div class="input-group me-2">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search..."
-        [(ngModel)]="searchTerm"
-      />
+<section class="pt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fs-2 fw-medium">Cursos</h2>
+
+    <div class="d-flex justify-content-end align-items-center gap-2">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Digite o nome do curso..."
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+      <app-button
+        variant="primary"
+        size="md"
+        (buttonClick)="[modal.open(), (isEditing = false)]"
+      >
+        <i class="bi bi-plus fs-6"></i>
+        Adicionar
+      </app-button>
     </div>
-    }
-    <button class="btn btn-outline-secondary" (click)="toggleSearch()">
-      <i class="bi bi-search"></i>
-    </button>
   </div>
+  <Card>
+    <app-table [columns]="columns">
+      @for (course of filteredCourses; track $index) {
+      <tr>
+        <td>{{ course.id }}</td>
+        <td>{{ course.name }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+          <button
+            class="btn btn-outline-secondary btn-sm m-1"
+            (click)="[modal.open(), edit(course)]"
+          >
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button
+            class="btn btn-outline-danger btn-sm m-1"
+            (click)="delete(course)"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+      }
+    </app-table>
 
-  <app-table [columns]="columns">
-    @for (course of filteredCourses; track $index) {
-    <tr>
-      <td>{{ course.id }}</td>
-      <td>{{ course.name }}</td>
-      <td>{{ course.description }}</td>
-      <td>
-        <button
-          class="btn btn-outline-secondary btn-sm m-1"
-          (click)="[modal.open(), edit(course)]"
-        >
-          <i class="bi bi-pencil"></i>
-        </button>
-        <button
-          class="btn btn-outline-danger btn-sm m-1"
-          (click)="delete(course)"
-        >
-          <i class="bi bi-trash"></i>
-        </button>
-      </td>
-    </tr>
-    }
-  </app-table>
+    <!-- Paginação + Botão adicionar -->
 
-  <!-- Paginação + Botão adicionar -->
+    <app-modal-generic
+      #modal
+      title="Adicionar Curso"
+      actionText="Salvar"
+      actionText2="Cancelar"
+      (confirmed)="save()"
+      [canCloseOnAction]="formGroupCourse.valid"
+      (cancelled)="reset()"
+    >
+      <form [formGroup]="formGroupCourse">
+        <app-input
+          type="text"
+          label="Nome"
+          placeholder="Digite o nome"
+          formControlName="name"
+          [control]="formGroupCourse.get('name')"
+        />
+        <app-input
+          type="text"
+          label="Descrição"
+          placeholder="Digite a descrição"
+          formControlName="description"
+          [control]="formGroupCourse.get('description')"
+        />
+      </form>
+    </app-modal-generic>
+  </Card>
   <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
-    <div class="flex-grow-1 d-flex justify-content-center">
+    <div class="flex-grow-1 d-flex justify-content-end">
       <app-pagination
         [totalPages]="pageSize"
         [currentPage]="page"
         (pageChange)="collectionSize = courses.length"
       ></app-pagination>
     </div>
-
-    <app-button
-      variant="primary"
-      size="md"
-      (buttonClick)="[modal.open(), (isEditing = false)]"
-    >
-      Adicionar
-    </app-button>
   </div>
-
-  <app-modal-generic
-    #modal
-    title="Adicionar Curso"
-    actionText="Salvar"
-    actionText2="Cancelar"
-    (confirmed)="save()"
-    [canCloseOnAction]="formGroupCourse.valid"
-    (cancelled)="reset()"
-  >
-    <form [formGroup]="formGroupCourse">
-      <app-input
-        type="text"
-        label="Nome"
-        placeholder="Digite o nome"
-        formControlName="name"
-        [control]="formGroupCourse.get('name')"
-      />
-      <app-input
-        type="text"
-        label="Descrição"
-        placeholder="Digite a descrição"
-        formControlName="description"
-        [control]="formGroupCourse.get('description')"
-      />
-    </form>
-  </app-modal-generic>
-</app-page-layout>
+</section>

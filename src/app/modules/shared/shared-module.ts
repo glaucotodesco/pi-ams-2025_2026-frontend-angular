@@ -13,6 +13,7 @@ import { Table } from './components/table/table';
 import { CheckboxComponent } from './components/checkbox/checkbox';
 import { PageLayout } from './components/page-layout/page-layout';
 import { SelectComponent } from './components/select/select';
+import { CardComponent } from './components/card/card';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SelectComponent } from './components/select/select';
     PageLayout,
     SelectComponent,
     CheckboxComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { SelectComponent } from './components/select/select';
     PageLayout,
     SelectComponent,
     CheckboxComponent,
+    CardComponent
   ]
 })
 export class SharedModule { }
