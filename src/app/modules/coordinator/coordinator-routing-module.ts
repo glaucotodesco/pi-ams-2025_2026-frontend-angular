@@ -9,7 +9,7 @@ import { ClassroomPage } from './pages/classroom/classroom';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomePage, // rota /admin/home renderiza o componente Home
   },
   {
@@ -37,11 +37,11 @@ const routes: Routes = [
 export class CoordinatorRoutingModule {
   constructor(private menuService: MenuService) {
     this.menuService.addMenu([
-      { label: 'Início', path: '/coordinator/' },
-      { label: 'Salas', path: '/coordinator/classrooms' },
-      { label: 'Cursos', path: '/coordinator/courses' },
-      { label: 'Professores', path: '/coordinator/teachers' },
-      { label: 'Disciplinas', path: '/coordinator/subjects' },
+      { label: 'Início', path: '/coordinator/home', icon: 'bi bi-house' },
+      { label: 'Salas', path: '/coordinator/classrooms', icon: 'bi bi-building' },
+      { label: 'Cursos', path: '/coordinator/courses', icon: 'bi bi-book' },
+      { label: 'Professores', path: '/coordinator/teachers', icon: 'bi bi-people' },
+      { label: 'Disciplinas', path: '/coordinator/subjects', icon: 'bi bi-book' },
     ]);
   }
 }
