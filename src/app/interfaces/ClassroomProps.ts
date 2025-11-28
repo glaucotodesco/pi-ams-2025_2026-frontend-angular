@@ -4,4 +4,5 @@ export interface ClassroomProps {
   location: string;
   physicalResources:string;
   softwareResources:string;
+  capacity: number;
 }

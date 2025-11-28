@@ -5,7 +5,7 @@ import { MenuService } from '../shared/menu-service';
 import { CoursesPage } from './pages/course/courses';
 import { TeachersPage } from './pages/teacher/teachers';
 import { SubjetcPage } from './pages/subject/subjetc';
-
+import { ClassroomPage } from './pages/classroom/classroom';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    component: CoursesPage
+    component: CoursesPage,
   },
   {
     path: 'teachers',
@@ -22,8 +22,12 @@ const routes: Routes = [
   },
   {
     path: 'subjects',
-    component: SubjetcPage
-  }
+    component: SubjetcPage,
+  },
+  {
+    path: 'classrooms',
+    component: ClassroomPage,
+  },
 ];
 
 @NgModule({
@@ -34,9 +38,11 @@ export class CoordinatorRoutingModule {
   constructor(private menuService: MenuService) {
     this.menuService.addMenu([
       { label: 'Início', path: '/coordinator/home', icon: 'bi bi-house' },
+      { label: 'Salas', path: '/coordinator/classrooms', icon: 'bi bi-building' },
       { label: 'Cursos', path: '/coordinator/courses', icon: 'bi bi-book' },
       { label: 'Professores', path: '/coordinator/teachers', icon: 'bi bi-people' },
       { label: 'Disciplinas', path: '/coordinator/subjects', icon: 'bi bi-book' },
     ]);
   }
 }
+0;

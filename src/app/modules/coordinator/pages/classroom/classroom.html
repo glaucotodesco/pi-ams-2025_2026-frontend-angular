@@ -1,8 +1,8 @@
 <section class="pt-5">
   <div class="d-flex justify-content-between align-items-center">
-    <SectionTitle>Cursos</SectionTitle>
+    <SectionTitle>Salas</SectionTitle>
 
-    <div class="d-flex justify-content-end align-items-center gap-2">
+        <div class="d-flex justify-content-end align-items-center gap-2">
       <div class="input-group">
         <input
           type="text"
@@ -21,13 +21,17 @@
       </app-button>
     </div>
   </div>
-  <Card class="p-0 px-4">
+
+<Card class="p-0 px-4">
     <app-table [columns]="columns">
-      @for (course of filteredCourses; track $index) {
+      @for (course of filteredClassrooms; track $index) {
       <tr>
         <td>{{ course.id }}</td>
         <td>{{ course.name }}</td>
-        <td>{{ course.description }}</td>
+        <td>{{ course.location }}</td>
+        <td>{{ course.physicalResources }}</td>
+        <td>{{ course.softwareResources }}</td>
+        <td>{{ course.capacity }}</td>
         <td>
           <button
             class="btn btn-outline-secondary btn-sm m-1"
@@ -54,33 +58,33 @@
       actionText="Salvar"
       actionText2="Cancelar"
       (confirmed)="save()"
-      [canCloseOnAction]="formGroupCourse.valid"
+      [canCloseOnAction]="formGroupClassroom.valid"
       (cancelled)="reset()"
     >
-      <form [formGroup]="formGroupCourse">
-        <app-input
-          type="text"
-          label="Nome"
-          placeholder="Digite o nome"
-          formControlName="name"
-          [control]="formGroupCourse.get('name')"
-        />
-        <app-input
-          type="text"
-          label="Descrição"
-          placeholder="Digite a descrição"
-          formControlName="description"
-          [control]="formGroupCourse.get('description')"
-        />
-      </form>
+      <form [formGroup]="formGroupClassroom">
+      <app-input
+        type="text"
+        label="Nome"
+        placeholder="Digite o nome"
+        formControlName="name"
+        [control]="formGroupClassroom.get('name')"
+      />
+      <app-input
+        type="text"
+        label="Descrição"
+        placeholder="Digite a descrição"
+        formControlName="description"
+        [control]="formGroupClassroom.get('description')"
+      />
+    </form>
     </app-modal-generic>
   </Card>
-  <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+ <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
     <div class="flex-grow-1 d-flex justify-content-end">
       <app-pagination
         [totalPages]="pageSize"
         [currentPage]="page"
-        (pageChange)="collectionSize = courses.length"
+        (pageChange)="collectionSize = classrooms.length"
       ></app-pagination>
     </div>
   </div>

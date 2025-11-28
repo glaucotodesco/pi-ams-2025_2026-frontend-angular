@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CoordinatorRoutingModule } from './coordinator-routing-module';
 import { HomePage } from './pages/home/home';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,9 +8,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TeachersPage } from './pages/teacher/teachers';
 import { SubjetcPage } from './pages/subject/subjetc';
 import { CoursesPage } from './pages/course/courses';
+import { ClassroomPage } from './pages/classroom/classroom';
 
 @NgModule({
-  declarations: [HomePage, CoursesPage, TeachersPage, SubjetcPage],
+  declarations: [HomePage, CoursesPage, TeachersPage, SubjetcPage, ClassroomPage],
   imports: [
     CommonModule,
     CoordinatorRoutingModule,
@@ -20,6 +20,6 @@ import { CoursesPage } from './pages/course/courses';
     NgbModule,
     ReactiveFormsModule,
   ],
-  exports: [HomePage, CoursesPage, TeachersPage, SubjetcPage],
+  exports: [HomePage, CoursesPage, TeachersPage, SubjetcPage, ClassroomPage],
 })
 export class CoordinatorModule {}

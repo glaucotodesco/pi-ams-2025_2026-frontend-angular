@@ -31,8 +31,8 @@ export class TeachersPage implements OnInit {
   ) {
     this.formGroupTeacher = formBuilder.group({
       id: [''],
-      name: ['',Validators.required],
-      email: ['',Validators.email],
+      name: ['',[Validators.required,Validators.minLength(3), Validators.maxLength(100)]],
+      email: ['',[Validators.email,Validators.minLength(3), Validators.maxLength(100)]]
     });
   }
 
