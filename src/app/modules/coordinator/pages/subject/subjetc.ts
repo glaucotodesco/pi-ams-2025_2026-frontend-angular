@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubjectService } from '../../../../services/subject/subject-service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubjectProps } from '../../../../interfaces/SubjectProps';
 
 @Component({
@@ -38,10 +38,10 @@ export class SubjetcPage implements OnInit {
   ) {
     this.formGroupSubject = formBuilder.group({
       id: [''],
-      name: [''],
-      acronym: [''],
-      practicalLessonsCount: [''],
-      semesterNumber: [''],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      acronym: ['', [Validators.required, Validators.maxLength(32)]],
+      practicalLessonsCount: [null, [Validators.min(1),Validators.max(99),Validators.required, Validators.pattern('^[0-9]+$')]],
+      semesterNumber: [null, [Validators.min(1),Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1), Validators.max(99)]],
     });
   }
 
@@ -122,15 +122,15 @@ export class SubjetcPage implements OnInit {
   modalities = ['Presencial', 'Híbrido', 'Online', 'EAD'];
 
   itensSemester: string[] = [
-    'Analise e Desenvolvimento de Sistemas',
-    'Redes de Computadores',
-    'Automação Industrial',
-  ];
-  itensCourse: string[] = [
     '1º Semestre',
     '2º Semestre',
     '3º Semestre',
     '4º Semestre',
+  ];  
+  itensCourse: string[] = [
+    'Analise e Desenvolvimento de Sistemas',
+    'Redes de Computadores',
+    'Automação Industrial',
   ];
 
   get filteredSubjects(): SubjectProps[] {

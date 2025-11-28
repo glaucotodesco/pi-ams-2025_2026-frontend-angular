@@ -19,12 +19,12 @@
   ],
   "teachers": [
     {
-      "id": "1",
+      "id": 1,
       "name": "João Silva",
       "email": "joao.silva@email.com"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Maria Souza",
       "email": "maria.souza@email.com"
     }
@@ -39,11 +39,6 @@
       "id": 2,
       "name": "Ciência da Computação",
       "description": "Foca em algoritmos, estruturas de dados e design de sistemas."
-    },
-    {
-      "id": 3,
-      "name": "Teste",
-      "description": "aaaaC"
     }
   ],
   "subjects": [
