@@ -1,13 +1,13 @@
 <ng-template #content>
   <div class="modal-custom">
-    <div class="modal-header">
-      <h4 class="modal-title">{{ title }}</h4>
+    <div class="modal-header px-4 py-3">
+      <h4 class="modal-title fs-4 fw-medium">{{ title }}</h4>
     </div>
-    <div class="modal-body">
+    <div class="modal-body px-4">
       <ng-content></ng-content>
     </div>
-    <div class="modal-footer">
-      <app-button variant="outline" size="md" (buttonClick)="onCancel()">
+    <div class="modal-footer px-4">
+      <app-button type="button" variant="outline" size="md" (buttonClick)="onCancel()">
         {{ actionText2 }}
       </app-button>
       <app-button variant="primary" size="md" (buttonClick)="onAction()">
