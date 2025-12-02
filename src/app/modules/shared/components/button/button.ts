@@ -11,6 +11,7 @@ export class ButtonComponent {
   @Input() size: 'sm' | 'md' | 'lg' = 'md';
   @Input() disabled = false;
   @Output() buttonClick = new EventEmitter<Event>();
+  @Input() type: 'button' | 'submit' | 'reset' = 'button';
 
   get buttonClasses(): string {
     const baseClass = 'btn d-flex align-items-center gap-1';

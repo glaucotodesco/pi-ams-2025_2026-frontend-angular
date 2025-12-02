@@ -10,30 +10,3 @@
   overflow: hidden;
   align-self: center;
 }
-
-.btn1 {
-    border: 1px solid #7749F8;
-    color: #7749F8;
-    width: 192px;
-    height: 69px;
-    background-color: #F6F6F6;
-    display: inline-flex;       
-    align-items: center;        
-    justify-content: center;   
-    font-size: 18px;            
-    border-radius: 8px;         
-    padding: 0;                 
-}
-
-.btn2 {
-    color: white;
-    width: 192px;
-    height: 69px;
-    background-color: #7749F8;
-    display: inline-flex;       
-    align-items: center;        
-    justify-content: center;   
-    font-size: 18px;            
-    border-radius: 8px;         
-    padding: 0;                 
-}
