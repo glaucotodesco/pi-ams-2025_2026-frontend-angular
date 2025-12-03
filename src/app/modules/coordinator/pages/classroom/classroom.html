@@ -54,7 +54,7 @@
 
     <app-modal-generic
       #modal
-      title="Adicionar Curso"
+      title="Adicionar Sala"
       actionText="Salvar"
       actionText2="Cancelar"
       (confirmed)="save()"
@@ -69,12 +69,26 @@
         formControlName="name"
         [control]="formGroupClassroom.get('name')"
       />
+       <app-input
+        type="text"
+        label="Localização"
+        placeholder="Digite a localização"
+        formControlName="location"
+        [control]="formGroupClassroom.get('location')"
+      />
+       <app-input
+        type="text"
+        label="Recursos de Físicos"
+        placeholder="Digite os recursos físicos"
+        formControlName="physicalResources"
+        [control]="formGroupClassroom.get('physicalResources')"
+      />
       <app-input
         type="text"
-        label="Descrição"
-        placeholder="Digite a descrição"
-        formControlName="description"
-        [control]="formGroupClassroom.get('description')"
+        label="Recursos de Software"
+        placeholder="Digite os recursos de software"
+        formControlName="softwareResources"
+        [control]="formGroupClassroom.get('softwareResources')"
       />
     </form>
     </app-modal-generic>

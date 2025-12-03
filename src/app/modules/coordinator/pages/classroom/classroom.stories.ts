@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 import { HttpClientModule } from '@angular/common/http';
-import { CourseService } from '../../../../services/course/course-service';
 import { ClassroomPage } from './classroom';
+import { ClassroomService } from '../../../../services/classroom/classroom-service';
   
 const meta: Meta<ClassroomPage> = {
   title: 'Coordenador/Page/Classroom',
@@ -19,7 +19,7 @@ const meta: Meta<ClassroomPage> = {
         HttpClientModule
       ],
       providers: [
-        CourseService,
+        ClassroomService,
       ],
     })
   ],
