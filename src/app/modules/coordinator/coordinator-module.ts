@@ -5,7 +5,7 @@ import { HomePage } from './pages/home/home';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TeachersPage } from './pages/teacher/teachers';
+import { TeachersPage } from './pages/user/users';
 import { SubjetcPage } from './pages/subject/subjetc';
 import { CoursesPage } from './pages/course/courses';
 import { ClassroomPage } from './pages/classroom/classroom';
