@@ -103,35 +103,7 @@ export class SubjetcPage implements OnInit {
     });
   }
 
-  teachers = [
-    'Prof. João Silva',
-    'Prof. Maria Santos',
-    'Prof. Carlos Oliveira',
-    'Prof. Ana Costa',
-    'Prof. Pedro Almeida',
-  ];
 
-  technologicalAreas = [
-    'Informação e Comunicação',
-    'Controle e Processos Industriais',
-    'Produção Alimentícia',
-    'Gestão e Negócios',
-    'Recursos Naturais',
-  ];
-
-  modalities = ['Presencial', 'Híbrido', 'Online', 'EAD'];
-
-  itensSemester: string[] = [
-    '1º Semestre',
-    '2º Semestre',
-    '3º Semestre',
-    '4º Semestre',
-  ];  
-  itensCourse: string[] = [
-    'Analise e Desenvolvimento de Sistemas',
-    'Redes de Computadores',
-    'Automação Industrial',
-  ];
 
   get filteredSubjects(): SubjectProps[] {
     const filtered = this.subjects.filter((s) =>

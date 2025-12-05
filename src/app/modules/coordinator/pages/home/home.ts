@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TeacherService } from '../../../../services/user/user-service';
+import { UserService } from '../../../../services/user/user-service';
 import { CourseService } from '../../../../services/course/course-service';
 import { SubjectService } from '../../../../services/subject/subject-service';
 
@@ -30,23 +30,23 @@ export class HomePage {
   ];
 
   constructor(
-    private teacherService: TeacherService,
+    private userService: UserService,
     private subjectService: SubjectService,
     private courseService: CourseService
   ) {}
 
   ngOnInit() {
-    this.loadTotalTeachers();
+    this.loadTotalUsers();
     this.loadTotalSubjects();
     this.loadTotalCourses();
   }
 
-  loadTotalTeachers() {
-    this.teacherService.getAll().subscribe({
+  loadTotalUsers() {
+    this.userService.getAll().subscribe({
       next: (data) => {
         this.cards[0].value = data.length;
       },
-      error: () => console.error('Erro ao carregar total de teachers'),
+      error: () => console.error('Erro ao carregar total de users'),
     });
   }
 
@@ -55,7 +55,7 @@ export class HomePage {
       next: (data) => {
         this.cards[1].value = data.length;
       },
-      error: () => console.error('Erro ao carregar total de teachers'),
+      error: () => console.error('Erro ao carregar total de subjects'),
     });
   }
 
@@ -64,7 +64,7 @@ export class HomePage {
       next: (data) => {
         this.cards[2].value = data.length;
       },
-      error: () => console.error('Erro ao carregar total de teachers'),
+      error: () => console.error('Erro ao carregar total de courses'),
     });
   }
 }

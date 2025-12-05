@@ -1,14 +1,14 @@
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
-import { TeachersPage } from './teachers';
+import { UsersPage } from './users';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
-import { TeacherService } from '../../../../services/teacher/teacher-service';
+import { UserService } from '../../../../services/user/user-service';
 import { HttpClientModule } from '@angular/common/http';
 
-const meta: Meta<TeachersPage> = {
-  title: 'Coordenador/Page/Professores',
-  component: TeachersPage,
+const meta: Meta<UsersPage> = {
+  title: 'Coordenador/Page/Usuários',
+  component: UsersPage,
 
   decorators: [
      moduleMetadata({
@@ -19,7 +19,7 @@ const meta: Meta<TeachersPage> = {
         HttpClientModule
       ],
       providers: [
-        TeacherService
+        UserService
       ],
     }),
   ],
@@ -28,11 +28,11 @@ const meta: Meta<TeachersPage> = {
 };
 
 export default meta;
-type Story = StoryObj<TeachersPage>;
+type Story = StoryObj<UsersPage>;
 
 export const Default: Story = {
   args: {
-    teachers: [],
+    users: [],
     page: 1,
     pageSize: 8,
     searchTerm: '',

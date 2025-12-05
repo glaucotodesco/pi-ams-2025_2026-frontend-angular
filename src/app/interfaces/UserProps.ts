@@ -1,4 +1,4 @@
-export interface TeacherProps {
+export interface UserProps {
   id: number;
   name: string;
   email: string;

@@ -2,7 +2,7 @@ export interface SubjectProps {
   id: number;
   name: string;
   acronym: string;
-  practicalLessonsCount: number;
+  practicalLessonCount: number;
   semesterNumber:number;
   
 }

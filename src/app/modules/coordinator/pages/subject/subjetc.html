@@ -10,14 +10,14 @@
           placeholder="Pesquisar..."
           [(ngModel)]="searchTerm"
         />
-      </div>
+      </div><!--
       <div class="d-flex align-items-center">
         <app-select
           selectedItem="Semestre"
           [itens]="itensSemester"
         ></app-select>
         <app-select selectedItem="Curso" [itens]="itensCourse"></app-select>
-      </div>
+      </div>-->
       <app-button
         variant="primary"
         size="md"
@@ -35,7 +35,7 @@
         <td>{{ subject.id }}</td>
         <td>{{ subject.name }}</td>
         <td>{{ subject.acronym }}</td>
-        <td>{{ subject.practicalLessonsCount }}</td>
+        <td>{{ subject.practicalLessonCount }}</td>
         <td>{{ subject.semesterNumber }}</td>
         <td>
           <div>

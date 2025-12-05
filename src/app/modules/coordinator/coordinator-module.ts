@@ -5,13 +5,13 @@ import { HomePage } from './pages/home/home';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared-module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TeachersPage } from './pages/user/users';
+import { UsersPage } from './pages/user/users';
 import { SubjetcPage } from './pages/subject/subjetc';
 import { CoursesPage } from './pages/course/courses';
 import { ClassroomPage } from './pages/classroom/classroom';
 
 @NgModule({
-  declarations: [HomePage, CoursesPage, TeachersPage, SubjetcPage, ClassroomPage],
+  declarations: [HomePage, CoursesPage, UsersPage, SubjetcPage, ClassroomPage],
   imports: [
     CommonModule,
     CoordinatorRoutingModule,
@@ -20,6 +20,6 @@ import { ClassroomPage } from './pages/classroom/classroom';
     NgbModule,
     ReactiveFormsModule,
   ],
-  exports: [HomePage, CoursesPage, TeachersPage, SubjetcPage, ClassroomPage],
+  exports: [HomePage, CoursesPage, UsersPage, SubjetcPage, ClassroomPage],
 })
 export class CoordinatorModule {}

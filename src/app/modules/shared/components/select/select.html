@@ -1,24 +1,14 @@
-<div class="row">
-  <div class="col">
-    <div ngbDropdown class="d-inline-block">
-      <button
-        type="button"
-        class="btn btn-outline-primary text-start"
-        id="dropdownSelect"
-        ngbDropdownToggle
-      >
-        {{ selectedItem }}
-      </button>
-
-      <div ngbDropdownMenu aria-labelledby="dropdownSelect">
-        <button
-          class="dropdown-item"
-          *ngFor="let item of itens"
-          (click)="selectItem(item)"
-        >
-          {{ item }}
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<select
+  class="form-select"
+  [value]="selectedItem"
+  (change)="onSelectionChange($event)"
+>
+  <option [value]="''">{{ placeholder }}</option>
+  <option
+    *ngFor="let item of itens; let i = index"
+    [value]="getItemValue(item, i)"
+    [selected]="isSelected(item, i)"
+  >
+    {{ getItemLabel(item) }}
+  </option>
+</select>

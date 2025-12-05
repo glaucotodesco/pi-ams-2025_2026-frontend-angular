@@ -1,6 +1,6 @@
 <section class="pt-5">
   <div class="d-flex justify-content-between align-items-center">
-    <SectionTitle>Professores</SectionTitle>
+    <SectionTitle>Usuários</SectionTitle>
     <div class="d-flex justify-content-end align-items-center gap-2">
       <input
         class="form-control"
@@ -19,24 +19,24 @@
 
   <Card class="p-0 px-4">
     <app-table [columns]="columns">
-      @for (teacher of filteredTeachers; track $index) {
+      @for (user of filteredUsers; track $index) {
       <tr>
-        <td>{{ teacher.id }}</td>
-        <td>{{ teacher.name }}</td>
-        <td>{{ teacher.email }}</td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
         <td>
           <div>
             <button
               class="btn btn-outline-secondary btn-sm m-1"
               title="Editar"
-              (click)="[modal.open(), edit(teacher)]"
+              (click)="[modal.open(), edit(user)]"
             >
               <i class="bi bi-pencil"></i>
             </button>
             <button
               class="btn btn-outline-danger btn-sm m-1"
               title="Deletar"
-              (click)="delete(teacher)"
+              (click)="delete(user)"
             >
               <i class="bi bi-trash"></i>
             </button>
@@ -64,21 +64,21 @@
 <!-- ============================================ -->
 <app-modal-generic
   #modal
-  title="Cadastrar Professor"
+  title="Cadastrar Usuário"
   actionText="Cadastrar"
   actionText2="Cancelar"
   (confirmed)="save()"
-  [canCloseOnAction]="formGroupTeacher.valid"
+  [canCloseOnAction]="formGroupUser.valid"
   (cancelled)="reset()"
 >
-  <form [formGroup]="formGroupTeacher">
+  <form [formGroup]="formGroupUser">
     <app-input
       type="text"
       label="Nome"
       placeholder="Digite o nome"
       formControlName="name"
       id="name"
-      [control]="formGroupTeacher.get('name')"
+      [control]="formGroupUser.get('name')"
     />
 
     <app-input
@@ -87,7 +87,7 @@
       placeholder="Digite o email"
       formControlName="email"
       id="email"
-      [control]="formGroupTeacher.get('email')"
+      [control]="formGroupUser.get('email')"
     />
   </form>
 </app-modal-generic>
