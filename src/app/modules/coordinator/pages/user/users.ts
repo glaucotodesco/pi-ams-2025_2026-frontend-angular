@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserProps } from '../../../../interfaces/UserProps';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../services/user/user-service';
+import { AccessLevelProps } from '../../../../interfaces/AcessLevelProps';
+import { AccessLevelService } from '../../../../services/access-level/access-level-service';
 
 @Component({
   selector: 'app-user',
@@ -12,32 +14,42 @@ import { UserService } from '../../../../services/user/user-service';
 export class UsersPage implements OnInit {
   users: UserProps[] = [];
   user: UserProps = {} as UserProps;
-  deleteUser: UserProps = {} as UserProps;
 
-  columns = ['id', 'Nome', 'Email', ''];
+  columns = ['id', 'Nome', 'Email', "Nível de Acesso", 'Ações'];
 
   formGroupUser: FormGroup;
-  isEditing: boolean = false;
+  isEditing = false;
 
   page = 1;
   pageSize = 8;
   collectionSize = 0;
   searchTerm = '';
   showSearch = false;
+  accessLevels: AccessLevelProps[] = [];
 
   constructor(
     private userService: UserService,
+    private accessLevelService: AccessLevelService,
     formBuilder: FormBuilder
   ) {
     this.formGroupUser = formBuilder.group({
-      id: [''],
-      name: ['',[Validators.required,Validators.minLength(3), Validators.maxLength(100)]],
-      email: ['',[Validators.email,Validators.minLength(3), Validators.maxLength(100)]]
+      id: [null],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      email: ['', [Validators.required,Validators.email, Validators.minLength(3), Validators.maxLength(100)]],
+      accessLevelId: [null, Validators.required],
     });
   }
 
   ngOnInit(): void {
     this.loadUsers();
+    this.loadAccessLevels();
+  }
+
+  loadAccessLevels() {
+    this.accessLevelService.getAll().subscribe({
+      next: (data) => (this.accessLevels = data),
+      error: () => console.error('Error loading access levels'),
+    });
   }
 
   loadUsers() {
@@ -46,30 +58,39 @@ export class UsersPage implements OnInit {
         this.users = data;
         this.collectionSize = data.length;
       },
-      error: () => console.error('Error loading users'),
     });
   }
 
   edit(user: UserProps) {
     this.isEditing = true;
     this.user = user;
-    this.formGroupUser.setValue(this.user);
+
+    this.formGroupUser.patchValue({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      accessLevelId: user.accessLevel?.id ?? null,
+    });
   }
 
   save() {
-    if (!this.formGroupUser.valid) return;
-    const user: UserProps = this.formGroupUser.value;
+    
+    const userRequest = {
+      ...this.formGroupUser.value,
+      password: '123' 
+    };
+
     if (this.isEditing) {
-      this.userService.update(user).subscribe({
+      this.userService.update(userRequest).subscribe({
         complete: () => {
           this.loadUsers();
           this.reset();
         },
       });
     } else {
-      this.userService.create(user).subscribe({
-        next: (data) => {
-          this.users.push(data);
+      this.userService.create(userRequest).subscribe({
+        next: () => {
+          this.loadUsers();
           this.reset();
         },
       });
@@ -83,14 +104,10 @@ export class UsersPage implements OnInit {
   }
 
   delete(user: UserProps) {
-    if (!confirm(`Certeza que deseja remover o usuário ${user.name}`))
-      return;
+    if (!confirm(`Certeza que deseja remover o usuário ${user.name}?`)) return;
 
-    this.deleteUser = user;
     this.userService.delete(user).subscribe({
-      next: () => {
-        this.users = this.users.filter((u) => u !== user);
-      },
+      next: () => (this.users = this.users.filter((u) => u.id !== user.id)),
       error: () => alert(`Erro ao remover o usuário ${user.name}`),
     });
   }
@@ -99,7 +116,9 @@ export class UsersPage implements OnInit {
     const filtered = this.users.filter((s) =>
       s.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+
     this.collectionSize = filtered.length;
+
     return filtered.slice(
       (this.page - 1) * this.pageSize,
       (this.page - 1) * this.pageSize + this.pageSize

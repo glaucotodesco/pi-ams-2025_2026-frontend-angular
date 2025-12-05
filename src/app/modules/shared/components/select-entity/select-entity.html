@@ -1,0 +1,24 @@
+<div class="mb-3">
+  <label *ngIf="label" class="form-label">{{ label }}</label>
+
+  <select 
+    class="form-control"
+    [ngModel]="value"
+    (ngModelChange)="onModelChange($event)"
+    (blur)="onTouched()"
+  >
+    <option [ngValue]="null" disabled>{{ placeholder }}</option>
+
+    @for (item of items; track $index) {
+      <option [ngValue]="item[valueField]">
+        {{ item[textField] }}
+      </option>
+    }
+  </select>
+
+  <div class="invalid-feedback d-block">
+    <div *ngIf="control?.errors?.['required']">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>
