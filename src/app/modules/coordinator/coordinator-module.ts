@@ -9,9 +9,10 @@ import { UsersPage } from './pages/user/users';
 import { SubjetcPage } from './pages/subject/subjetc';
 import { CoursesPage } from './pages/course/courses';
 import { ClassroomPage } from './pages/classroom/classroom';
+import { AccessLevelPage } from './pages/access-level/access-level';
 
 @NgModule({
-  declarations: [HomePage, CoursesPage, UsersPage, SubjetcPage, ClassroomPage],
+  declarations: [HomePage, CoursesPage, UsersPage, SubjetcPage, ClassroomPage, AccessLevelPage],
   imports: [
     CommonModule,
     CoordinatorRoutingModule,
@@ -20,6 +21,6 @@ import { ClassroomPage } from './pages/classroom/classroom';
     NgbModule,
     ReactiveFormsModule,
   ],
-  exports: [HomePage, CoursesPage, UsersPage, SubjetcPage, ClassroomPage],
+  exports: [HomePage, CoursesPage, UsersPage, SubjetcPage, ClassroomPage, AccessLevelPage],
 })
 export class CoordinatorModule {}

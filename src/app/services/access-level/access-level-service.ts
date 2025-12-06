@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AccessLevelProps } from '../../interfaces/AcessLevelProps';
+import { AccessLevelProps } from '../../interfaces/AccessLevelProps';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

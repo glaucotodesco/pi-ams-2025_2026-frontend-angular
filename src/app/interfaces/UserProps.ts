@@ -1,3 +1,5 @@
+import { AccessLevelProps } from "./AccessLevelProps";
+
 export interface UserProps {
   id: number;
   name: string;
@@ -5,11 +7,7 @@ export interface UserProps {
   password?: string;
 
   // response
-  accessLevel?: {
-    id: number;
-    level: number;
-    description: string;
-  };
+  accessLevel?: AccessLevelProps
 
   // request
   accessLevelId?: number;

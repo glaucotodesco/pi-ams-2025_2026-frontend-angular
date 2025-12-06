@@ -10,7 +10,8 @@
           placeholder="Pesquisar..."
           [(ngModel)]="searchTerm"
         />
-      </div><!--
+      </div>
+      <!--
       <div class="d-flex align-items-center">
         <app-select
           selectedItem="Semestre"
@@ -35,8 +36,8 @@
         <td>{{ subject.id }}</td>
         <td>{{ subject.name }}</td>
         <td>{{ subject.acronym }}</td>
-        <td>{{ subject.practicalLessonCount }}</td>
-        <td>{{ subject.semesterNumber }}</td>
+        <td>{{ subject.modality.name }}</td>
+        <td>{{ subject.techAxis.name }}</td>
         <td>
           <div>
             <button
@@ -94,24 +95,26 @@
       </div>
       <div class="row mt-3">
         <div class="col-md-6">
-          <app-input
-            type="number"
-            label="Aulas Práticas"
-            placeholder="Digite o número de aulas práticas"
-            formControlName="practicalLessonsCount"
-            id="practicalLessonsCount"
-            [control]="formGroupSubject.get('practicalLessonsCount')"
-          />
+          <app-select-entity
+            label="Modalidade"
+            placeholder="Selecione uma modalidade"
+            [items]="modalities"
+            formControlName="modalityId"
+            valueField="id"
+            textField="name"
+            [control]="formGroupSubject.get('modalityId')"
+          ></app-select-entity>
         </div>
         <div class="col-md-6">
-          <app-input
-            type="number"
-            label="Número do Semestre"
-            placeholder="Digite o número do semestre"
-            formControlName="semesterNumber"
-            id="semesterNumber"
-            [control]="formGroupSubject.get('semesterNumber')"
-          />
+          <app-select-entity
+            label="Eixo Tecnológico"
+            placeholder="Selecione um eixo tecnológico"
+            [items]="techAxis"
+            formControlName="techAxisId"
+            valueField="id"
+            textField="name"
+            [control]="formGroupSubject.get('techAxisId')"
+          ></app-select-entity>
         </div>
       </div>
     </form>

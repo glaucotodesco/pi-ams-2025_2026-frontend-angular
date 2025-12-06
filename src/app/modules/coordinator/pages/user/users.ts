@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserProps } from '../../../../interfaces/UserProps';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../services/user/user-service';
-import { AccessLevelProps } from '../../../../interfaces/AcessLevelProps';
+import { AccessLevelProps } from '../../../../interfaces/AccessLevelProps';
 import { AccessLevelService } from '../../../../services/access-level/access-level-service';
 
 @Component({
@@ -76,8 +76,7 @@ export class UsersPage implements OnInit {
   save() {
     
     const userRequest = {
-      ...this.formGroupUser.value,
-      password: '123' 
+      ...this.formGroupUser.value
     };
 
     if (this.isEditing) {

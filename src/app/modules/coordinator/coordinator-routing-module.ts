@@ -6,6 +6,7 @@ import { CoursesPage } from './pages/course/courses';
 import { UsersPage } from './pages/user/users';
 import { SubjetcPage } from './pages/subject/subjetc';
 import { ClassroomPage } from './pages/classroom/classroom';
+import { AccessLevelPage } from './pages/access-level/access-level';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
     path: 'classrooms',
     component: ClassroomPage,
   },
+  {
+    path: 'access-levels',
+    component: AccessLevelPage,
+  },
 ];
 
 @NgModule({
@@ -43,6 +48,7 @@ export class CoordinatorRoutingModule {
       { label: 'Cursos', path: '/coordinator/courses', icon: 'bi bi-book' },
       { label: 'Usuários', path: '/coordinator/teachers', icon: 'bi bi-people' },
       { label: 'Disciplinas', path: '/coordinator/subjects', icon: 'bi bi-book' },
+      { label: 'Acesso', path: '/coordinator/access-levels', icon: 'bi bi-shield-check' },
     ]);
   }
 }

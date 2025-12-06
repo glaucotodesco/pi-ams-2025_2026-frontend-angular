@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { SubjectService } from '../../../../services/subject/subject-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubjectProps } from '../../../../interfaces/SubjectProps';
+import { TechAxisProps } from '../../../../interfaces/TechAxisProps';
+import { ModalityProps } from '../../../../interfaces/ModalityProps';
+import { ModalityService } from '../../../../services/modality/modality-service';
+import { TechaxisService } from '../../../../services/techaxis/techaxis-service';
 
 @Component({
   selector: 'app-subjetc',
@@ -14,8 +18,8 @@ export class SubjetcPage implements OnInit {
     'id',
     'Nome',
     'Sigla',
-    'Aulas Práticas',
-    'Número do Semestre',
+    'Modalidade',
+    'Eixo Tecnológico',
     '',
   ];
 
@@ -32,21 +36,39 @@ export class SubjetcPage implements OnInit {
   subject: SubjectProps = {} as SubjectProps;
   deleteSubject: SubjectProps = {} as SubjectProps;
 
+  techAxis: TechAxisProps[] = [];
+  modalities: ModalityProps[] = [];
+
   constructor(
     private subjectService: SubjectService,
+    private techaxisService: TechaxisService,
+    private modalityService: ModalityService,
     formBuilder: FormBuilder
   ) {
     this.formGroupSubject = formBuilder.group({
-      id: [''],
+      id: [null],
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       acronym: ['', [Validators.required, Validators.maxLength(32)]],
-      practicalLessonsCount: [null, [Validators.min(1),Validators.max(99),Validators.required, Validators.pattern('^[0-9]+$')]],
-      semesterNumber: [null, [Validators.min(1),Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1), Validators.max(99)]],
+      techAxisId: [null, Validators.required],
+      modalityId: [null, Validators.required],
     });
   }
 
   ngOnInit(): void {
     this.loadSubjects();
+    this.loadTechAxisAndModalities();
+  }
+  loadTechAxisAndModalities() {
+    this.techaxisService.getAll().subscribe({
+      next: (data) => {
+        this.techAxis = data;
+      },
+      error: () => console.error('Error loading tech axis'),
+    });
+    this.modalityService.getAll().subscribe({
+      next: (data) => {
+        this.modalities = data;
+      }});
   }
 
   private loadSubjects() {
@@ -62,10 +84,17 @@ export class SubjetcPage implements OnInit {
   edit(subject: SubjectProps) {
     this.isEditing = true;
     this.subject = subject;
-    this.formGroupSubject.setValue(this.subject);
-  }
+    this.formGroupSubject.patchValue({
+      id: subject.id,
+      name: subject.name,
+      acronym: subject.acronym,
+      techAxisId: subject.techAxis?.id ?? null,
+      modalityId: subject.modality?.id ?? null,
+    });
+}
 
   save() {
+    
     if (!this.formGroupSubject.valid) return;
     const subject: SubjectProps = this.formGroupSubject.value;
     if (this.isEditing) {

@@ -5,3 +5,6 @@
 .active {
     background-color: black
 }
+.sidebar{
+    overflow-y: auto;
+}

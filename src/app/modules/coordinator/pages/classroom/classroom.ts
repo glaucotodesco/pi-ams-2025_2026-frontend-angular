@@ -63,6 +63,8 @@ export class ClassroomPage implements OnInit {
         '',
         [Validators.required, Validators.min(1), Validators.max(999)],
       ],
+      template: [false],
+      practical: [false],
     });
   }
   ngOnInit(): void {
@@ -82,7 +84,11 @@ export class ClassroomPage implements OnInit {
   edit(classroom: ClassroomProps): void {
     this.isEditing = true;
     this.classroom = classroom;
-    this.formGroupClassroom.setValue(classroom);
+    this.formGroupClassroom.patchValue({
+      ...classroom,
+      template: classroom.template ?? false,
+      practical: classroom.practical ?? false,
+    });
   }
 
   save(): void {
