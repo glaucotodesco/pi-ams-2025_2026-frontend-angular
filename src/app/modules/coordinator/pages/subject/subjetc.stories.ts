@@ -5,6 +5,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 import { SubjectService } from '../../../../services/subject/subject-service';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalityService } from '../../../../services/modality/modality-service';
+import { TechaxisService } from '../../../../services/techaxis/techaxis-service';
 
 const meta: Meta<SubjetcPage> = {
   title: 'Coordenador/Page/Subjects',
@@ -19,6 +21,8 @@ const meta: Meta<SubjetcPage> = {
       ],
       providers: [
         SubjectService,
+        ModalityService,
+        TechaxisService
       ],
     })
   ],

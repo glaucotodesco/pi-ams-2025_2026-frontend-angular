@@ -63,7 +63,6 @@ export class ClassroomPage implements OnInit {
         '',
         [Validators.required, Validators.min(1), Validators.max(999)],
       ],
-      template: [false],
       practical: [false],
     });
   }
@@ -86,7 +85,6 @@ export class ClassroomPage implements OnInit {
     this.classroom = classroom;
     this.formGroupClassroom.patchValue({
       ...classroom,
-      template: classroom.template ?? false,
       practical: classroom.practical ?? false,
     });
   }
