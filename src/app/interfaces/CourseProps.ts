@@ -1,6 +1,14 @@
+import { ModalityProps } from "./ModalityProps";
+import { PeriodicityProps } from "./PeriodicityProps";
+
 export interface CourseProps {
-  // Tornar opcional para criação; backend gera ID
+
   id: number;
   name: string;
   description: string;
+  modalityId?: number;
+  periodicityId?: number;
+
+  modality?: ModalityProps;
+  periodicity?: PeriodicityProps;
 }

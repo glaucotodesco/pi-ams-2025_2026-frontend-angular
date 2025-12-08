@@ -3,13 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './pages/home/home';
 import { MenuService } from '../shared/menu-service';
 import { CoursesPage } from './pages/course/courses';
-import { TeachersPage } from './pages/teacher/teachers';
+import { UsersPage } from './pages/user/users';
 import { SubjetcPage } from './pages/subject/subjetc';
 import { ClassroomPage } from './pages/classroom/classroom';
+import { AccessLevelPage } from './pages/access-level/access-level';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
+    pathMatch: 'full',
     component: HomePage, // rota /admin/home renderiza o componente Home
   },
   {
@@ -18,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'teachers',
-    component: TeachersPage,
+    component: UsersPage,
   },
   {
     path: 'subjects',
@@ -27,6 +29,10 @@ const routes: Routes = [
   {
     path: 'classrooms',
     component: ClassroomPage,
+  },
+  {
+    path: 'access-levels',
+    component: AccessLevelPage,
   },
 ];
 
@@ -37,11 +43,12 @@ const routes: Routes = [
 export class CoordinatorRoutingModule {
   constructor(private menuService: MenuService) {
     this.menuService.addMenu([
-      { label: 'Início', path: '/coordinator/home', icon: 'bi bi-house' },
+      { label: 'Início', path: '/coordinator/', icon: 'bi bi-house' },
       { label: 'Salas', path: '/coordinator/classrooms', icon: 'bi bi-building' },
       { label: 'Cursos', path: '/coordinator/courses', icon: 'bi bi-book' },
-      { label: 'Professores', path: '/coordinator/teachers', icon: 'bi bi-people' },
+      { label: 'Usuários', path: '/coordinator/teachers', icon: 'bi bi-people' },
       { label: 'Disciplinas', path: '/coordinator/subjects', icon: 'bi bi-book' },
+      { label: 'Acesso', path: '/coordinator/access-levels', icon: 'bi bi-shield-check' },
     ]);
   }
 }

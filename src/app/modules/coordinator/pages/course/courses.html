@@ -28,6 +28,9 @@
         <td>{{ course.id }}</td>
         <td>{{ course.name }}</td>
         <td>{{ course.description }}</td>
+        <td>{{ course.periodicity?.description }}</td>
+        <td>{{ course.modality?.name }}</td>
+    
         <td>
           <button
             class="btn btn-outline-secondary btn-sm m-1"
@@ -72,6 +75,30 @@
           formControlName="description"
           [control]="formGroupCourse.get('description')"
         />
+         <div class="row mt-3">
+        <div class="col-md-6">
+          <app-select-entity
+            label="Modalidade"
+            placeholder="Selecione uma modalidade"
+            [items]="modalities"
+            formControlName="modalityId"
+            valueField="id"
+            textField="name"
+            [control]="formGroupCourse.get('modalityId')"
+          ></app-select-entity>
+        </div>
+        <div class="col-md-6">
+          <app-select-entity
+            label="Periodicidade"
+            placeholder="Selecione a periodicidade"
+            [items]="periodicities"
+            formControlName="periodicityId"
+            valueField="id"
+            textField="description"
+            [control]="formGroupCourse.get('periodicityId')"
+          ></app-select-entity>
+        </div>
+      </div>
       </form>
     </app-modal-generic>
   </Card>

@@ -20,26 +20,26 @@
       'is-filled': value
     }"
   />
-  <div class="invalid-feedback d-block" *ngIf="control && control.invalid && (control.dirty || control.touched)">
-  <ng-container>
-    <div *ngIf="control.errors?.['required']">Campo obrigatório.</div>
-    <div *ngIf="control.errors?.['email']">E-mail inválido.</div>
-    <div *ngIf="control.errors?.['minlength']">
-      Mínimo de {{ control.errors?.['minlength'].requiredLength }} caracteres.
-    </div>
-    <div *ngIf="control.errors?.['maxlength']">
-      Máximo de {{ control.errors?.['maxlength'].requiredLength }} caracteres.
-    </div>
-    <div *ngIf="control.errors?.['pattern']">
-      Apenas números são permitidos.
-    </div>
-    <div *ngIf="control.errors?.['min']">
-      Valor mínimo é {{ control.errors?.['min']?.min }}.
-    </div>
-    <div *ngIf="control.errors?.['max']">
-      Valor máximo é {{ control.errors?.['max']?.max }}.
-    </div>
-  </ng-container>
-</div>
 
+  <div class="invalid-feedback d-block">
+    <ng-container>
+      <div *ngIf="control.errors?.['required']">Campo obrigatório.</div>
+      <div *ngIf="control.errors?.['email']">E-mail inválido.</div>
+      <div *ngIf="control.errors?.['minlength']">
+        Mínimo de {{ control.errors?.['minlength'].requiredLength }} caracteres.
+      </div>
+      <div *ngIf="control.errors?.['maxlength']">
+        Máximo de {{ control.errors?.['maxlength'].requiredLength }} caracteres.
+      </div>
+      <div *ngIf="control.errors?.['pattern']">
+        Apenas números são permitidos.
+      </div>
+      <div *ngIf="control.errors?.['min']">
+        Valor mínimo é {{ control.errors?.['min']?.min }}.
+      </div>
+      <div *ngIf="control.errors?.['max']">
+        Valor máximo é {{ control.errors?.['max']?.max }}.
+      </div>
+    </ng-container>
+  </div>
 </div>

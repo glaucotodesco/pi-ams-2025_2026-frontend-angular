@@ -3,5 +3,8 @@
 }
 
 .active {
-    backgrund-color: black
+    background-color: black
+}
+.sidebar{
+    overflow-y: auto;
 }

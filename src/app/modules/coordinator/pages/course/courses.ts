@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CourseProps } from '../../../../interfaces/CourseProps';
 import { CourseService } from '../../../../services/course/course-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalityProps } from '../../../../interfaces/ModalityProps';
+import { ModalityService } from '../../../../services/modality/modality-service';
+import { PeriodicityService } from '../../../../services/periodicity/periodicty-service';
+import { PeriodicityProps } from '../../../../interfaces/PeriodicityProps';
 
 @Component({
   selector: 'app-courses',
@@ -10,7 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   standalone: false,
 })
 export class CoursesPage implements OnInit {
-  columns: string[] = ['ID', 'Nome', 'Descrição', ''];
+  columns: string[] = ['ID', 'Nome', 'Descrição','Periodicidade','Modalidade', ''];
   deleteCourse: CourseProps = {} as CourseProps;
   course: CourseProps = {} as CourseProps;
 
@@ -24,7 +28,12 @@ export class CoursesPage implements OnInit {
   formGroupCourse: FormGroup;
   isEditing: boolean = false;
 
-  constructor(private courseService: CourseService, formBuilder: FormBuilder) {
+  constructor(
+    private courseService: CourseService,
+    private modalityService: ModalityService,
+    private periodicityService: PeriodicityService,
+    private formBuilder: FormBuilder
+  ) {
     this.formGroupCourse = formBuilder.group({
       id: [''],
       name: [
@@ -36,13 +45,35 @@ export class CoursesPage implements OnInit {
         ],
       ],
       description: ['', [Validators.minLength(5), Validators.maxLength(255)]],
+      modalityId: ['', [Validators.required]],
+      periodicityId: ['', [Validators.required]],
     });
   }
 
+  modalities: ModalityProps[] = [];
+  periodicities: PeriodicityProps[] = [];
+
   ngOnInit(): void {
     this.loadCourses();
+    this.loadModalities();
+    this.loadPeriodicities();
   }
 
+  loadModalities() {
+    this.modalityService.getAll().subscribe({
+      next: (data) => {
+        this.modalities = data;
+      },
+    });
+  }
+
+  loadPeriodicities() {
+    this.periodicityService.getAll().subscribe({
+      next: (data) => {
+        this.periodicities = data;
+      },
+    });
+  }
   loadCourses() {
     this.courseService.getAll().subscribe({
       next: (data) => {
@@ -60,7 +91,13 @@ export class CoursesPage implements OnInit {
   edit(course: CourseProps) {
     this.isEditing = true;
     this.course = course;
-    this.formGroupCourse.setValue(this.course);
+    this.formGroupCourse.patchValue({
+      id: course.id,
+      name: course.name,
+      description: course.description,
+      modalityId: course.modality?.id ?? '',
+      periodicityId: course.periodicity?.id ?? '',
+    })
   }
 
   save() {
@@ -68,7 +105,7 @@ export class CoursesPage implements OnInit {
 
     const course: CourseProps = this.formGroupCourse.value;
     console.log(course);
-    
+
     if (this.isEditing) {
       this.courseService.update(course).subscribe({
         complete: () => {

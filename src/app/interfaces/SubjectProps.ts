@@ -1,8 +1,16 @@
+import { ModalityProps } from "./ModalityProps";
+import { TechAxisProps } from "./TechAxisProps";
+
 export interface SubjectProps {
   id: number;
   name: string;
   acronym: string;
-  practicalLessonsCount: number;
-  semesterNumber:number;
-  
+
+  //resposse
+  techAxis:TechAxisProps;
+  modality: ModalityProps;
+
+  //request
+  techAxisId?: number;
+  modalityId?: number;
 }

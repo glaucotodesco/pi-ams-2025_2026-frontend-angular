@@ -5,6 +5,7 @@
         *ngIf="!item.children"
         [routerLink]="item.path"
         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
         class="nav-link d-flex align-items-center justify-content-center gap-2"
         style="color: black"
       >

@@ -16,6 +16,8 @@ import { SelectComponent } from './components/select/select';
 import { CardComponent } from './components/card/card';
 import { SectionTitleComponent } from './components/section-title/section-title';
 import { HeaderComponent } from './components/header/header';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SelectEntityComponent } from './components/select-entity/select-entity';
 
 @NgModule({
   declarations: [
@@ -33,14 +35,17 @@ import { HeaderComponent } from './components/header/header';
     CardComponent,
     SectionTitleComponent,
     HeaderComponent,
+    SelectEntityComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
- ModalComponent,
+    ModalComponent,
     Pagination,
     Radios,
     ButtonComponent,
@@ -53,7 +58,8 @@ import { HeaderComponent } from './components/header/header';
     CheckboxComponent,
     CardComponent,
     SectionTitleComponent,
-    HeaderComponent
-  ]
+    HeaderComponent,
+    SelectEntityComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
