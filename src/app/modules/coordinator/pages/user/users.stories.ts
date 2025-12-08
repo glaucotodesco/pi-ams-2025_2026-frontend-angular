@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../../shared/shared-module';
 import { UserService } from '../../../../services/user/user-service';
 import { HttpClientModule } from '@angular/common/http';
+import { AccessLevelService } from '../../../../services/access-level/access-level-service';
 
 const meta: Meta<UsersPage> = {
   title: 'Coordenador/Page/Usuários',
@@ -19,7 +20,8 @@ const meta: Meta<UsersPage> = {
         HttpClientModule
       ],
       providers: [
-        UserService
+        UserService,
+        AccessLevelService
       ],
     }),
   ],

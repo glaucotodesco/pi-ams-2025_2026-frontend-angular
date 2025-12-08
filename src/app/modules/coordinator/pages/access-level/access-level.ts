@@ -13,7 +13,7 @@ export class AccessLevelPage implements OnInit {
   accessLevels: AccessLevelProps[] = [];
   accessLevel: AccessLevelProps = {} as AccessLevelProps;
 
-  columns = ['id', 'Nível', 'Descrição', 'Ações'];
+  columns = ['id', 'Descrição', 'Ações'];
 
   formGroupAccessLevel: FormGroup;
   isEditing = false;
@@ -30,7 +30,7 @@ export class AccessLevelPage implements OnInit {
   ) {
     this.formGroupAccessLevel = formBuilder.group({
       id: [null],
-      level: ['', [Validators.required, Validators.min(1), Validators.max(99)]],
+      level: [1],
       description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
     });
   }

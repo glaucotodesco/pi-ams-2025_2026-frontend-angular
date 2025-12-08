@@ -6,6 +6,8 @@ import { SharedModule } from '../../../shared/shared-module';
 import { HttpClientModule } from '@angular/common/http';
 import { CourseService } from '../../../../services/course/course-service';
 import { CoursesPage } from './courses';
+import { PeriodicityService } from '../../../../services/periodicity/periodicty-service';
+import { ModalityService } from '../../../../services/modality/modality-service';
   
 const meta: Meta<CoursesPage> = {
   title: 'Coordenador/Page/Courses',
@@ -20,6 +22,8 @@ const meta: Meta<CoursesPage> = {
       ],
       providers: [
         CourseService,
+        PeriodicityService,
+        ModalityService
       ],
     })
   ],

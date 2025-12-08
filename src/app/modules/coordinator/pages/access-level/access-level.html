@@ -22,7 +22,6 @@
       @for (accessLevel of filteredAccessLevels; track $index) {
       <tr>
         <td>{{ accessLevel.id }}</td>
-        <td>{{ accessLevel.level }}</td>
         <td>{{ accessLevel.description }}</td>
         <td>
           <div>
@@ -72,15 +71,6 @@
   (cancelled)="reset()"
 >
   <form [formGroup]="formGroupAccessLevel">
-    <app-input
-      type="number"
-      label="Nível"
-      placeholder="Digite o nível"
-      formControlName="level"
-      id="level"
-      [control]="formGroupAccessLevel.get('level')"
-    />
-
     <app-input
       type="text"
       label="Descrição"
