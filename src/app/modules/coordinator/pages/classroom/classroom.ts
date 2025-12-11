@@ -87,6 +87,7 @@ export class ClassroomPage implements OnInit {
     this.formGroupClassroom.patchValue({
       ...classroom,
       practical: classroom.practical ?? false,
+      template: classroom.template ?? false,
     });
   }
 

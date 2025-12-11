@@ -6,4 +6,5 @@ export interface ClassroomProps {
   softwareResources:string;
   capacity: number;
   practical?: boolean;
+  template?:boolean;
 }
