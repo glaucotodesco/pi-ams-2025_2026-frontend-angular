@@ -64,6 +64,7 @@ export class ClassroomPage implements OnInit {
         [Validators.required, Validators.min(1), Validators.max(999)],
       ],
       practical: [false],
+      template:[false],
     });
   }
   ngOnInit(): void {
